@@ -69,7 +69,7 @@
 
         h1 {
             color: #f0ecff;
-            font-size: 34px;
+            font-size: 32px;
             margin-bottom: 10px;
             animation: fade 0.8s ease;
         }
@@ -77,7 +77,7 @@
         .sub {
             color: #9b8fc0;
             font-size: 15px;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
             animation: fade 0.8s ease 0.2s both;
         }
 
@@ -113,6 +113,19 @@
         .btn:nth-child(4) { animation-delay: 0.6s; }
         .btn:nth-child(5) { animation-delay: 0.7s; }
 
+        .result {
+            margin-top: 20px;
+            background: rgba(155, 123, 255, 0.08);
+            border: 1px solid rgba(155, 123, 255, 0.25);
+            border-radius: 14px;
+            padding: 18px;
+            color: #d8d0f0;
+            font-size: 14px;
+            line-height: 1.5;
+            min-height: 80px;
+            animation: fade 0.4s ease;
+        }
+
         @keyframes fade {
             from {
                 opacity: 0;
@@ -132,12 +145,74 @@
         <p class="sub">Выбери, что тебе сейчас нужно</p>
 
         <div class="menu">
-            <button class="btn">🚶 Куда сходить</button>
-            <button class="btn">🍽 Поесть</button>
-            <button class="btn">😌 Посидеть</button>
-            <button class="btn">🌿 Природа</button>
-            <button class="btn">🤫 Слухи</button>
+            <button class="btn" onclick="show('kuda')">🚶 Куда сходить</button>
+            <button class="btn" onclick="show('eat')">🍽 Поесть</button>
+            <button class="btn" onclick="show('sit')">😌 Посидеть</button>
+            <button class="btn" onclick="show('nature')">🌿 Природа</button>
+            <button class="btn" onclick="show('gossip')">🤫 Слухи</button>
         </div>
+
+        <div class="result" id="result">Жми на кнопку — и я подскажу</div>
     </div>
+
+    <script>
+        // Базы идей
+        const ideas = {
+            kuda: [
+                "парк Киселёва — дойди и просто побудь",
+                "городской пруд на Потехе — вода и тишина",
+                "стадион в Низах — место силы",
+                "смотровая вышка — вид на парк и пруд",
+                "аллея у белого голубя — свежо и красиво",
+                "тропа здоровья — турники и воздух"
+            ],
+            eat: [
+                "«Милк» на Седова, 113",
+                "шашлычная на Седова, 100А — круглосуточно",
+                "«Тройка» в Низах — круглосуточно",
+                "«Фор-Фор» — пицца и роллы",
+                "«Венеция» — просто и вкусно",
+                "Food House в Низах"
+            ],
+            sit: [
+                "три стула в парке — просто сядь",
+                "скамейки у педколледжа",
+                "сквер на Седова, 107",
+                "качели перед озером",
+                "набережная Потехи",
+                "тихие дворы за Седова"
+            ],
+            nature: [
+                "сосновая роща — сосны с 1892 года",
+                "пойма Потехи — вода и закат",
+                "родник — набери воды",
+                "озеро в парке Машиностроителей",
+                "река Белая — просто смотри"
+            ],
+            gossip: [
+                "на Инзе все знают...\nчто?\nнапиши автору, если знаешь",
+                "в Низах выпускники делали после выпускного...\nтолько тссс",
+                "на ГАИ за проблемами лучше не идти",
+                "в благе есть чат «В благе любят» — если ты там, ты свой"
+            ]
+        };
+
+        // Очереди идей для каждого пользователя
+        const queues = {};
+
+        function getQueue(category) {
+            if (!queues[category] || queues[category].length === 0) {
+                queues[category] = [...ideas[category]].sort(() => Math.random() - 0.5);
+            }
+            return queues[category];
+        }
+
+        function show(category) {
+            const queue = getQueue(category);
+            const idea = queue.shift();
+            const result = document.getElementById('result');
+            result.textContent = idea;
+        }
+    </script>
 </body>
 </html>
