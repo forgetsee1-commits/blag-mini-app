@@ -71,20 +71,21 @@
             color: #f0ecff;
             font-size: 32px;
             margin-bottom: 10px;
-            animation: fade 0.8s ease;
+            transition: all 0.5s ease;
         }
 
         .sub {
             color: #9b8fc0;
             font-size: 15px;
             margin-bottom: 25px;
-            animation: fade 0.8s ease 0.2s both;
+            transition: all 0.5s ease;
         }
 
         .menu {
             display: flex;
             flex-direction: column;
             gap: 12px;
+            transition: all 0.5s ease;
         }
 
         .btn {
@@ -96,7 +97,6 @@
             font-size: 15px;
             cursor: pointer;
             transition: all 0.3s ease;
-            animation: fade 0.6s ease both;
             backdrop-filter: blur(10px);
         }
 
@@ -107,29 +107,59 @@
             color: #ffffff;
         }
 
-        .btn:nth-child(1) { animation-delay: 0.3s; }
-        .btn:nth-child(2) { animation-delay: 0.4s; }
-        .btn:nth-child(3) { animation-delay: 0.5s; }
-        .btn:nth-child(4) { animation-delay: 0.6s; }
-        .btn:nth-child(5) { animation-delay: 0.7s; }
-
         .result {
-            margin-top: 20px;
+            display: none;
             background: rgba(155, 123, 255, 0.08);
             border: 1px solid rgba(155, 123, 255, 0.25);
-            border-radius: 14px;
-            padding: 18px;
+            border-radius: 16px;
+            padding: 24px 18px;
+            color: #d8d0f0;
+            font-size: 15px;
+            line-height: 1.6;
+            min-height: 120px;
+            animation: pop 0.4s ease;
+        }
+
+        .actions {
+            display: none;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 20px;
+            animation: fade 0.5s ease;
+        }
+
+        .btn-small {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            border-radius: 12px;
+            padding: 13px;
             color: #d8d0f0;
             font-size: 14px;
-            line-height: 1.5;
-            min-height: 80px;
-            animation: fade 0.4s ease;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-small:hover {
+            background: rgba(155, 123, 255, 0.12);
+            border-color: rgba(155, 123, 255, 0.35);
+            color: #ffffff;
+        }
+
+        @keyframes pop {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
         }
 
         @keyframes fade {
             from {
                 opacity: 0;
-                transform: translateY(20px);
+                transform: translateY(15px);
             }
             to {
                 opacity: 1;
@@ -141,10 +171,13 @@
 <body>
     <div class="app">
         <div class="badge">🕵️ ТАЙНЫЙ БЛАГОВЕЩЕНСК</div>
-        <h1>Город знает тебя</h1>
-        <p class="sub">Выбери, что тебе сейчас нужно</p>
 
-        <div class="menu">
+        <div id="header">
+            <h1>Город знает тебя</h1>
+            <p class="sub">Выбери, что тебе сейчас нужно</p>
+        </div>
+
+        <div class="menu" id="menu">
             <button class="btn" onclick="show('kuda')">🚶 Куда сходить</button>
             <button class="btn" onclick="show('eat')">🍽 Поесть</button>
             <button class="btn" onclick="show('sit')">😌 Посидеть</button>
@@ -152,11 +185,15 @@
             <button class="btn" onclick="show('gossip')">🤫 Слухи</button>
         </div>
 
-        <div class="result" id="result">Жми на кнопку — и я подскажу</div>
+        <div class="result" id="result"></div>
+
+        <div class="actions" id="actions">
+            <button class="btn-small" onclick="more()">🔄 Ещё</button>
+            <button class="btn-small" onclick="back()">← Назад</button>
+        </div>
     </div>
 
     <script>
-        // Базы идей
         const ideas = {
             kuda: [
                 "парк Киселёва — дойди и просто побудь",
@@ -197,8 +234,8 @@
             ]
         };
 
-        // Очереди идей для каждого пользователя
         const queues = {};
+        let currentCategory = null;
 
         function getQueue(category) {
             if (!queues[category] || queues[category].length === 0) {
@@ -208,10 +245,32 @@
         }
 
         function show(category) {
+            currentCategory = category;
             const queue = getQueue(category);
             const idea = queue.shift();
+
+            document.getElementById('header').style.display = 'none';
+            document.getElementById('menu').style.display = 'none';
+
             const result = document.getElementById('result');
+            result.style.display = 'block';
             result.textContent = idea;
+
+            document.getElementById('actions').style.display = 'flex';
+        }
+
+        function more() {
+            if (!currentCategory) return;
+            const queue = getQueue(currentCategory);
+            const idea = queue.shift();
+            document.getElementById('result').textContent = idea;
+        }
+
+        function back() {
+            document.getElementById('header').style.display = 'block';
+            document.getElementById('menu').style.display = 'flex';
+            document.getElementById('result').style.display = 'none';
+            document.getElementById('actions').style.display = 'none';
         }
     </script>
 </body>
