@@ -187,7 +187,7 @@
             border: 1px solid rgba(155, 123, 255, 0.3);
             border-radius: 14px;
             padding: 16px;
-            width: 220px;
+            width: 240px;
             z-index: 20;
         }
 
@@ -201,11 +201,17 @@
             font-size: 14px;
             text-align: center;
             outline: none;
+            margin-bottom: 8px;
+        }
+
+        textarea.admin-input {
+            text-align: left;
+            resize: vertical;
         }
 
         .admin-btn {
             width: 100%;
-            margin-top: 8px;
+            margin-top: 6px;
             padding: 10px;
             border-radius: 8px;
             border: none;
@@ -255,28 +261,45 @@
     <button class="admin-gear" onclick="openAdmin()">⚙️</button>
 
     <div class="admin-panel" id="adminPanel">
-        <input class="admin-input" id="pinInput" type="password" placeholder="Пин-код" maxlength="4">
-        <button class="admin-btn" onclick="checkPin()">Войти</button>
+        <div id="loginBlock">
+            <input class="admin-input" id="pinInput" type="password" placeholder="Пин-код" maxlength="4">
+            <button class="admin-btn" onclick="checkPin()">Войти</button>
+        </div>
+
+        <div id="adminContent" style="display:none;">
+            <button class="admin-btn" onclick="showAddForm()">➕ Добавить идею</button>
+            <button class="admin-btn" onclick="showAllIdeas()">📋 Все идеи</button>
+            <button class="admin-btn" onclick="showStats()">📊 Статистика</button>
+            <button class="admin-btn" onclick="closeAdmin()">← Назад</button>
+        </div>
+
+        <div id="addForm" style="display:none;">
+            <select id="categorySelect" class="admin-input">
+                <option value="kuda">🚶 Куда сходить</option>
+                <option value="eat">🍽 Поесть</option>
+                <option value="sit">😌 Посидеть</option>
+                <option value="nature">🌿 Природа</option>
+                <option value="gossip">🤫 Слухи</option>
+            </select>
+            <textarea id="ideaText" class="admin-input" rows="3" placeholder="Текст идеи"></textarea>
+            <button class="admin-btn" onclick="addIdea()">Сохранить</button>
+            <button class="admin-btn" onclick="backToAdmin()">← Назад</button>
+        </div>
+
+        <div id="listBlock" style="display:none;">
+            <div id="ideasList" style="max-height: 200px; overflow-y: auto; margin-top: 8px;"></div>
+            <button class="admin-btn" onclick="backToAdmin()">← Назад</button>
+        </div>
+
+        <div id="statsBlock" style="display:none;">
+            <div id="statsText" style="color: #d8d0f0; font-size: 13px; margin: 8px 0;"></div>
+            <button class="admin-btn" onclick="backToAdmin()">← Назад</button>
+        </div>
     </div>
 
     <script>
         const PIN = "8357";
-
-        function openAdmin() {
-            const panel = document.getElementById('adminPanel');
-            panel.style.display = panel.style.display === 'block' ? 'none' : 'block';
-        }
-
-        function checkPin() {
-            const input = document.getElementById('pinInput').value;
-            if (input === PIN) {
-                alert('✅ Админка открыта. Дальше добавим функции.');
-                document.getElementById('adminPanel').style.display = 'none';
-                document.getElementById('pinInput').value = '';
-            } else {
-                alert('❌ Неверный код');
-            }
-        }
+        let clicks = {};
 
         const ideas = {
             kuda: [
@@ -348,6 +371,87 @@
         const queues = {};
         let currentCategory = null;
 
+        function openAdmin() {
+            const panel = document.getElementById('adminPanel');
+            panel.style.display = panel.style.display === 'block' ? 'none' : 'block';
+        }
+
+        function checkPin() {
+            const input = document.getElementById('pinInput').value;
+            if (input === PIN) {
+                document.getElementById('loginBlock').style.display = 'none';
+                document.getElementById('adminContent').style.display = 'block';
+                document.getElementById('pinInput').value = '';
+            } else {
+                alert('❌ Неверный код');
+            }
+        }
+
+        function closeAdmin() {
+            document.getElementById('adminPanel').style.display = 'none';
+            document.getElementById('loginBlock').style.display = 'block';
+            document.getElementById('adminContent').style.display = 'none';
+            document.getElementById('addForm').style.display = 'none';
+            document.getElementById('listBlock').style.display = 'none';
+            document.getElementById('statsBlock').style.display = 'none';
+        }
+
+        function showAddForm() {
+            document.getElementById('adminContent').style.display = 'none';
+            document.getElementById('addForm').style.display = 'block';
+        }
+
+        function backToAdmin() {
+            document.getElementById('adminContent').style.display = 'block';
+            document.getElementById('addForm').style.display = 'none';
+            document.getElementById('listBlock').style.display = 'none';
+            document.getElementById('statsBlock').style.display = 'none';
+        }
+
+        function addIdea() {
+            const category = document.getElementById('categorySelect').value;
+            const text = document.getElementById('ideaText').value.trim();
+            if (!text) {
+                alert('❌ Введи текст идеи');
+                return;
+            }
+            ideas[category].push(text);
+            alert('✅ Идея добавлена!');
+            document.getElementById('ideaText').value = '';
+            backToAdmin();
+        }
+
+        function showAllIdeas() {
+            document.getElementById('adminContent').style.display = 'none';
+            document.getElementById('listBlock').style.display = 'block';
+
+            let html = '';
+            for (const cat in ideas) {
+                html += `<p style="color:#b39bff; margin-top:8px;">${cat}</p>`;
+                ideas[cat].forEach((idea, i) => {
+                    html += `<p style="color:#d8d0f0; font-size:12px;">${i + 1}. ${idea}</p>`;
+                });
+            }
+            document.getElementById('ideasList').innerHTML = html;
+        }
+
+        function showStats() {
+            document.getElementById('adminContent').style.display = 'none';
+            document.getElementById('statsBlock').style.display = 'block';
+
+            let total = 0;
+            for (const cat in ideas) {
+                total += ideas[cat].length;
+            }
+
+            const clicksTotal = Object.values(clicks).reduce((a, b) => a + b, 0);
+
+            document.getElementById('statsText').innerHTML = `
+                Идей всего: ${total}<br>
+                Кнопок нажато: ${clicksTotal}
+            `;
+        }
+
         function getQueue(category) {
             if (!queues[category] || queues[category].length === 0) {
                 queues[category] = [...ideas[category]].sort(() => Math.random() - 0.5);
@@ -356,6 +460,7 @@
         }
 
         function show(category) {
+            clicks[category] = (clicks[category] || 0) + 1;
             currentCategory = category;
             const queue = getQueue(category);
             const idea = queue.shift();
