@@ -178,6 +178,24 @@
             opacity: 0.6;
         }
 
+        .info-btn {
+            position: fixed;
+            bottom: 12px;
+            left: 50px;
+            font-size: 16px;
+            opacity: 0.25;
+            cursor: pointer;
+            transition: opacity 0.3s ease;
+            background: none;
+            border: none;
+            color: #ffffff;
+            z-index: 10;
+        }
+
+        .info-btn:hover {
+            opacity: 0.6;
+        }
+
         .admin-panel {
             display: none;
             position: fixed;
@@ -189,6 +207,26 @@
             padding: 16px;
             width: 260px;
             z-index: 20;
+        }
+
+        .info-box {
+            display: none;
+            position: fixed;
+            bottom: 45px;
+            left: 50px;
+            background: rgba(15, 10, 25, 0.95);
+            border: 1px solid rgba(155, 123, 255, 0.3);
+            border-radius: 14px;
+            padding: 16px;
+            width: 240px;
+            z-index: 20;
+        }
+
+        .info-box p {
+            color: #d8d0f0;
+            font-size: 13px;
+            line-height: 1.6;
+            margin-bottom: 8px;
         }
 
         .admin-input {
@@ -259,6 +297,7 @@
     </div>
 
     <button class="admin-gear" onclick="openAdmin()">⚙️</button>
+    <button class="info-btn" onclick="toggleInfo()">📌</button>
 
     <div class="admin-panel" id="adminPanel">
         <div id="loginBlock">
@@ -295,6 +334,13 @@
             <div id="statsText" style="color: #d8d0f0; font-size: 13px; margin: 8px 0; line-height: 1.5;"></div>
             <button class="admin-btn" onclick="backToAdmin()">← Назад</button>
         </div>
+    </div>
+
+    <div class="info-box" id="infoBox">
+        <p>Пр тут короче будет информация о новых добавлениях и тд</p>
+        <p>Так же если че можете вкидывать свои идеи авторам, они будут рассматриваться.</p>
+        <p>Авторы: @Pand_f и @cruifixs</p>
+        <p>Рад что пользуетесь тайным благом</p>
     </div>
 
     <script>
@@ -374,6 +420,11 @@
         function openAdmin() {
             const panel = document.getElementById('adminPanel');
             panel.style.display = panel.style.display === 'block' ? 'none' : 'block';
+        }
+
+        function toggleInfo() {
+            const box = document.getElementById('infoBox');
+            box.style.display = box.style.display === 'block' ? 'none' : 'block';
         }
 
         function checkPin() {
