@@ -187,7 +187,7 @@
             border: 1px solid rgba(155, 123, 255, 0.3);
             border-radius: 14px;
             padding: 16px;
-            width: 240px;
+            width: 260px;
             z-index: 20;
         }
 
@@ -287,12 +287,12 @@
         </div>
 
         <div id="listBlock" style="display:none;">
-            <div id="ideasList" style="max-height: 200px; overflow-y: auto; margin-top: 8px;"></div>
+            <div id="ideasList" style="max-height: 220px; overflow-y: auto; margin-top: 8px;"></div>
             <button class="admin-btn" onclick="backToAdmin()">← Назад</button>
         </div>
 
         <div id="statsBlock" style="display:none;">
-            <div id="statsText" style="color: #d8d0f0; font-size: 13px; margin: 8px 0;"></div>
+            <div id="statsText" style="color: #d8d0f0; font-size: 13px; margin: 8px 0; line-height: 1.5;"></div>
             <button class="admin-btn" onclick="backToAdmin()">← Назад</button>
         </div>
     </div>
@@ -354,16 +354,16 @@
                 "река Белая — просто смотри, как течёт",
                 "бассейн в «Заряде» — поплавать",
                 "бассейн в «Импульсе» — вода и отдых",
-                "затон ебать — вода, тишина, природа"
+                "затон — вода, тишина, природа"
             ],
             gossip: [
                 "на Инзе все знают...\nчто?\nнапиши автору, если знаешь",
-                "все знаютчто в Низах выпускники делали после выпускного...\nтолько тссс",
+                "в Низах выпускники делали после выпускного...\nтолько тссс",
                 "на ГАИ за проблемами лучше не идти",
                 "в благе есть чат «В благе любят» — если ты там, ты свой",
                 "ГАИ — лучшее кино в окне: суета, драма, полиция вяжет ровных пацанчиков и частые спарринги людей. Чисто спортивный интерес",
                 "многие считают ГАИ опасным — это стереотип. ГАИ — лучший район",
-                "утром нахуй в 9 утра автобус на БМПК — это испытание. Студентов развелось как муравьёв",
+                "утром в 9 автобус на БМПК — это испытание. Студентов развелось как муравьёв",
                 "после 4-й пары студенты ломают себя, чтобы влезть в автобус и уехать домой"
             ]
         };
@@ -427,29 +427,77 @@
 
             let html = '';
             for (const cat in ideas) {
-                html += `<p style="color:#b39bff; margin-top:8px;">${cat}</p>`;
+                html += `<p style="color:#b39bff; margin-top:10px; font-weight:bold;">${cat}</p>`;
                 ideas[cat].forEach((idea, i) => {
-                    html += `<p style="color:#d8d0f0; font-size:12px;">${i + 1}. ${idea}</p>`;
+                    html += `
+                        <div style="display:flex; justify-content:space-between; align-items:center; gap:6px; margin-top:4px;">
+                            <p style="color:#d8d0f0; font-size:12px; flex:1;">${i + 1}. ${idea}</p>
+                            <button onclick="deleteIdea('${cat}', ${i})" style="background:none; border:none; cursor:pointer; font-size:14px;">🗑</button>
+                        </div>
+                    `;
                 });
             }
             document.getElementById('ideasList').innerHTML = html;
+        }
+
+        function deleteIdea(category, index) {
+            ideas[category].splice(index, 1);
+            showAllIdeas();
         }
 
         function showStats() {
             document.getElementById('adminContent').style.display = 'none';
             document.getElementById('statsBlock').style.display = 'block';
 
-            let total = 0;
+            let totalIdeas = 0;
             for (const cat in ideas) {
-                total += ideas[cat].length;
+                totalIdeas += ideas[cat].length;
             }
 
             const clicksTotal = Object.values(clicks).reduce((a, b) => a + b, 0);
 
-            document.getElementById('statsText').innerHTML = `
-                Идей всего: ${total}<br>
-                Кнопок нажато: ${clicksTotal}
+            let popular = '—';
+            let maxClicks = 0;
+            let empty = '—';
+            let minIdeas = Infinity;
+
+            for (const cat in ideas) {
+                if (ideas[cat].length < minIdeas) {
+                    minIdeas = ideas[cat].length;
+                    empty = cat;
+                }
+            }
+
+            for (const cat in clicks) {
+                if (clicks[cat] > maxClicks) {
+                    maxClicks = clicks[cat];
+                    popular = cat;
+                }
+            }
+
+            const catCount = Object.keys(ideas).length;
+            const avgIdeas = (totalIdeas / catCount).toFixed(1);
+
+            let html = `
+                <b>📊 ОБЩЕЕ</b><br>
+                Идей всего: ${totalIdeas}<br>
+                Категорий: ${catCount}<br>
+                Среднее идей на категорию: ${avgIdeas}<br>
+                Всего нажатий: ${clicksTotal}<br><br>
+                <b>📁 ПО КАТЕГОРИЯМ</b><br>
             `;
+
+            for (const cat in ideas) {
+                const clicksCat = clicks[cat] || 0;
+                const percent = clicksTotal > 0 ? ((clicksCat / clicksTotal) * 100).toFixed(1) : 0;
+                html += `${cat}: идей ${ideas[cat].length}, нажатий ${clicksCat} (${percent}%)<br>`;
+            }
+
+            html += `<br><b>🔥 ТОП</b><br>`;
+            html += `Самая популярная: ${popular}<br>`;
+            html += `Самая пустая: ${empty}<br>`;
+
+            document.getElementById('statsText').innerHTML = html;
         }
 
         function getQueue(category) {
