@@ -160,47 +160,58 @@
             transition: all 0.3s ease;
         }
 
-        .admin-dot {
-            margin-top: 25px;
-            font-size: 18px;
-            opacity: 0.3;
+        .admin-gear {
+            position: fixed;
+            bottom: 12px;
+            left: 12px;
+            font-size: 16px;
+            opacity: 0.25;
             cursor: pointer;
             transition: opacity 0.3s ease;
             background: none;
             border: none;
             color: #ffffff;
+            z-index: 10;
         }
 
-        .admin-dot:hover {
-            opacity: 0.7;
+        .admin-gear:hover {
+            opacity: 0.6;
         }
 
         .admin-panel {
             display: none;
-            margin-top: 15px;
+            position: fixed;
+            bottom: 45px;
+            left: 12px;
+            background: rgba(15, 10, 25, 0.95);
+            border: 1px solid rgba(155, 123, 255, 0.3);
+            border-radius: 14px;
+            padding: 16px;
+            width: 220px;
+            z-index: 20;
         }
 
         .admin-input {
             width: 100%;
-            padding: 12px;
-            border-radius: 10px;
+            padding: 10px;
+            border-radius: 8px;
             border: 1px solid rgba(255, 255, 255, 0.1);
-            background: rgba(255, 255, 255, 0.04);
+            background: rgba(255, 255, 255, 0.05);
             color: #ffffff;
-            font-size: 16px;
+            font-size: 14px;
             text-align: center;
             outline: none;
         }
 
         .admin-btn {
             width: 100%;
-            margin-top: 10px;
-            padding: 12px;
-            border-radius: 10px;
+            margin-top: 8px;
+            padding: 10px;
+            border-radius: 8px;
             border: none;
             background: rgba(155, 123, 255, 0.2);
             color: #d8d0f0;
-            font-size: 14px;
+            font-size: 13px;
             cursor: pointer;
         }
 
@@ -239,13 +250,13 @@
             <button class="btn-small" onclick="more()">🔄 Ещё</button>
             <button class="btn-small" onclick="back()">← Назад</button>
         </div>
+    </div>
 
-        <button class="admin-dot" onclick="openAdmin()">⚙️</button>
+    <button class="admin-gear" onclick="openAdmin()">⚙️</button>
 
-        <div class="admin-panel" id="adminPanel">
-            <input class="admin-input" id="pinInput" type="password" placeholder="Пин-код" maxlength="4">
-            <button class="admin-btn" onclick="checkPin()">Войти</button>
-        </div>
+    <div class="admin-panel" id="adminPanel">
+        <input class="admin-input" id="pinInput" type="password" placeholder="Пин-код" maxlength="4">
+        <button class="admin-btn" onclick="checkPin()">Войти</button>
     </div>
 
     <script>
@@ -259,7 +270,7 @@
         function checkPin() {
             const input = document.getElementById('pinInput').value;
             if (input === PIN) {
-                alert('✅ Админка открыта. Пока только вход.');
+                alert('✅ Админка открыта. Дальше добавим функции.');
                 document.getElementById('adminPanel').style.display = 'none';
                 document.getElementById('pinInput').value = '';
             } else {
