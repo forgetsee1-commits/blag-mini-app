@@ -24,10 +24,46 @@
             transition: background 0.6s ease;
         }
 
+        /* ЗАСТАВКА */
+        .splash {
+            position: fixed;
+            inset: 0;
+            background: #0a0812;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            animation: splashOut 0.6s ease 3.5s forwards;
+        }
+
+        .splash-text {
+            font-size: 24px;
+            font-weight: 800;
+            color: #b39bff;
+            letter-spacing: 2px;
+            min-height: 40px;
+        }
+
+        .splash-sub {
+            margin-top: 10px;
+            font-size: 13px;
+            color: #6b5f8a;
+            opacity: 0;
+            animation: fadeIn 0.8s ease 2.5s forwards;
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        @keyframes splashOut {
+            to { opacity: 0; visibility: hidden; }
+        }
+
         /* ТЕМА: НЕОН */
         body.theme-neon {
             background: linear-gradient(135deg, #000000 0%, #1a0033 30%, #003366 60%, #000000 100%);
-            font-family: 'Manrope', sans-serif;
         }
 
         body.theme-neon .btn,
@@ -55,23 +91,24 @@
             background: linear-gradient(180deg, #0a0a0f 0%, #111118 40%, #1a1a22 100%);
         }
 
-        body.theme-rain::after {
-            content: '';
-            position: absolute;
+        .rain-container {
+            position: fixed;
             inset: 0;
-            background-image: repeating-linear-gradient(
-                100deg,
-                transparent 0px,
-                transparent 6px,
-                rgba(100, 120, 160, 0.15) 6px,
-                rgba(100, 120, 160, 0.15) 7px
-            );
-            animation: rain 0.4s linear infinite;
+            z-index: 0;
+            pointer-events: none;
         }
 
-        @keyframes rain {
-            from { transform: translateY(-20px); }
-            to { transform: translateY(20px); }
+        .drop {
+            position: absolute;
+            width: 2px;
+            height: 20px;
+            background: linear-gradient(180deg, transparent, rgba(120, 150, 200, 0.5));
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            from { transform: translateY(-30px); }
+            to { transform: translateY(110vh); }
         }
 
         /* ТЕМА: КОСМОС */
@@ -79,21 +116,34 @@
             background: linear-gradient(160deg, #000000 0%, #0a0a2e 30%, #1a0a3e 60%, #000000 100%);
         }
 
-        body.theme-space::after {
-            content: '';
-            position: absolute;
+        .space-container {
+            position: fixed;
             inset: 0;
-            background-image:
-                radial-gradient(1px 1px at 20% 30%, #ffffff 50%, transparent 50%),
-                radial-gradient(1px 1px at 70% 60%, #ffffff 50%, transparent 50%),
-                radial-gradient(2px 2px at 40% 80%, #ffffff 50%, transparent 50%),
-                radial-gradient(1px 1px at 90% 20%, #ffffff 50%, transparent 50%),
-                radial-gradient(2px 2px at 10% 70%, #ffffff 50%, transparent 50%);
-            animation: twinkle 3s ease-in-out infinite;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: #ffffff;
+            border-radius: 50%;
+            animation: twinkle ease-in-out infinite;
+        }
+
+        .nebula {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.3;
+            animation: float 10s ease-in-out infinite;
         }
 
         @keyframes twinkle {
-            0%, 100% { opacity: 0.4; }
+            0%, 100% { opacity: 0.2; }
             50% { opacity: 0.9; }
         }
 
@@ -413,6 +463,7 @@
             gap: 12px;
             justify-content: center;
             margin-bottom: 25px;
+            perspective: 500px;
         }
 
         .slot-reel {
@@ -425,17 +476,23 @@
             align-items: center;
             justify-content: center;
             font-size: 40px;
-            animation: none;
+            overflow: hidden;
+            position: relative;
         }
 
-        .slot-reel.spinning {
-            animation: shake 0.1s linear infinite;
+        .slot-reel-inner {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: transform 1.5s cubic-bezier(0.25, 0.1, 0.25, 1);
         }
 
-        @keyframes shake {
-            0% { transform: translateY(-5px); }
-            50% { transform: translateY(5px); }
-            100% { transform: translateY(-5px); }
+        .slot-reel-icon {
+            height: 90px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
         }
 
         .slot-btn {
@@ -480,8 +537,17 @@
     </style>
 </head>
 <body>
+    <!-- ЗАСТАВКА -->
+    <div class="splash" id="splash">
+        <div class="splash-text" id="splashText"></div>
+        <div class="splash-sub">город знает тебя</div>
+    </div>
+
     <div class="extra-glow-1"></div>
     <div class="extra-glow-2"></div>
+
+    <div class="rain-container" id="rainContainer"></div>
+    <div class="space-container" id="spaceContainer"></div>
 
     <div class="app">
         <div class="badge">🕵️ ТАЙНЫЙ БЛАГОВЕЩЕНСК</div>
@@ -529,14 +595,14 @@
         </div>
     </div>
 
-    <!-- СЛОТ-МАШИНА -->
+    <!-- СЛОТ -->
     <div class="fullscreen" id="slotScreen">
         <div class="slot-screen">
             <div class="slot-title">🎰 СЛОТ-МАШИНА</div>
             <div class="slot-reels">
-                <div class="slot-reel" id="reel1">🎰</div>
-                <div class="slot-reel" id="reel2">🎰</div>
-                <div class="slot-reel" id="reel3">🎰</div>
+                <div class="slot-reel"><div class="slot-reel-inner" id="reel1"></div></div>
+                <div class="slot-reel"><div class="slot-reel-inner" id="reel2"></div></div>
+                <div class="slot-reel"><div class="slot-reel-inner" id="reel3"></div></div>
             </div>
             <button class="slot-btn" onclick="spin()">Крутить</button>
             <div class="slot-result" id="slotResult"></div>
@@ -593,6 +659,20 @@
         let clicks = {};
         let currentTheme = 0;
         const themes = ['', 'theme-neon', 'theme-rain', 'theme-space'];
+
+        // ЗАСТАВКА
+        const splashText = document.getElementById('splashText');
+        const textToShow = 'ТАЙНЫЙ БЛАГОВЕЩЕНСК';
+        let charIndex = 0;
+
+        function typeSplash() {
+            if (charIndex < textToShow.length) {
+                splashText.textContent += textToShow[charIndex];
+                charIndex++;
+                setTimeout(typeSplash, 180);
+            }
+        }
+        typeSplash();
 
         const ideas = {
             kuda: [
@@ -663,60 +743,129 @@
 
         const slotIcons = ['🚶', '🍽', '😌', '🌿', '🤫', '🔥', '💡', '🌙'];
 
+        const slotPhrases = {
+            '🚶': ['выйди на улицу и пройдись', 'сходи в парк', 'прогуляйся до пруда'],
+            '🍽': ['загляни в «Милк»', 'возьми шашлык', 'попробуй роллы'],
+            '😌': ['сядь на лавочку у педколледжа', 'найди тихий двор', 'посиди у воды'],
+            '🌿': ['иди в сосновую рощу', 'сходи к роднику', 'подыши у реки'],
+            '🤫': ['узнай свежий слух', 'спроси у своих', 'послушай, о чём молчат'],
+            '🔥': ['сделай то, на что не решался', 'устрой себе движ', 'выйди из зоны комфорта'],
+            '💡': ['придумай идею для поста', 'сгенерируй мысль', 'запиши, что в голове'],
+            '🌙': ['выйди ночью', 'пройдись по тёмному городу', 'посмотри на огни']
+        };
+
         const queues = {};
         let currentCategory = null;
 
         function changeTheme() {
             currentTheme = (currentTheme + 1) % themes.length;
             document.body.className = themes[currentTheme];
+            updateThemeEffects();
+        }
+
+        function updateThemeEffects() {
+            const rain = document.getElementById('rainContainer');
+            const space = document.getElementById('spaceContainer');
+            rain.innerHTML = '';
+            space.innerHTML = '';
+
+            if (document.body.classList.contains('theme-rain')) {
+                for (let i = 0; i < 50; i++) {
+                    const drop = document.createElement('div');
+                    drop.className = 'drop';
+                    drop.style.left = Math.random() * 100 + '%';
+                    drop.style.animationDuration = (Math.random() * 0.5 + 0.4) + 's';
+                    drop.style.animationDelay = Math.random() * 0.5 + 's';
+                    rain.appendChild(drop);
+                }
+            }
+
+            if (document.body.classList.contains('theme-space')) {
+                for (let i = 0; i < 80; i++) {
+                    const star = document.createElement('div');
+                    star.className = 'star';
+                    star.style.left = Math.random() * 100 + '%';
+                    star.style.top = Math.random() * 100 + '%';
+                    star.style.animationDuration = (Math.random() * 2 + 1) + 's';
+                    star.style.width = (Math.random() * 2 + 1) + 'px';
+                    star.style.height = star.style.width;
+                    space.appendChild(star);
+                }
+
+                const nebula = document.createElement('div');
+                nebula.className = 'nebula';
+                nebula.style.left = '20%';
+                nebula.style.top = '30%';
+                nebula.style.background = 'rgba(100, 60, 200, 0.4)';
+                space.appendChild(nebula);
+
+                const nebula2 = document.createElement('div');
+                nebula2.className = 'nebula';
+                nebula2.style.right = '10%';
+                nebula2.style.bottom = '20%';
+                nebula2.style.background = 'rgba(200, 100, 150, 0.3)';
+                space.appendChild(nebula2);
+            }
         }
 
         function openSlot() {
             document.getElementById('slotScreen').classList.add('active');
             document.getElementById('slotResult').textContent = '';
+            initializeReels();
         }
 
         function closeSlot() {
             document.getElementById('slotScreen').classList.remove('active');
         }
 
+        function initializeReels() {
+            ['reel1', 'reel2', 'reel3'].forEach(id => {
+                const reel = document.getElementById(id);
+                reel.innerHTML = '';
+                for (let i = 0; i < 10; i++) {
+                    const icon = slotIcons[Math.floor(Math.random() * slotIcons.length)];
+                    const div = document.createElement('div');
+                    div.className = 'slot-reel-icon';
+                    div.textContent = icon;
+                    reel.appendChild(div);
+                }
+            });
+        }
+
         function spin() {
             const reels = ['reel1', 'reel2', 'reel3'];
+            const results = [];
+
             reels.forEach(id => {
-                document.getElementById(id).classList.add('spinning');
+                const reel = document.getElementById(id);
+                const distance = Math.floor(Math.random() * 400 + 300);
+                reel.style.transform = `translateY(-${distance}px)`;
             });
 
             setTimeout(() => {
-                const results = [];
-                reels.forEach(id => {
-                    const icon = slotIcons[Math.floor(Math.random() * slotIcons.length)];
-                    document.getElementById(id).textContent = icon;
-                    document.getElementById(id).classList.remove('spinning');
+                reels.forEach((id, index) => {
+                    const reel = document.getElementById(id);
+                    const icons = reel.querySelectorAll('.slot-reel-icon');
+                    const middle = Math.floor(icons.length / 2);
+                    const icon = icons[middle].textContent;
                     results.push(icon);
+                    reel.style.transition = 'none';
+                    reel.style.transform = 'translateY(0)';
                 });
 
-                const idea = generateFromSlot(results);
+                const idea = generateSlotIdea(results);
                 document.getElementById('slotResult').textContent = idea;
-            }, 1500);
+            }, 1600);
         }
 
-        function generateFromSlot(icons) {
-            const map = {
-                '🚶': 'куда-нибудь сходить',
-                '🍽': 'поесть',
-                '😌': 'посидеть',
-                '🌿': 'на природу',
-                '🤫': 'узнать слух',
-                '🔥': 'сделать что-то горячее',
-                '💡': 'придумать своё',
-                '🌙': 'выйти ночью'
-            };
+        function generateSlotIdea(icons) {
+            const parts = [];
+            icons.forEach(icon => {
+                const phrases = slotPhrases[icon] || ['сделай что-нибудь'];
+                parts.push(phrases[Math.floor(Math.random() * phrases.length)]);
+            });
 
-            const a = map[icons[0]] || 'что-то';
-            const b = map[icons[1]] || 'что-то';
-            const c = map[icons[2]] || 'что-то';
-
-            return `Тебе выпало: ${icons[0]} ${a}, ${icons[1]} ${b} и ${icons[2]} ${c}.\n\nСобери это в один движ и погнали.`;
+            return `🎰 Выпало:\n\n${parts[0]},\n${parts[1]}\nи ${parts[2]}.\n\nСделай это — и день станет другим.`;
         }
 
         function openAdmin() {
