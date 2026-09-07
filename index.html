@@ -6,145 +6,18 @@
     <title>Тайный Благовещенск</title>
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-family: 'Manrope', 'Segoe UI', Arial, sans-serif;
+            font-family: 'Manrope', sans-serif;
             background: linear-gradient(135deg, #0b0812 0%, #150f24 30%, #1b1030 60%, #0f0a1a 100%);
             overflow: hidden;
             position: relative;
             transition: background 0.6s ease;
-        }
-
-        /* ЗАСТАВКА */
-        .splash {
-            position: fixed;
-            inset: 0;
-            background: #0a0812;
-            z-index: 100;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-            animation: splashOut 0.6s ease 3.5s forwards;
-        }
-
-        .splash-text {
-            font-size: 24px;
-            font-weight: 800;
-            color: #b39bff;
-            letter-spacing: 2px;
-            min-height: 40px;
-        }
-
-        .splash-sub {
-            margin-top: 10px;
-            font-size: 13px;
-            color: #6b5f8a;
-            opacity: 0;
-            animation: fadeIn 0.8s ease 2.5s forwards;
-        }
-
-        @keyframes fadeIn {
-            to { opacity: 1; }
-        }
-
-        @keyframes splashOut {
-            to { opacity: 0; visibility: hidden; }
-        }
-
-        /* ТЕМА: НЕОН */
-        body.theme-neon {
-            background: linear-gradient(135deg, #000000 0%, #1a0033 30%, #003366 60%, #000000 100%);
-        }
-
-        body.theme-neon .btn,
-        body.theme-neon .btn-small,
-        body.theme-neon .admin-btn,
-        body.theme-neon .icon-btn {
-            border-color: rgba(0, 255, 255, 0.5) !important;
-            color: #00ffff !important;
-            text-shadow: 0 0 10px rgba(0, 255, 255, 0.8);
-        }
-
-        body.theme-neon .badge {
-            border-color: rgba(255, 0, 255, 0.6) !important;
-            color: #ff00ff !important;
-            text-shadow: 0 0 12px rgba(255, 0, 255, 0.9);
-        }
-
-        body.theme-neon #header h1 {
-            color: #ffffff;
-            text-shadow: 0 0 20px rgba(0, 255, 255, 0.8);
-        }
-
-        /* ТЕМА: ДОЖДЬ */
-        body.theme-rain {
-            background: linear-gradient(180deg, #0a0a0f 0%, #111118 40%, #1a1a22 100%);
-        }
-
-        .rain-container {
-            position: fixed;
-            inset: 0;
-            z-index: 0;
-            pointer-events: none;
-        }
-
-        .drop {
-            position: absolute;
-            width: 2px;
-            height: 20px;
-            background: linear-gradient(180deg, transparent, rgba(120, 150, 200, 0.5));
-            animation: fall linear infinite;
-        }
-
-        @keyframes fall {
-            from { transform: translateY(-30px); }
-            to { transform: translateY(110vh); }
-        }
-
-        /* ТЕМА: КОСМОС */
-        body.theme-space {
-            background: linear-gradient(160deg, #000000 0%, #0a0a2e 30%, #1a0a3e 60%, #000000 100%);
-        }
-
-        .space-container {
-            position: fixed;
-            inset: 0;
-            z-index: 0;
-            pointer-events: none;
-        }
-
-        .star {
-            position: absolute;
-            width: 2px;
-            height: 2px;
-            background: #ffffff;
-            border-radius: 50%;
-            animation: twinkle ease-in-out infinite;
-        }
-
-        .nebula {
-            position: absolute;
-            width: 400px;
-            height: 400px;
-            border-radius: 50%;
-            filter: blur(80px);
-            opacity: 0.3;
-            animation: float 10s ease-in-out infinite;
-        }
-
-        @keyframes twinkle {
-            0%, 100% { opacity: 0.2; }
-            50% { opacity: 0.9; }
         }
 
         body::before {
@@ -241,40 +114,13 @@
             text-align: center;
         }
 
-        .btn:nth-child(1) {
-            background: rgba(155, 123, 255, 0.14);
-            border-color: rgba(155, 123, 255, 0.35);
-        }
-
-        .btn:nth-child(2) {
-            background: rgba(255, 110, 180, 0.14);
-            border-color: rgba(255, 110, 180, 0.35);
-        }
-
-        .btn:nth-child(3) {
-            background: rgba(110, 180, 255, 0.14);
-            border-color: rgba(110, 180, 255, 0.35);
-        }
-
-        .btn:nth-child(4) {
-            background: rgba(255, 220, 110, 0.14);
-            border-color: rgba(255, 220, 110, 0.35);
-        }
-
-        .btn:nth-child(5) {
-            grid-column: span 2;
-            background: rgba(255, 90, 90, 0.14);
-            border-color: rgba(255, 90, 90, 0.35);
-        }
-
-        .btn:nth-child(6) {
-            grid-column: span 2;
-            background: rgba(255, 160, 50, 0.2);
-            border-color: rgba(255, 160, 50, 0.5);
-            font-size: 16px;
-            font-weight: 800;
-            letter-spacing: 1px;
-        }
+        .btn:nth-child(1) { background: rgba(155, 123, 255, 0.14); border-color: rgba(155, 123, 255, 0.35); }
+        .btn:nth-child(2) { background: rgba(255, 110, 180, 0.14); border-color: rgba(255, 110, 180, 0.35); }
+        .btn:nth-child(3) { background: rgba(110, 180, 255, 0.14); border-color: rgba(110, 180, 255, 0.35); }
+        .btn:nth-child(4) { background: rgba(255, 220, 110, 0.14); border-color: rgba(255, 220, 110, 0.35); }
+        .btn:nth-child(5) { grid-column: span 2; background: rgba(255, 90, 90, 0.14); border-color: rgba(255, 90, 90, 0.35); }
+        .btn:nth-child(6) { grid-column: span 2; background: rgba(255, 160, 50, 0.2); border-color: rgba(255, 160, 50, 0.5); font-weight: 800; letter-spacing: 1px; }
+        .btn:nth-child(7) { grid-column: span 2; background: rgba(0, 255, 150, 0.15); border-color: rgba(0, 255, 150, 0.4); font-weight: 800; letter-spacing: 1px; }
 
         .result {
             display: none;
@@ -359,195 +205,98 @@
             padding: 20px;
         }
 
-        .fullscreen.active {
-            display: flex;
-        }
+        .fullscreen.active { display: flex; }
 
-        .admin-box {
+        .chat-screen {
             background: rgba(20, 15, 35, 0.95);
-            border: 1px solid rgba(155, 123, 255, 0.3);
+            border: 1px solid rgba(0, 255, 150, 0.4);
             border-radius: 20px;
-            padding: 25px;
+            padding: 20px;
             width: 100%;
-            max-width: 360px;
-            max-height: 80vh;
-            overflow-y: auto;
+            max-width: 380px;
+            height: 80vh;
+            display: flex;
+            flex-direction: column;
             animation: pop 0.3s ease;
         }
 
-        .admin-title {
-            color: #f0ecff;
+        .chat-title {
+            color: #00ff96;
             font-size: 20px;
             font-weight: 800;
-            margin-bottom: 16px;
+            margin-bottom: 15px;
+            text-align: center;
         }
 
-        .admin-input {
-            width: 100%;
+        .chat-messages {
+            flex: 1;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 15px;
+            padding-right: 5px;
+        }
+
+        .chat-msg {
+            max-width: 85%;
+            padding: 12px 14px;
+            border-radius: 14px;
+            font-size: 14px;
+            line-height: 1.6;
+            animation: pop 0.2s ease;
+        }
+
+        .chat-user {
+            align-self: flex-end;
+            background: rgba(110, 180, 255, 0.2);
+            color: #d8d0f0;
+        }
+
+        .chat-bot {
+            align-self: flex-start;
+            background: rgba(0, 255, 150, 0.12);
+            color: #e0f0e8;
+        }
+
+        .chat-input-row {
+            display: flex;
+            gap: 8px;
+        }
+
+        .chat-input {
+            flex: 1;
             padding: 12px;
             border-radius: 10px;
             border: 1px solid rgba(255, 255, 255, 0.1);
             background: rgba(255, 255, 255, 0.05);
             color: #ffffff;
-            font-size: 15px;
-            text-align: center;
+            font-size: 14px;
             outline: none;
-            margin-bottom: 10px;
             font-family: 'Manrope', sans-serif;
         }
 
-        textarea.admin-input {
-            text-align: left;
-            resize: vertical;
-        }
-
-        .admin-btn {
-            width: 100%;
-            margin-top: 8px;
-            padding: 12px;
+        .chat-send {
+            padding: 12px 16px;
             border-radius: 10px;
             border: none;
-            background: rgba(155, 123, 255, 0.2);
-            color: #d8d0f0;
+            background: rgba(0, 255, 150, 0.25);
+            color: #00ff96;
             font-size: 14px;
-            font-weight: 600;
+            font-weight: 700;
             cursor: pointer;
             font-family: 'Manrope', sans-serif;
-            transition: all 0.3s ease;
-        }
-
-        .admin-btn:hover {
-            background: rgba(155, 123, 255, 0.3);
-        }
-
-        .info-box {
-            background: rgba(20, 15, 35, 0.95);
-            border: 1px solid rgba(155, 123, 255, 0.3);
-            border-radius: 20px;
-            padding: 25px;
-            width: 100%;
-            max-width: 360px;
-            animation: pop 0.3s ease;
-        }
-
-        .info-box p {
-            color: #d8d0f0;
-            font-size: 14px;
-            line-height: 1.7;
-            margin-bottom: 12px;
-            font-weight: 500;
-        }
-
-        /* СЛОТ-МАШИНА */
-        .slot-screen {
-            background: rgba(20, 15, 35, 0.95);
-            border: 1px solid rgba(255, 160, 50, 0.4);
-            border-radius: 20px;
-            padding: 25px;
-            width: 100%;
-            max-width: 360px;
-            animation: pop 0.3s ease;
-        }
-
-        .slot-title {
-            color: #ffa032;
-            font-size: 22px;
-            font-weight: 800;
-            margin-bottom: 20px;
-            text-align: center;
-            text-shadow: 0 0 20px rgba(255, 160, 50, 0.6);
-        }
-
-        .slot-reels {
-            display: flex;
-            gap: 12px;
-            justify-content: center;
-            margin-bottom: 25px;
-            perspective: 500px;
-        }
-
-        .slot-reel {
-            width: 90px;
-            height: 90px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 2px solid rgba(255, 160, 50, 0.5);
-            border-radius: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 40px;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .slot-reel-inner {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            transition: transform 1.5s cubic-bezier(0.25, 0.1, 0.25, 1);
-        }
-
-        .slot-reel-icon {
-            height: 90px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 40px;
-        }
-
-        .slot-btn {
-            width: 100%;
-            padding: 15px;
-            border-radius: 14px;
-            border: none;
-            background: rgba(255, 160, 50, 0.25);
-            color: #ffa032;
-            font-size: 18px;
-            font-weight: 800;
-            cursor: pointer;
-            font-family: 'Manrope', sans-serif;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            transition: all 0.3s ease;
-        }
-
-        .slot-btn:hover {
-            background: rgba(255, 160, 50, 0.4);
-        }
-
-        .slot-result {
-            margin-top: 18px;
-            color: #d8d0f0;
-            font-size: 14px;
-            line-height: 1.6;
-            text-align: center;
-            font-weight: 500;
         }
 
         @keyframes pop {
-            from {
-                opacity: 0;
-                transform: scale(0.92);
-            }
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
+            from { opacity: 0; transform: scale(0.92); }
+            to { opacity: 1; transform: scale(1); }
         }
     </style>
 </head>
 <body>
-    <!-- ЗАСТАВКА -->
-    <div class="splash" id="splash">
-        <div class="splash-text" id="splashText"></div>
-        <div class="splash-sub">город знает тебя</div>
-    </div>
-
     <div class="extra-glow-1"></div>
     <div class="extra-glow-2"></div>
-
-    <div class="rain-container" id="rainContainer"></div>
-    <div class="space-container" id="spaceContainer"></div>
 
     <div class="app">
         <div class="badge">🕵️ ТАЙНЫЙ БЛАГОВЕЩЕНСК</div>
@@ -564,6 +313,7 @@
             <button class="btn" onclick="show('nature')">🌿 Природа</button>
             <button class="btn" onclick="show('gossip')">🤫 Слухи</button>
             <button class="btn" onclick="openSlot()">🎰 Слот-машина</button>
+            <button class="btn" onclick="openChat()">💬 Чат</button>
         </div>
 
         <div class="result" id="result"></div>
@@ -583,74 +333,88 @@
         <button class="icon-btn" onclick="changeTheme()">🎨</button>
     </div>
 
+    <!-- ЧАТ -->
+    <div class="fullscreen" id="chatScreen">
+        <div class="chat-screen">
+            <div class="chat-title">💬 Чат с городом</div>
+            <div class="chat-messages" id="chatMessages">
+                <div class="chat-msg chat-bot">Здорова. Спрашивай чё хотел. Если тупой вопрос — получишь тупой ответ.</div>
+            </div>
+            <div class="chat-input-row">
+                <input class="chat-input" id="chatInput" placeholder="Напиши..." onkeydown="if(event.key==='Enter') sendChat()">
+                <button class="chat-send" onclick="sendChat()">Отправить</button>
+            </div>
+        </div>
+    </div>
+
     <!-- ИНФО -->
     <div class="fullscreen" id="infoScreen">
-        <div class="info-box">
+        <div class="chat-screen" style="border-color: rgba(155,123,255,0.4);">
             <div class="admin-title">📌 Инфа</div>
-            <p>Пр тут короче будет информация о новых добавлениях и тд</p>
-            <p>Так же если че можете вкидывать свои идеи авторам, они будут рассматриваться.</p>
-            <p>Авторы: @Pand_f и @cruifixs</p>
-            <p>Рад что пользуетесь тайным благом</p>
-            <button class="admin-btn" onclick="closeInfo()">← Назад</button>
+            <p style="color:#d8d0f0; font-size:14px; line-height:1.7; margin-bottom:12px;">Пр тут короче будет информация о новых добавлениях и тд</p>
+            <p style="color:#d8d0f0; font-size:14px; line-height:1.7; margin-bottom:12px;">Так же если че можете вкидывать свои идеи авторам, они будут рассматриваться.</p>
+            <p style="color:#d8d0f0; font-size:14px; line-height:1.7; margin-bottom:12px;">Авторы: @Pand_f и @cruifixs</p>
+            <p style="color:#d8d0f0; font-size:14px; line-height:1.7; margin-bottom:12px;">Рад что пользуетесь тайным благом</p>
+            <button class="btn-small" onclick="closeInfo()">← Назад</button>
         </div>
     </div>
 
     <!-- СЛОТ -->
     <div class="fullscreen" id="slotScreen">
-        <div class="slot-screen">
-            <div class="slot-title">🎰 СЛОТ-МАШИНА</div>
-            <div class="slot-reels">
-                <div class="slot-reel"><div class="slot-reel-inner" id="reel1"></div></div>
-                <div class="slot-reel"><div class="slot-reel-inner" id="reel2"></div></div>
-                <div class="slot-reel"><div class="slot-reel-inner" id="reel3"></div></div>
+        <div class="chat-screen" style="border-color: rgba(255,160,50,0.5);">
+            <div class="chat-title" style="color:#ffa032;">🎰 СЛОТ-МАШИНА</div>
+            <div style="display:flex; gap:12px; justify-content:center; margin:20px 0;">
+                <div style="width:90px; height:90px; background:rgba(255,255,255,0.05); border:2px solid rgba(255,160,50,0.5); border-radius:16px; display:flex; align-items:center; justify-content:center; font-size:40px; overflow:hidden;"><div id="reel1" style="transition: transform 1.5s cubic-bezier(0.25,0.1,0.25,1);"></div></div>
+                <div style="width:90px; height:90px; background:rgba(255,255,255,0.05); border:2px solid rgba(255,160,50,0.5); border-radius:16px; display:flex; align-items:center; justify-content:center; font-size:40px; overflow:hidden;"><div id="reel2" style="transition: transform 1.5s cubic-bezier(0.25,0.1,0.25,1);"></div></div>
+                <div style="width:90px; height:90px; background:rgba(255,255,255,0.05); border:2px solid rgba(255,160,50,0.5); border-radius:16px; display:flex; align-items:center; justify-content:center; font-size:40px; overflow:hidden;"><div id="reel3" style="transition: transform 1.5s cubic-bezier(0.25,0.1,0.25,1);"></div></div>
             </div>
-            <button class="slot-btn" onclick="spin()">Крутить</button>
-            <div class="slot-result" id="slotResult"></div>
-            <button class="admin-btn" onclick="closeSlot()">← Назад</button>
+            <button class="chat-send" style="width:100%; padding:14px; font-size:16px;" onclick="spin()">КРУТИТЬ</button>
+            <div id="slotResult" style="margin-top:15px; color:#d8d0f0; font-size:14px; line-height:1.6; text-align:center;"></div>
+            <button class="btn-small" onclick="closeSlot()" style="margin-top:15px;">← Назад</button>
         </div>
     </div>
 
     <!-- АДМИНКА -->
     <div class="fullscreen" id="adminScreen">
-        <div class="admin-box" id="loginBlock">
+        <div class="chat-screen" style="border-color: rgba(155,123,255,0.4);" id="loginBlock">
             <div class="admin-title">🔒 Вход</div>
-            <input class="admin-input" id="pinInput" type="password" placeholder="Пин-код" maxlength="4">
-            <button class="admin-btn" onclick="checkPin()">Войти</button>
-            <button class="admin-btn" onclick="closeAdmin()">← Назад</button>
+            <input class="chat-input" id="pinInput" type="password" placeholder="Пин-код" maxlength="4" style="margin-bottom:10px; text-align:center;">
+            <button class="chat-send" onclick="checkPin()" style="width:100%; padding:12px;">Войти</button>
+            <button class="btn-small" onclick="closeAdmin()" style="margin-top:10px;">← Назад</button>
         </div>
 
-        <div class="admin-box" id="adminContent" style="display:none;">
+        <div class="chat-screen" style="border-color: rgba(155,123,255,0.4); display:none;" id="adminContent">
             <div class="admin-title">⚙️ Админка</div>
-            <button class="admin-btn" onclick="showAddForm()">➕ Добавить идею</button>
-            <button class="admin-btn" onclick="showAllIdeas()">📋 Все идеи</button>
-            <button class="admin-btn" onclick="showStats()">📊 Статистика</button>
-            <button class="admin-btn" onclick="closeAdmin()">← Назад</button>
+            <button class="chat-send" onclick="showAddForm()" style="width:100%; padding:12px; margin-bottom:8px;">➕ Добавить идею</button>
+            <button class="chat-send" onclick="showAllIdeas()" style="width:100%; padding:12px; margin-bottom:8px;">📋 Все идеи</button>
+            <button class="chat-send" onclick="showStats()" style="width:100%; padding:12px; margin-bottom:8px;">📊 Статистика</button>
+            <button class="btn-small" onclick="closeAdmin()">← Назад</button>
         </div>
 
-        <div class="admin-box" id="addForm" style="display:none;">
+        <div class="chat-screen" style="border-color: rgba(155,123,255,0.4); display:none;" id="addForm">
             <div class="admin-title">➕ Новая идея</div>
-            <select id="categorySelect" class="admin-input">
+            <select id="categorySelect" class="chat-input" style="margin-bottom:10px;">
                 <option value="kuda">🚶 Куда сходить</option>
                 <option value="eat">🍽 Поесть</option>
                 <option value="sit">😌 Посидеть</option>
                 <option value="nature">🌿 Природа</option>
                 <option value="gossip">🤫 Слухи</option>
             </select>
-            <textarea id="ideaText" class="admin-input" rows="3" placeholder="Текст идеи"></textarea>
-            <button class="admin-btn" onclick="addIdea()">Сохранить</button>
-            <button class="admin-btn" onclick="backToAdmin()">← Назад</button>
+            <textarea id="ideaText" class="chat-input" rows="3" placeholder="Текст идеи" style="margin-bottom:10px; resize:vertical;"></textarea>
+            <button class="chat-send" onclick="addIdea()" style="width:100%; padding:12px;">Сохранить</button>
+            <button class="btn-small" onclick="backToAdmin()" style="margin-top:10px;">← Назад</button>
         </div>
 
-        <div class="admin-box" id="listBlock" style="display:none;">
+        <div class="chat-screen" style="border-color: rgba(155,123,255,0.4); display:none;" id="listBlock">
             <div class="admin-title">📋 Все идеи</div>
-            <div id="ideasList" style="max-height: 300px; overflow-y: auto; margin-top: 8px;"></div>
-            <button class="admin-btn" onclick="backToAdmin()">← Назад</button>
+            <div id="ideasList" style="flex:1; overflow-y:auto; margin-bottom:10px;"></div>
+            <button class="btn-small" onclick="backToAdmin()">← Назад</button>
         </div>
 
-        <div class="admin-box" id="statsBlock" style="display:none;">
+        <div class="chat-screen" style="border-color: rgba(155,123,255,0.4); display:none;" id="statsBlock">
             <div class="admin-title">📊 Статистика</div>
-            <div id="statsText" style="color: #d8d0f0; font-size: 14px; margin: 8px 0; line-height: 1.6; font-weight: 500;"></div>
-            <button class="admin-btn" onclick="backToAdmin()">← Назад</button>
+            <div id="statsText" style="color:#d8d0f0; font-size:14px; line-height:1.6; flex:1; overflow-y:auto;"></div>
+            <button class="btn-small" onclick="backToAdmin()">← Назад</button>
         </div>
     </div>
 
@@ -661,15 +425,31 @@
         const themes = ['', 'theme-neon', 'theme-rain', 'theme-space'];
 
         // ЗАСТАВКА
-        const splashText = document.getElementById('splashText');
+        const splash = document.createElement('div');
+        splash.style.cssText = 'position:fixed; inset:0; background:#0a0812; z-index:100; display:flex; align-items:center; justify-content:center; flex-direction:column;';
+        const splashText = document.createElement('div');
+        splashText.style.cssText = 'font-size:24px; font-weight:800; color:#b39bff; letter-spacing:2px; min-height:40px;';
+        const splashSub = document.createElement('div');
+        splashSub.style.cssText = 'margin-top:10px; font-size:13px; color:#6b5f8a; opacity:0; transition: opacity 0.8s;';
+        splashSub.textContent = 'город знает тебя';
+        splash.appendChild(splashText);
+        splash.appendChild(splashSub);
+        document.body.appendChild(splash);
+
         const textToShow = 'ТАЙНЫЙ БЛАГОВЕЩЕНСК';
         let charIndex = 0;
-
         function typeSplash() {
             if (charIndex < textToShow.length) {
                 splashText.textContent += textToShow[charIndex];
                 charIndex++;
                 setTimeout(typeSplash, 180);
+            } else {
+                splashSub.style.opacity = '1';
+                setTimeout(() => {
+                    splash.style.transition = 'opacity 0.6s';
+                    splash.style.opacity = '0';
+                    setTimeout(() => splash.remove(), 600);
+                }, 1000);
             }
         }
         typeSplash();
@@ -742,7 +522,6 @@
         };
 
         const slotIcons = ['🚶', '🍽', '😌', '🌿', '🤫', '🔥', '💡', '🌙'];
-
         const slotPhrases = {
             '🚶': ['выйди на улицу и пройдись', 'сходи в парк', 'прогуляйся до пруда'],
             '🍽': ['загляни в «Милк»', 'возьми шашлык', 'попробуй роллы'],
@@ -760,72 +539,26 @@
         function changeTheme() {
             currentTheme = (currentTheme + 1) % themes.length;
             document.body.className = themes[currentTheme];
-            updateThemeEffects();
-        }
-
-        function updateThemeEffects() {
-            const rain = document.getElementById('rainContainer');
-            const space = document.getElementById('spaceContainer');
-            rain.innerHTML = '';
-            space.innerHTML = '';
-
-            if (document.body.classList.contains('theme-rain')) {
-                for (let i = 0; i < 50; i++) {
-                    const drop = document.createElement('div');
-                    drop.className = 'drop';
-                    drop.style.left = Math.random() * 100 + '%';
-                    drop.style.animationDuration = (Math.random() * 0.5 + 0.4) + 's';
-                    drop.style.animationDelay = Math.random() * 0.5 + 's';
-                    rain.appendChild(drop);
-                }
-            }
-
-            if (document.body.classList.contains('theme-space')) {
-                for (let i = 0; i < 80; i++) {
-                    const star = document.createElement('div');
-                    star.className = 'star';
-                    star.style.left = Math.random() * 100 + '%';
-                    star.style.top = Math.random() * 100 + '%';
-                    star.style.animationDuration = (Math.random() * 2 + 1) + 's';
-                    star.style.width = (Math.random() * 2 + 1) + 'px';
-                    star.style.height = star.style.width;
-                    space.appendChild(star);
-                }
-
-                const nebula = document.createElement('div');
-                nebula.className = 'nebula';
-                nebula.style.left = '20%';
-                nebula.style.top = '30%';
-                nebula.style.background = 'rgba(100, 60, 200, 0.4)';
-                space.appendChild(nebula);
-
-                const nebula2 = document.createElement('div');
-                nebula2.className = 'nebula';
-                nebula2.style.right = '10%';
-                nebula2.style.bottom = '20%';
-                nebula2.style.background = 'rgba(200, 100, 150, 0.3)';
-                space.appendChild(nebula2);
-            }
         }
 
         function openSlot() {
             document.getElementById('slotScreen').classList.add('active');
             document.getElementById('slotResult').textContent = '';
-            initializeReels();
+            initReels();
         }
 
         function closeSlot() {
             document.getElementById('slotScreen').classList.remove('active');
         }
 
-        function initializeReels() {
+        function initReels() {
             ['reel1', 'reel2', 'reel3'].forEach(id => {
                 const reel = document.getElementById(id);
                 reel.innerHTML = '';
                 for (let i = 0; i < 10; i++) {
                     const icon = slotIcons[Math.floor(Math.random() * slotIcons.length)];
                     const div = document.createElement('div');
-                    div.className = 'slot-reel-icon';
+                    div.style.cssText = 'height:90px; display:flex; align-items:center; justify-content:center; font-size:40px;';
                     div.textContent = icon;
                     reel.appendChild(div);
                 }
@@ -835,7 +568,6 @@
         function spin() {
             const reels = ['reel1', 'reel2', 'reel3'];
             const results = [];
-
             reels.forEach(id => {
                 const reel = document.getElementById(id);
                 const distance = Math.floor(Math.random() * 400 + 300);
@@ -845,14 +577,13 @@
             setTimeout(() => {
                 reels.forEach((id, index) => {
                     const reel = document.getElementById(id);
-                    const icons = reel.querySelectorAll('.slot-reel-icon');
+                    const icons = reel.querySelectorAll('div');
                     const middle = Math.floor(icons.length / 2);
                     const icon = icons[middle].textContent;
                     results.push(icon);
                     reel.style.transition = 'none';
                     reel.style.transform = 'translateY(0)';
                 });
-
                 const idea = generateSlotIdea(results);
                 document.getElementById('slotResult').textContent = idea;
             }, 1600);
@@ -864,36 +595,91 @@
                 const phrases = slotPhrases[icon] || ['сделай что-нибудь'];
                 parts.push(phrases[Math.floor(Math.random() * phrases.length)]);
             });
-
             return `🎰 Выпало:\n\n${parts[0]},\n${parts[1]}\nи ${parts[2]}.\n\nСделай это — и день станет другим.`;
         }
 
-        function openAdmin() {
-            document.getElementById('adminScreen').classList.add('active');
+        // ЧАТ
+        function openChat() {
+            document.getElementById('chatScreen').classList.add('active');
         }
 
+        function closeChat() {
+            document.getElementById('chatScreen').classList.remove('active');
+        }
+
+        function sendChat() {
+            const input = document.getElementById('chatInput');
+            const msg = input.value.trim();
+            if (!msg) return;
+
+            const messages = document.getElementById('chatMessages');
+
+            const userMsg = document.createElement('div');
+            userMsg.className = 'chat-msg chat-user';
+            userMsg.textContent = msg;
+            messages.appendChild(userMsg);
+
+            const botMsg = document.createElement('div');
+            botMsg.className = 'chat-msg chat-bot';
+            botMsg.textContent = getChatReply(msg);
+            messages.appendChild(botMsg);
+
+            input.value = '';
+            messages.scrollTop = messages.scrollHeight;
+        }
+
+        function getChatReply(text) {
+            const t = text.toLowerCase();
+
+            if (t.includes('привет') || t.includes('здоров') || t.includes('хай')) return 'Здорова. Чё хотел?';
+            if (t.includes('как дела') || t.includes('как ты')) return 'У меня тут база города. Какие дела? Пойди погуляй.';
+            if (t.includes('время') || t.includes('сколько время') || t.includes('час')) return 'Тебя это дерьмо волнует? Наслаждайся временем, а не интересуйся.';
+            if (t.includes('погода')) return 'Выгляни в окно, гений. Или тебе лень?';
+            if (t.includes('поесть') || t.includes('пожрать') || t.includes('еда') || t.includes('кушать') || t.includes('голод')) return '«Милк» на Седова, 113. Или шашлычная на 100А, если ночью. Не благодари.';
+            if (t.includes('пить') || t.includes('выпить') || t.includes('бух')) return 'КБ, Магнит, Тройка. Выбирай и не ной.';
+            if (t.includes('гулять') || t.includes('сходить') || t.includes('куда') || t.includes('прогул')) return 'Парк Киселёва, смотровая вышка, аллея у белого голубя. Иди куда-нибудь уже.';
+            if (t.includes('скучно')) return 'Скучно? Открой слот-машину и не выноси мне мозг.';
+            if (t.includes('спать') || t.includes('сон')) return 'Иди спать. Город подождёт.';
+            if (t.includes('люблю') || t.includes('любовь')) return 'Любовь — это как ГАИ. Многие боятся, а зря.';
+            if (t.includes('смысл жизни') || t.includes('зачем жить')) return 'Смысл — найти своё место в этом городе. Или хотя бы поесть в «Венеции».';
+            if (t.includes('анекдот') || t.includes('шутка')) return 'Иди на остановку Алексей. Там жизнь как анекдот.';
+            if (t.includes('бмпк')) return 'БМПК — место, где к 9 утра автобусы ломятся. Учись, студент.';
+            if (t.includes('инза')) return 'Инза — движ, еда, люди. Не тупи, что ещё надо.';
+            if (t.includes('низа') || t.includes('низах')) return 'Низа — парк, река, закаты. Или ты и так это знал?';
+            if (t.includes('гаи')) return 'ГАИ — лучший район. Кто говорит иначе — пусть идёт лесом.';
+            if (t.includes('котловка')) return 'Котловка — тихий райончик. Иногда тишина — лучшее.';
+            if (t.includes('кто ты') || t.includes('ты кто')) return 'Я — голос этого города. Или просто бот. Как повезёт.';
+            if (t.includes('дурак') || t.includes('тупой') || t.includes('дебил')) return 'Сам такой. Не груби.';
+            if (t.includes('спасибо') || t.includes('благодар')) return 'Обращайся. Или не обращайся. Мне пофиг.';
+            if (t.includes('пока') || t.includes('до свидания')) return 'Давай. Город ждёт.';
+
+            const randomReplies = [
+                'Я бот, а не гадалка. Спроси про город.',
+                'В моей базе нет ответа на эту херню.',
+                'Ты уверен, что это вопрос? Звучит как бред.',
+                'Спроси у «Шальных». Или у авторов. Мне лень думать.',
+                'Не знаю, но звучит как то, что можно нагуглить.'
+            ];
+            return randomReplies[Math.floor(Math.random() * randomReplies.length)];
+        }
+
+        function openAdmin() { document.getElementById('adminScreen').classList.add('active'); }
         function closeAdmin() {
             document.getElementById('adminScreen').classList.remove('active');
-            document.getElementById('loginBlock').style.display = 'block';
+            document.getElementById('loginBlock').style.display = 'flex';
             document.getElementById('adminContent').style.display = 'none';
             document.getElementById('addForm').style.display = 'none';
             document.getElementById('listBlock').style.display = 'none';
             document.getElementById('statsBlock').style.display = 'none';
         }
-
-        function openInfo() {
-            document.getElementById('infoScreen').classList.add('active');
-        }
-
-        function closeInfo() {
-            document.getElementById('infoScreen').classList.remove('active');
-        }
+        function openInfo() { document.getElementById('infoScreen').classList.add('active'); }
+        function closeInfo() { document.getElementById('infoScreen').classList.remove('active'); }
 
         function checkPin() {
             const input = document.getElementById('pinInput').value;
             if (input === PIN) {
                 document.getElementById('loginBlock').style.display = 'none';
-                document.getElementById('adminContent').style.display = 'block';
+                document.getElementById('adminContent').style.display = 'flex';
                 document.getElementById('pinInput').value = '';
             } else {
                 alert('❌ Неверный код');
@@ -902,11 +688,11 @@
 
         function showAddForm() {
             document.getElementById('adminContent').style.display = 'none';
-            document.getElementById('addForm').style.display = 'block';
+            document.getElementById('addForm').style.display = 'flex';
         }
 
         function backToAdmin() {
-            document.getElementById('adminContent').style.display = 'block';
+            document.getElementById('adminContent').style.display = 'flex';
             document.getElementById('addForm').style.display = 'none';
             document.getElementById('listBlock').style.display = 'none';
             document.getElementById('statsBlock').style.display = 'none';
@@ -915,10 +701,7 @@
         function addIdea() {
             const category = document.getElementById('categorySelect').value;
             const text = document.getElementById('ideaText').value.trim();
-            if (!text) {
-                alert('❌ Введи текст идеи');
-                return;
-            }
+            if (!text) { alert('❌ Введи текст идеи'); return; }
             ideas[category].push(text);
             alert('✅ Идея добавлена!');
             document.getElementById('ideaText').value = '';
@@ -927,80 +710,40 @@
 
         function showAllIdeas() {
             document.getElementById('adminContent').style.display = 'none';
-            document.getElementById('listBlock').style.display = 'block';
-
+            document.getElementById('listBlock').style.display = 'flex';
             let html = '';
             for (const cat in ideas) {
                 html += `<p style="color:#b39bff; margin-top:10px; font-weight:bold;">${cat}</p>`;
                 ideas[cat].forEach((idea, i) => {
-                    html += `
-                        <div style="display:flex; justify-content:space-between; align-items:center; gap:6px; margin-top:4px;">
-                            <p style="color:#d8d0f0; font-size:13px; flex:1;">${i + 1}. ${idea}</p>
-                            <button onclick="deleteIdea('${cat}', ${i})" style="background:none; border:none; cursor:pointer; font-size:14px;">🗑</button>
-                        </div>
-                    `;
+                    html += `<div style="display:flex; justify-content:space-between; align-items:center; gap:6px; margin-top:4px;">
+                        <p style="color:#d8d0f0; font-size:13px; flex:1;">${i + 1}. ${idea}</p>
+                        <button onclick="deleteIdea('${cat}', ${i})" style="background:none; border:none; cursor:pointer; font-size:14px;">🗑</button>
+                    </div>`;
                 });
             }
             document.getElementById('ideasList').innerHTML = html;
         }
 
-        function deleteIdea(category, index) {
-            ideas[category].splice(index, 1);
-            showAllIdeas();
-        }
+        function deleteIdea(category, index) { ideas[category].splice(index, 1); showAllIdeas(); }
 
         function showStats() {
             document.getElementById('adminContent').style.display = 'none';
-            document.getElementById('statsBlock').style.display = 'block';
-
+            document.getElementById('statsBlock').style.display = 'flex';
             let totalIdeas = 0;
-            for (const cat in ideas) {
-                totalIdeas += ideas[cat].length;
-            }
-
+            for (const cat in ideas) totalIdeas += ideas[cat].length;
             const clicksTotal = Object.values(clicks).reduce((a, b) => a + b, 0);
-
-            let popular = '—';
-            let maxClicks = 0;
-            let empty = '—';
-            let minIdeas = Infinity;
-
-            for (const cat in ideas) {
-                if (ideas[cat].length < minIdeas) {
-                    minIdeas = ideas[cat].length;
-                    empty = cat;
-                }
-            }
-
-            for (const cat in clicks) {
-                if (clicks[cat] > maxClicks) {
-                    maxClicks = clicks[cat];
-                    popular = cat;
-                }
-            }
-
+            let popular = '—'; let maxClicks = 0; let empty = '—'; let minIdeas = Infinity;
+            for (const cat in ideas) { if (ideas[cat].length < minIdeas) { minIdeas = ideas[cat].length; empty = cat; } }
+            for (const cat in clicks) { if (clicks[cat] > maxClicks) { maxClicks = clicks[cat]; popular = cat; } }
             const catCount = Object.keys(ideas).length;
             const avgIdeas = (totalIdeas / catCount).toFixed(1);
-
-            let html = `
-                <b>📊 ОБЩЕЕ</b><br>
-                Идей всего: ${totalIdeas}<br>
-                Категорий: ${catCount}<br>
-                Среднее идей на категорию: ${avgIdeas}<br>
-                Всего нажатий: ${clicksTotal}<br><br>
-                <b>📁 ПО КАТЕГОРИЯМ</b><br>
-            `;
-
+            let html = `<b>📊 ОБЩЕЕ</b><br>Идей всего: ${totalIdeas}<br>Категорий: ${catCount}<br>Среднее идей: ${avgIdeas}<br>Нажатий: ${clicksTotal}<br><br><b>📁 ПО КАТЕГОРИЯМ</b><br>`;
             for (const cat in ideas) {
-                const clicksCat = clicks[cat] || 0;
-                const percent = clicksTotal > 0 ? ((clicksCat / clicksTotal) * 100).toFixed(1) : 0;
-                html += `${cat}: идей ${ideas[cat].length}, нажатий ${clicksCat} (${percent}%)<br>`;
+                const c = clicks[cat] || 0;
+                const p = clicksTotal > 0 ? ((c / clicksTotal) * 100).toFixed(1) : 0;
+                html += `${cat}: идей ${ideas[cat].length}, нажатий ${c} (${p}%)<br>`;
             }
-
-            html += `<br><b>🔥 ТОП</b><br>`;
-            html += `Самая популярная: ${popular}<br>`;
-            html += `Самая пустая: ${empty}<br>`;
-
+            html += `<br><b>🔥 ТОП</b><br>Популярная: ${popular}<br>Пустая: ${empty}`;
             document.getElementById('statsText').innerHTML = html;
         }
 
@@ -1016,22 +759,18 @@
             currentCategory = category;
             const queue = getQueue(category);
             const idea = queue.shift();
-
             document.getElementById('header').style.display = 'none';
             document.getElementById('menu').style.display = 'none';
-
             const result = document.getElementById('result');
             result.style.display = 'block';
             result.textContent = idea;
-
             document.getElementById('actions').style.display = 'flex';
         }
 
         function more() {
             if (!currentCategory) return;
             const queue = getQueue(currentCategory);
-            const idea = queue.shift();
-            document.getElementById('result').textContent = idea;
+            document.getElementById('result').textContent = queue.shift();
         }
 
         function back() {
