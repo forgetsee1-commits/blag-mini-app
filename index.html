@@ -846,4 +846,51 @@
                 const clicksCat = clicks[cat] || 0;
                 const percent = clicksTotal > 0 ? ((clicksCat / clicksTotal) * 100).toFixed(1) : 0;
                 html += `${cat}: идей ${ideas[cat].length}, нажатий ${clicksCat} (${percent}%)<br>`;
-           
+            }
+
+            html += `<br><b>🔥 ТОП</b><br>`;
+            html += `Самая популярная: ${popular}<br>`;
+            html += `Самая пустая: ${empty}<br>`;
+
+            document.getElementById('statsText').innerHTML = html;
+        }
+
+        function getQueue(category) {
+            if (!queues[category] || queues[category].length === 0) {
+                queues[category] = [...ideas[category]].sort(() => Math.random() - 0.5);
+            }
+            return queues[category];
+        }
+
+        function show(category) {
+            clicks[category] = (clicks[category] || 0) + 1;
+            currentCategory = category;
+            const queue = getQueue(category);
+            const idea = queue.shift();
+
+            document.getElementById('header').style.display = 'none';
+            document.getElementById('menu').style.display = 'none';
+
+            const result = document.getElementById('result');
+            result.style.display = 'block';
+            result.textContent = idea;
+
+            document.getElementById('actions').style.display = 'flex';
+        }
+
+        function more() {
+            if (!currentCategory) return;
+            const queue = getQueue(currentCategory);
+            const idea = queue.shift();
+            document.getElementById('result').textContent = idea;
+        }
+
+        function back() {
+            document.getElementById('header').style.display = 'block';
+            document.getElementById('menu').style.display = 'grid';
+            document.getElementById('result').style.display = 'none';
+            document.getElementById('actions').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
