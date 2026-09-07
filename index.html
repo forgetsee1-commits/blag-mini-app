@@ -25,74 +25,180 @@
             position: absolute;
             width: 500px;
             height: 500px;
-            background: radial-gradient(circle, rgba(155, 123, 255, 0.3) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(155,123,255,0.3) 0%, transparent 70%);
             filter: blur(70px);
-            top: -180px;
-            left: -180px;
+            top: -180px; left: -180px;
             animation: float 7s ease-in-out infinite;
         }
 
         .extra-glow-1 {
             position: absolute;
-            width: 350px;
-            height: 350px;
-            background: radial-gradient(circle, rgba(110, 180, 255, 0.25) 0%, transparent 70%);
+            width: 350px; height: 350px;
+            background: radial-gradient(circle, rgba(110,180,255,0.25) 0%, transparent 70%);
             filter: blur(70px);
-            top: 40%;
-            left: -120px;
+            top: 40%; left: -120px;
             animation: float 10s ease-in-out infinite;
         }
 
         .extra-glow-2 {
             position: absolute;
-            width: 300px;
-            height: 300px;
-            background: radial-gradient(circle, rgba(255, 220, 110, 0.2) 0%, transparent 70%);
+            width: 300px; height: 300px;
+            background: radial-gradient(circle, rgba(255,220,110,0.2) 0%, transparent 70%);
             filter: blur(60px);
-            bottom: 10%;
-            right: -100px;
+            bottom: 10%; right: -100px;
             animation: float 8s ease-in-out infinite reverse;
         }
 
         @keyframes float {
-            0%, 100% { transform: translate(0, 0); }
-            50% { transform: translate(30px, 20px); }
+            0%,100% { transform: translate(0,0); }
+            50% { transform: translate(30px,20px); }
+        }
+
+        /* ЗАСТАВКА */
+        .splash {
+            position: fixed; inset: 0;
+            background: radial-gradient(circle at 50% 40%, #1a1230 0%, #0a0812 70%);
+            z-index: 100;
+            display: flex; align-items: center; justify-content: center; flex-direction: column;
+            animation: splashOut 0.8s ease 4s forwards;
+        }
+
+        .splash-decor {
+            position: absolute;
+            width: 8px; height: 8px;
+            border-radius: 50%;
+            background: #b39bff;
+            box-shadow: 0 0 15px #b39bff;
+            animation: blink 1.2s ease-in-out infinite;
+        }
+
+        .splash-decor:nth-child(1) { top: 20%; left: 15%; animation-delay: 0s; }
+        .splash-decor:nth-child(2) { top: 30%; right: 20%; animation-delay: 0.3s; }
+        .splash-decor:nth-child(3) { bottom: 25%; left: 25%; animation-delay: 0.6s; }
+        .splash-decor:nth-child(4) { bottom: 20%; right: 15%; animation-delay: 0.9s; }
+
+        .splash-line {
+            position: absolute;
+            width: 2px; height: 60px;
+            background: linear-gradient(180deg, transparent, #b39bff, transparent);
+            opacity: 0.3;
+        }
+
+        .splash-line:nth-child(5) { top: 15%; left: 30%; }
+        .splash-line:nth-child(6) { top: 20%; right: 25%; }
+        .splash-line:nth-child(7) { bottom: 15%; left: 40%; }
+
+        .splash-ring {
+            position: absolute;
+            width: 140px; height: 140px;
+            border: 1px solid rgba(155,123,255,0.2);
+            border-radius: 50%;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .splash-ring:nth-child(8) { top: 50%; left: 50%; transform: translate(-50%,-50%); animation-delay: 0s; }
+        .splash-ring:nth-child(9) { top: 50%; left: 50%; transform: translate(-50%,-50%); animation-delay: 0.5s; }
+
+        .splash-text {
+            font-size: 26px; font-weight: 800;
+            color: #f0ecff;
+            letter-spacing: 3px;
+            min-height: 40px;
+            z-index: 1;
+            text-shadow: 0 0 30px rgba(155,123,255,0.6);
+        }
+
+        .splash-sub {
+            margin-top: 12px;
+            font-size: 13px;
+            color: #6b5f8a;
+            z-index: 1;
+            opacity: 0;
+            transition: opacity 0.8s;
+        }
+
+        @keyframes blink {
+            0%,100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+
+        @keyframes pulse {
+            0%,100% { transform: translate(-50%,-50%) scale(1); opacity: 0.3; }
+            50% { transform: translate(-50%,-50%) scale(1.2); opacity: 0.1; }
+        }
+
+        @keyframes splashOut {
+            to { opacity: 0; visibility: hidden; }
+        }
+
+        /* ТЕМА: НЕОН */
+        body.theme-neon {
+            background: linear-gradient(135deg, #000 0%, #1a0033 30%, #003366 60%, #000 100%);
+        }
+        body.theme-neon .btn, body.theme-neon .btn-small, body.theme-neon .icon-btn {
+            border-color: rgba(0,255,255,0.5) !important;
+            color: #0ff !important;
+            text-shadow: 0 0 10px rgba(0,255,255,0.8);
+        }
+        body.theme-neon .badge { color: #f0f !important; border-color: rgba(255,0,255,0.6) !important; text-shadow: 0 0 12px #f0f; }
+        body.theme-neon #header h1 { color: #fff; text-shadow: 0 0 20px #0ff; }
+
+        /* ТЕМА: ДОЖДЬ */
+        body.theme-rain { background: linear-gradient(180deg, #0a0a0f 0%, #111118 40%, #1a1a22 100%); }
+        .rain-container { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
+        .drop {
+            position: absolute;
+            width: 2px; height: 20px;
+            background: linear-gradient(180deg, transparent, rgba(120,150,200,0.5));
+            animation: fall linear infinite;
+        }
+        @keyframes fall {
+            from { transform: translateY(-30px); }
+            to { transform: translateY(110vh); }
+        }
+
+        /* ТЕМА: КОСМОС */
+        body.theme-space { background: linear-gradient(160deg, #000 0%, #0a0a2e 30%, #1a0a3e 60%, #000 100%); }
+        .space-container { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
+        .star {
+            position: absolute;
+            background: #fff;
+            border-radius: 50%;
+            animation: twinkle ease-in-out infinite;
+        }
+        .nebula {
+            position: absolute;
+            width: 400px; height: 400px;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.25;
+            animation: float 10s ease-in-out infinite;
+        }
+        @keyframes twinkle {
+            0%,100% { opacity: 0.2; }
+            50% { opacity: 0.9; }
         }
 
         .app {
-            position: relative;
-            z-index: 5;
+            position: relative; z-index: 5;
             text-align: center;
             padding: 20px 15px;
-            width: 100%;
-            max-width: 380px;
+            width: 100%; max-width: 380px;
         }
 
         .badge {
             display: inline-block;
             padding: 6px 16px;
             border-radius: 100px;
-            border: 1px solid rgba(155, 123, 255, 0.3);
-            background: rgba(155, 123, 255, 0.08);
+            border: 1px solid rgba(155,123,255,0.3);
+            background: rgba(155,123,255,0.08);
             color: #b39bff;
-            font-size: 11px;
-            letter-spacing: 1px;
+            font-size: 11px; letter-spacing: 1px;
             margin-bottom: 12px;
         }
 
-        #header h1 {
-            color: #f0ecff;
-            font-size: 28px;
-            margin-bottom: 6px;
-            font-weight: 800;
-        }
-
-        #header .sub {
-            color: #9b8fc0;
-            font-size: 14px;
-            margin-bottom: 20px;
-            font-weight: 500;
-        }
+        #header h1 { color: #f0ecff; font-size: 28px; margin-bottom: 6px; font-weight: 800; }
+        #header .sub { color: #9b8fc0; font-size: 14px; margin-bottom: 20px; font-weight: 500; }
 
         .menu {
             display: grid;
@@ -101,36 +207,34 @@
         }
 
         .btn {
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(255, 255, 255, 0.07);
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.07);
             border-radius: 16px;
             padding: 16px 8px;
-            color: #ffffff;
-            font-size: 14px;
-            font-weight: 600;
+            color: #fff;
+            font-size: 14px; font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
             backdrop-filter: blur(10px);
             text-align: center;
         }
 
-        .btn:nth-child(1) { background: rgba(155, 123, 255, 0.14); border-color: rgba(155, 123, 255, 0.35); }
-        .btn:nth-child(2) { background: rgba(255, 110, 180, 0.14); border-color: rgba(255, 110, 180, 0.35); }
-        .btn:nth-child(3) { background: rgba(110, 180, 255, 0.14); border-color: rgba(110, 180, 255, 0.35); }
-        .btn:nth-child(4) { background: rgba(255, 220, 110, 0.14); border-color: rgba(255, 220, 110, 0.35); }
-        .btn:nth-child(5) { grid-column: span 2; background: rgba(255, 90, 90, 0.14); border-color: rgba(255, 90, 90, 0.35); }
-        .btn:nth-child(6) { grid-column: span 2; background: rgba(255, 160, 50, 0.2); border-color: rgba(255, 160, 50, 0.5); font-weight: 800; letter-spacing: 1px; }
-        .btn:nth-child(7) { grid-column: span 2; background: rgba(0, 255, 150, 0.15); border-color: rgba(0, 255, 150, 0.4); font-weight: 800; letter-spacing: 1px; }
+        .btn:nth-child(1) { background: rgba(155,123,255,0.14); border-color: rgba(155,123,255,0.35); }
+        .btn:nth-child(2) { background: rgba(255,110,180,0.14); border-color: rgba(255,110,180,0.35); }
+        .btn:nth-child(3) { background: rgba(110,180,255,0.14); border-color: rgba(110,180,255,0.35); }
+        .btn:nth-child(4) { background: rgba(255,220,110,0.14); border-color: rgba(255,220,110,0.35); }
+        .btn:nth-child(5) { grid-column: span 2; background: rgba(255,90,90,0.14); border-color: rgba(255,90,90,0.35); }
+        .btn:nth-child(6) { grid-column: span 2; background: rgba(255,160,50,0.2); border-color: rgba(255,160,50,0.5); font-weight: 800; letter-spacing: 1px; }
+        .btn:nth-child(7) { grid-column: span 2; background: rgba(0,255,150,0.15); border-color: rgba(0,255,150,0.4); font-weight: 800; letter-spacing: 1px; }
 
         .result {
             display: none;
-            background: rgba(155, 123, 255, 0.08);
-            border: 1px solid rgba(155, 123, 255, 0.25);
+            background: rgba(155,123,255,0.08);
+            border: 1px solid rgba(155,123,255,0.25);
             border-radius: 16px;
             padding: 22px 18px;
             color: #d8d0f0;
-            font-size: 15px;
-            line-height: 1.7;
+            font-size: 15px; line-height: 1.7;
             min-height: 120px;
             animation: pop 0.4s ease;
             font-weight: 500;
@@ -144,86 +248,59 @@
         }
 
         .btn-small {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.08);
             border-radius: 12px;
             padding: 13px;
             color: #d8d0f0;
-            font-size: 14px;
-            font-weight: 600;
+            font-size: 14px; font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
         }
 
-        .bottom-btns {
-            position: fixed;
-            bottom: 20px;
-            left: 20px;
-            display: flex;
-            gap: 10px;
-            z-index: 30;
-        }
-
-        .top-btns {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            display: flex;
-            gap: 10px;
-            z-index: 30;
-        }
+        .bottom-btns { position: fixed; bottom: 20px; left: 20px; display: flex; gap: 10px; z-index: 30; }
+        .top-btns { position: fixed; top: 20px; right: 20px; display: flex; gap: 10px; z-index: 30; }
 
         .icon-btn {
-            width: 42px;
-            height: 42px;
+            width: 42px; height: 42px;
             border-radius: 12px;
-            background: rgba(255, 255, 255, 0.06);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            color: #ffffff;
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.1);
+            color: #fff;
             font-size: 18px;
             cursor: pointer;
             transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            display: flex; align-items: center; justify-content: center;
             backdrop-filter: blur(10px);
         }
 
-        .icon-btn:hover {
-            background: rgba(155, 123, 255, 0.15);
-            border-color: rgba(155, 123, 255, 0.35);
-        }
+        .icon-btn:hover { background: rgba(155,123,255,0.15); border-color: rgba(155,123,255,0.35); }
 
         .fullscreen {
             display: none;
-            position: fixed;
-            inset: 0;
-            background: rgba(10, 8, 18, 0.97);
+            position: fixed; inset: 0;
+            background: rgba(10,8,18,0.97);
             z-index: 50;
-            align-items: center;
-            justify-content: center;
+            align-items: center; justify-content: center;
             padding: 20px;
         }
 
         .fullscreen.active { display: flex; }
 
         .chat-screen {
-            background: rgba(20, 15, 35, 0.95);
-            border: 1px solid rgba(0, 255, 150, 0.4);
+            background: rgba(20,15,35,0.95);
+            border: 1px solid rgba(0,255,150,0.4);
             border-radius: 20px;
             padding: 20px;
-            width: 100%;
-            max-width: 380px;
+            width: 100%; max-width: 380px;
             height: 80vh;
-            display: flex;
-            flex-direction: column;
+            display: flex; flex-direction: column;
             animation: pop 0.3s ease;
         }
 
         .chat-title {
             color: #00ff96;
-            font-size: 20px;
-            font-weight: 800;
+            font-size: 20px; font-weight: 800;
             margin-bottom: 15px;
             text-align: center;
         }
@@ -231,9 +308,7 @@
         .chat-messages {
             flex: 1;
             overflow-y: auto;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
+            display: flex; flex-direction: column; gap: 10px;
             margin-bottom: 15px;
             padding-right: 5px;
         }
@@ -242,48 +317,32 @@
             max-width: 85%;
             padding: 12px 14px;
             border-radius: 14px;
-            font-size: 14px;
-            line-height: 1.6;
+            font-size: 14px; line-height: 1.6;
             animation: pop 0.2s ease;
         }
 
-        .chat-user {
-            align-self: flex-end;
-            background: rgba(110, 180, 255, 0.2);
-            color: #d8d0f0;
-        }
+        .chat-user { align-self: flex-end; background: rgba(110,180,255,0.2); color: #d8d0f0; }
+        .chat-bot { align-self: flex-start; background: rgba(0,255,150,0.12); color: #e0f0e8; }
 
-        .chat-bot {
-            align-self: flex-start;
-            background: rgba(0, 255, 150, 0.12);
-            color: #e0f0e8;
-        }
-
-        .chat-input-row {
-            display: flex;
-            gap: 8px;
-        }
-
+        .chat-input-row { display: flex; gap: 8px; }
         .chat-input {
             flex: 1;
             padding: 12px;
             border-radius: 10px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            background: rgba(255, 255, 255, 0.05);
-            color: #ffffff;
+            border: 1px solid rgba(255,255,255,0.1);
+            background: rgba(255,255,255,0.05);
+            color: #fff;
             font-size: 14px;
             outline: none;
             font-family: 'Manrope', sans-serif;
         }
-
         .chat-send {
             padding: 12px 16px;
             border-radius: 10px;
             border: none;
-            background: rgba(0, 255, 150, 0.25);
+            background: rgba(0,255,150,0.25);
             color: #00ff96;
-            font-size: 14px;
-            font-weight: 700;
+            font-size: 14px; font-weight: 700;
             cursor: pointer;
             font-family: 'Manrope', sans-serif;
         }
@@ -295,17 +354,32 @@
     </style>
 </head>
 <body>
+    <!-- ЗАСТАВКА -->
+    <div class="splash" id="splash">
+        <div class="splash-decor"></div>
+        <div class="splash-decor"></div>
+        <div class="splash-decor"></div>
+        <div class="splash-decor"></div>
+        <div class="splash-line"></div>
+        <div class="splash-line"></div>
+        <div class="splash-line"></div>
+        <div class="splash-ring"></div>
+        <div class="splash-ring"></div>
+        <div class="splash-text" id="splashText"></div>
+        <div class="splash-sub" id="splashSub">город знает тебя</div>
+    </div>
+
     <div class="extra-glow-1"></div>
     <div class="extra-glow-2"></div>
+    <div class="rain-container" id="rainContainer"></div>
+    <div class="space-container" id="spaceContainer"></div>
 
     <div class="app">
         <div class="badge">🕵️ ТАЙНЫЙ БЛАГОВЕЩЕНСК</div>
-
         <div id="header">
             <h1>Город знает тебя</h1>
             <p class="sub">Выбери, что тебе сейчас нужно</p>
         </div>
-
         <div class="menu" id="menu">
             <button class="btn" onclick="show('kuda')">🚶 Куда сходить</button>
             <button class="btn" onclick="show('eat')">🍽 Поесть</button>
@@ -315,9 +389,7 @@
             <button class="btn" onclick="openSlot()">🎰 Слот-машина</button>
             <button class="btn" onclick="openChat()">💬 Чат</button>
         </div>
-
         <div class="result" id="result"></div>
-
         <div class="actions" id="actions">
             <button class="btn-small" onclick="more()">🔄 Ещё</button>
             <button class="btn-small" onclick="back()">← Назад</button>
@@ -328,7 +400,6 @@
         <button class="icon-btn" onclick="openInfo()">📌</button>
         <button class="icon-btn" onclick="openAdmin()">⚙️</button>
     </div>
-
     <div class="top-btns">
         <button class="icon-btn" onclick="changeTheme()">🎨</button>
     </div>
@@ -350,11 +421,13 @@
     <!-- ИНФО -->
     <div class="fullscreen" id="infoScreen">
         <div class="chat-screen" style="border-color: rgba(155,123,255,0.4);">
-            <div class="admin-title">📌 Инфа</div>
-            <p style="color:#d8d0f0; font-size:14px; line-height:1.7; margin-bottom:12px;">Пр тут короче будет информация о новых добавлениях и тд</p>
-            <p style="color:#d8d0f0; font-size:14px; line-height:1.7; margin-bottom:12px;">Так же если че можете вкидывать свои идеи авторам, они будут рассматриваться.</p>
-            <p style="color:#d8d0f0; font-size:14px; line-height:1.7; margin-bottom:12px;">Авторы: @Pand_f и @cruifixs</p>
-            <p style="color:#d8d0f0; font-size:14px; line-height:1.7; margin-bottom:12px;">Рад что пользуетесь тайным благом</p>
+            <div class="chat-title" style="color:#b39bff;">📌 Инфа</div>
+            <div style="flex:1; overflow-y:auto;">
+                <p style="color:#d8d0f0; font-size:14px; line-height:1.7; margin-bottom:12px;">Пр тут короче будет информация о новых добавлениях и тд</p>
+                <p style="color:#d8d0f0; font-size:14px; line-height:1.7; margin-bottom:12px;">Так же если че можете вкидывать свои идеи авторам, они будут рассматриваться.</p>
+                <p style="color:#d8d0f0; font-size:14px; line-height:1.7; margin-bottom:12px;">Авторы: @Pand_f и @cruifixs</p>
+                <p style="color:#d8d0f0; font-size:14px; line-height:1.7;">Рад что пользуетесь тайным благом</p>
+            </div>
             <button class="btn-small" onclick="closeInfo()">← Назад</button>
         </div>
     </div>
@@ -377,14 +450,14 @@
     <!-- АДМИНКА -->
     <div class="fullscreen" id="adminScreen">
         <div class="chat-screen" style="border-color: rgba(155,123,255,0.4);" id="loginBlock">
-            <div class="admin-title">🔒 Вход</div>
+            <div class="chat-title" style="color:#b39bff;">🔒 Вход</div>
             <input class="chat-input" id="pinInput" type="password" placeholder="Пин-код" maxlength="4" style="margin-bottom:10px; text-align:center;">
             <button class="chat-send" onclick="checkPin()" style="width:100%; padding:12px;">Войти</button>
             <button class="btn-small" onclick="closeAdmin()" style="margin-top:10px;">← Назад</button>
         </div>
 
         <div class="chat-screen" style="border-color: rgba(155,123,255,0.4); display:none;" id="adminContent">
-            <div class="admin-title">⚙️ Админка</div>
+            <div class="chat-title" style="color:#b39bff;">⚙️ Админка</div>
             <button class="chat-send" onclick="showAddForm()" style="width:100%; padding:12px; margin-bottom:8px;">➕ Добавить идею</button>
             <button class="chat-send" onclick="showAllIdeas()" style="width:100%; padding:12px; margin-bottom:8px;">📋 Все идеи</button>
             <button class="chat-send" onclick="showStats()" style="width:100%; padding:12px; margin-bottom:8px;">📊 Статистика</button>
@@ -392,7 +465,7 @@
         </div>
 
         <div class="chat-screen" style="border-color: rgba(155,123,255,0.4); display:none;" id="addForm">
-            <div class="admin-title">➕ Новая идея</div>
+            <div class="chat-title" style="color:#b39bff;">➕ Новая идея</div>
             <select id="categorySelect" class="chat-input" style="margin-bottom:10px;">
                 <option value="kuda">🚶 Куда сходить</option>
                 <option value="eat">🍽 Поесть</option>
@@ -406,13 +479,13 @@
         </div>
 
         <div class="chat-screen" style="border-color: rgba(155,123,255,0.4); display:none;" id="listBlock">
-            <div class="admin-title">📋 Все идеи</div>
+            <div class="chat-title" style="color:#b39bff;">📋 Все идеи</div>
             <div id="ideasList" style="flex:1; overflow-y:auto; margin-bottom:10px;"></div>
             <button class="btn-small" onclick="backToAdmin()">← Назад</button>
         </div>
 
         <div class="chat-screen" style="border-color: rgba(155,123,255,0.4); display:none;" id="statsBlock">
-            <div class="admin-title">📊 Статистика</div>
+            <div class="chat-title" style="color:#b39bff;">📊 Статистика</div>
             <div id="statsText" style="color:#d8d0f0; font-size:14px; line-height:1.6; flex:1; overflow-y:auto;"></div>
             <button class="btn-small" onclick="backToAdmin()">← Назад</button>
         </div>
@@ -423,33 +496,26 @@
         let clicks = {};
         let currentTheme = 0;
         const themes = ['', 'theme-neon', 'theme-rain', 'theme-space'];
+        let greetCount = 0;
 
         // ЗАСТАВКА
-        const splash = document.createElement('div');
-        splash.style.cssText = 'position:fixed; inset:0; background:#0a0812; z-index:100; display:flex; align-items:center; justify-content:center; flex-direction:column;';
-        const splashText = document.createElement('div');
-        splashText.style.cssText = 'font-size:24px; font-weight:800; color:#b39bff; letter-spacing:2px; min-height:40px;';
-        const splashSub = document.createElement('div');
-        splashSub.style.cssText = 'margin-top:10px; font-size:13px; color:#6b5f8a; opacity:0; transition: opacity 0.8s;';
-        splashSub.textContent = 'город знает тебя';
-        splash.appendChild(splashText);
-        splash.appendChild(splashSub);
-        document.body.appendChild(splash);
-
+        const splashText = document.getElementById('splashText');
+        const splashSub = document.getElementById('splashSub');
+        const splash = document.getElementById('splash');
         const textToShow = 'ТАЙНЫЙ БЛАГОВЕЩЕНСК';
         let charIndex = 0;
+
         function typeSplash() {
             if (charIndex < textToShow.length) {
                 splashText.textContent += textToShow[charIndex];
                 charIndex++;
-                setTimeout(typeSplash, 180);
+                setTimeout(typeSplash, 200);
             } else {
                 splashSub.style.opacity = '1';
                 setTimeout(() => {
-                    splash.style.transition = 'opacity 0.6s';
                     splash.style.opacity = '0';
-                    setTimeout(() => splash.remove(), 600);
-                }, 1000);
+                    setTimeout(() => splash.remove(), 800);
+                }, 1200);
             }
         }
         typeSplash();
@@ -521,7 +587,7 @@
             ]
         };
 
-        const slotIcons = ['🚶', '🍽', '😌', '🌿', '🤫', '🔥', '💡', '🌙'];
+        const slotIcons = ['🚶','🍽','😌','🌿','🤫','🔥','💡','🌙'];
         const slotPhrases = {
             '🚶': ['выйди на улицу и пройдись', 'сходи в парк', 'прогуляйся до пруда'],
             '🍽': ['загляни в «Милк»', 'возьми шашлык', 'попробуй роллы'],
@@ -539,6 +605,50 @@
         function changeTheme() {
             currentTheme = (currentTheme + 1) % themes.length;
             document.body.className = themes[currentTheme];
+            updateThemeEffects();
+        }
+
+        function updateThemeEffects() {
+            const rain = document.getElementById('rainContainer');
+            const space = document.getElementById('spaceContainer');
+            rain.innerHTML = '';
+            space.innerHTML = '';
+
+            if (document.body.classList.contains('theme-rain')) {
+                for (let i = 0; i < 60; i++) {
+                    const drop = document.createElement('div');
+                    drop.className = 'drop';
+                    drop.style.left = Math.random() * 100 + '%';
+                    drop.style.animationDuration = (Math.random() * 0.5 + 0.4) + 's';
+                    drop.style.animationDelay = Math.random() * 0.5 + 's';
+                    rain.appendChild(drop);
+                }
+            }
+
+            if (document.body.classList.contains('theme-space')) {
+                for (let i = 0; i < 90; i++) {
+                    const star = document.createElement('div');
+                    star.className = 'star';
+                    star.style.left = Math.random() * 100 + '%';
+                    star.style.top = Math.random() * 100 + '%';
+                    star.style.width = (Math.random() * 2 + 1) + 'px';
+                    star.style.height = star.style.width;
+                    star.style.animationDuration = (Math.random() * 2 + 1) + 's';
+                    space.appendChild(star);
+                }
+                const nebula1 = document.createElement('div');
+                nebula1.className = 'nebula';
+                nebula1.style.left = '15%';
+                nebula1.style.top = '25%';
+                nebula1.style.background = 'rgba(100,60,200,0.4)';
+                space.appendChild(nebula1);
+                const nebula2 = document.createElement('div');
+                nebula2.className = 'nebula';
+                nebula2.style.right = '5%';
+                nebula2.style.bottom = '15%';
+                nebula2.style.background = 'rgba(200,100,150,0.3)';
+                space.appendChild(nebula2);
+            }
         }
 
         function openSlot() {
@@ -546,103 +656,93 @@
             document.getElementById('slotResult').textContent = '';
             initReels();
         }
-
-        function closeSlot() {
-            document.getElementById('slotScreen').classList.remove('active');
-        }
+        function closeSlot() { document.getElementById('slotScreen').classList.remove('active'); }
 
         function initReels() {
-            ['reel1', 'reel2', 'reel3'].forEach(id => {
+            ['reel1','reel2','reel3'].forEach(id => {
                 const reel = document.getElementById(id);
                 reel.innerHTML = '';
-                for (let i = 0; i < 10; i++) {
-                    const icon = slotIcons[Math.floor(Math.random() * slotIcons.length)];
+                for (let i = 0; i < 12; i++) {
                     const div = document.createElement('div');
                     div.style.cssText = 'height:90px; display:flex; align-items:center; justify-content:center; font-size:40px;';
-                    div.textContent = icon;
+                    div.textContent = slotIcons[Math.floor(Math.random() * slotIcons.length)];
                     reel.appendChild(div);
                 }
             });
         }
 
         function spin() {
-            const reels = ['reel1', 'reel2', 'reel3'];
+            const reels = ['reel1','reel2','reel3'];
             const results = [];
             reels.forEach(id => {
                 const reel = document.getElementById(id);
                 const distance = Math.floor(Math.random() * 400 + 300);
                 reel.style.transform = `translateY(-${distance}px)`;
             });
-
             setTimeout(() => {
-                reels.forEach((id, index) => {
+                reels.forEach((id) => {
                     const reel = document.getElementById(id);
                     const icons = reel.querySelectorAll('div');
                     const middle = Math.floor(icons.length / 2);
-                    const icon = icons[middle].textContent;
-                    results.push(icon);
+                    results.push(icons[middle].textContent);
                     reel.style.transition = 'none';
                     reel.style.transform = 'translateY(0)';
                 });
-                const idea = generateSlotIdea(results);
-                document.getElementById('slotResult').textContent = idea;
+                document.getElementById('slotResult').textContent = generateSlotIdea(results);
             }, 1600);
         }
 
         function generateSlotIdea(icons) {
-            const parts = [];
-            icons.forEach(icon => {
+            const parts = icons.map(icon => {
                 const phrases = slotPhrases[icon] || ['сделай что-нибудь'];
-                parts.push(phrases[Math.floor(Math.random() * phrases.length)]);
+                return phrases[Math.floor(Math.random() * phrases.length)];
             });
             return `🎰 Выпало:\n\n${parts[0]},\n${parts[1]}\nи ${parts[2]}.\n\nСделай это — и день станет другим.`;
         }
 
-        // ЧАТ
-        function openChat() {
-            document.getElementById('chatScreen').classList.add('active');
-        }
-
-        function closeChat() {
-            document.getElementById('chatScreen').classList.remove('active');
-        }
+        function openChat() { document.getElementById('chatScreen').classList.add('active'); }
+        function closeChat() { document.getElementById('chatScreen').classList.remove('active'); }
 
         function sendChat() {
             const input = document.getElementById('chatInput');
             const msg = input.value.trim();
             if (!msg) return;
-
             const messages = document.getElementById('chatMessages');
-
             const userMsg = document.createElement('div');
             userMsg.className = 'chat-msg chat-user';
             userMsg.textContent = msg;
             messages.appendChild(userMsg);
-
             const botMsg = document.createElement('div');
             botMsg.className = 'chat-msg chat-bot';
             botMsg.textContent = getChatReply(msg);
             messages.appendChild(botMsg);
-
             input.value = '';
             messages.scrollTop = messages.scrollHeight;
         }
 
         function getChatReply(text) {
             const t = text.toLowerCase();
+            greetCount = greetCount || {};
 
-            if (t.includes('привет') || t.includes('здоров') || t.includes('хай')) return 'Здорова. Чё хотел?';
+            if (t.includes('привет') || t.includes('здоров') || t.includes('хай') || t.includes('здравств')) {
+                greetCount.hello = (greetCount.hello || 0) + 1;
+                if (greetCount.hello === 1) return 'Здорова. Чё хотел?';
+                if (greetCount.hello === 2) return 'Мы уже здоровались. Говори по делу.';
+                return 'Ты чё тупой? Я же написал здарова. Давай по существу.';
+            }
+
             if (t.includes('как дела') || t.includes('как ты')) return 'У меня тут база города. Какие дела? Пойди погуляй.';
-            if (t.includes('время') || t.includes('сколько время') || t.includes('час')) return 'Тебя это дерьмо волнует? Наслаждайся временем, а не интересуйся.';
+            if (t.includes('время') || t.includes('час') || t.includes('сколько время')) return 'Тебя это дерьмо волнует? Наслаждайся временем, а не интересуйся.';
             if (t.includes('погода')) return 'Выгляни в окно, гений. Или тебе лень?';
             if (t.includes('поесть') || t.includes('пожрать') || t.includes('еда') || t.includes('кушать') || t.includes('голод')) return '«Милк» на Седова, 113. Или шашлычная на 100А, если ночью. Не благодари.';
             if (t.includes('пить') || t.includes('выпить') || t.includes('бух')) return 'КБ, Магнит, Тройка. Выбирай и не ной.';
             if (t.includes('гулять') || t.includes('сходить') || t.includes('куда') || t.includes('прогул')) return 'Парк Киселёва, смотровая вышка, аллея у белого голубя. Иди куда-нибудь уже.';
+            if (t.includes('посидеть') || t.includes('посидет') || t.includes('сидеть') || t.includes('лавочк')) return 'Три стула в парке Машиностроителей. Или скамейки у педколледжа. Выбери и выдохни.';
             if (t.includes('скучно')) return 'Скучно? Открой слот-машину и не выноси мне мозг.';
             if (t.includes('спать') || t.includes('сон')) return 'Иди спать. Город подождёт.';
-            if (t.includes('люблю') || t.includes('любовь')) return 'Любовь — это как ГАИ. Многие боятся, а зря.';
-            if (t.includes('смысл жизни') || t.includes('зачем жить')) return 'Смысл — найти своё место в этом городе. Или хотя бы поесть в «Венеции».';
-            if (t.includes('анекдот') || t.includes('шутка')) return 'Иди на остановку Алексей. Там жизнь как анекдот.';
+            if (t.includes('любовь') || t.includes('люблю') || t.includes('признаться') || t.includes('нравится') || t.includes('девочк') || t.includes('девушк')) return 'Иди и скажи. Город видел истории и пострашнее. Если боишься — начни с малого. Например, с прогулки у белого голубя.';
+            if (t.includes('смысл') || t.includes('зачем жить') || t.includes('зачем')) return 'Смысл — найти своё место в этом городе. Или хотя бы поесть в «Венеции».';
+            if (t.includes('анекдот') || t.includes('шутка') || t.includes('рассмеши')) return 'Иди на остановку Алексей. Там жизнь как анекдот.';
             if (t.includes('бмпк')) return 'БМПК — место, где к 9 утра автобусы ломятся. Учись, студент.';
             if (t.includes('инза')) return 'Инза — движ, еда, люди. Не тупи, что ещё надо.';
             if (t.includes('низа') || t.includes('низах')) return 'Низа — парк, река, закаты. Или ты и так это знал?';
