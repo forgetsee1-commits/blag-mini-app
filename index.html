@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Тайный Благовещенск</title>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -16,7 +17,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-family: 'Segoe UI', Arial, sans-serif;
+            font-family: 'Manrope', 'Segoe UI', Arial, sans-serif;
             background: linear-gradient(135deg, #0b0812 0%, #150f24 30%, #1b1030 60%, #0f0a1a 100%);
             overflow: hidden;
             position: relative;
@@ -27,11 +28,11 @@
             position: absolute;
             width: 500px;
             height: 500px;
-            background: radial-gradient(circle, rgba(155, 123, 255, 0.25) 0%, transparent 70%);
-            filter: blur(60px);
-            top: -150px;
-            left: -150px;
-            animation: float 6s ease-in-out infinite;
+            background: radial-gradient(circle, rgba(155, 123, 255, 0.3) 0%, transparent 70%);
+            filter: blur(70px);
+            top: -180px;
+            left: -180px;
+            animation: float 7s ease-in-out infinite;
         }
 
         body::after {
@@ -39,10 +40,32 @@
             position: absolute;
             width: 450px;
             height: 450px;
-            background: radial-gradient(circle, rgba(255, 110, 180, 0.18) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(255, 110, 180, 0.25) 0%, transparent 70%);
+            filter: blur(80px);
+            bottom: -150px;
+            right: -150px;
+            animation: float 9s ease-in-out infinite reverse;
+        }
+
+        .extra-glow-1 {
+            position: absolute;
+            width: 350px;
+            height: 350px;
+            background: radial-gradient(circle, rgba(110, 180, 255, 0.25) 0%, transparent 70%);
             filter: blur(70px);
-            bottom: -120px;
-            right: -120px;
+            top: 40%;
+            left: -120px;
+            animation: float 10s ease-in-out infinite;
+        }
+
+        .extra-glow-2 {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(255, 220, 110, 0.2) 0%, transparent 70%);
+            filter: blur(60px);
+            bottom: 10%;
+            right: -100px;
             animation: float 8s ease-in-out infinite reverse;
         }
 
@@ -57,12 +80,12 @@
             text-align: center;
             padding: 20px 15px;
             width: 100%;
-            max-width: 360px;
+            max-width: 380px;
         }
 
         .badge {
             display: inline-block;
-            padding: 5px 14px;
+            padding: 6px 16px;
             border-radius: 100px;
             border: 1px solid rgba(155, 123, 255, 0.3);
             background: rgba(155, 123, 255, 0.08);
@@ -74,29 +97,32 @@
 
         #header h1 {
             color: #f0ecff;
-            font-size: 26px;
+            font-size: 28px;
             margin-bottom: 6px;
+            font-weight: 800;
         }
 
         #header .sub {
             color: #9b8fc0;
-            font-size: 13px;
-            margin-bottom: 18px;
+            font-size: 14px;
+            margin-bottom: 20px;
+            font-weight: 500;
         }
 
         .menu {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 8px;
+            gap: 10px;
         }
 
         .btn {
             background: rgba(255, 255, 255, 0.04);
             border: 1px solid rgba(255, 255, 255, 0.07);
-            border-radius: 14px;
-            padding: 13px 6px;
+            border-radius: 16px;
+            padding: 16px 8px;
             color: #ffffff;
-            font-size: 13px;
+            font-size: 14px;
+            font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
             backdrop-filter: blur(10px);
@@ -104,142 +130,140 @@
         }
 
         .btn:nth-child(1) {
-            background: rgba(155, 123, 255, 0.12);
-            border-color: rgba(155, 123, 255, 0.3);
+            background: rgba(155, 123, 255, 0.14);
+            border-color: rgba(155, 123, 255, 0.35);
         }
 
         .btn:nth-child(2) {
-            background: rgba(255, 110, 180, 0.12);
-            border-color: rgba(255, 110, 180, 0.3);
+            background: rgba(255, 110, 180, 0.14);
+            border-color: rgba(255, 110, 180, 0.35);
         }
 
         .btn:nth-child(3) {
-            background: rgba(110, 180, 255, 0.12);
-            border-color: rgba(110, 180, 255, 0.3);
+            background: rgba(110, 180, 255, 0.14);
+            border-color: rgba(110, 180, 255, 0.35);
         }
 
         .btn:nth-child(4) {
-            background: rgba(255, 220, 110, 0.12);
-            border-color: rgba(255, 220, 110, 0.3);
+            background: rgba(255, 220, 110, 0.14);
+            border-color: rgba(255, 220, 110, 0.35);
         }
 
         .btn:nth-child(5) {
             grid-column: span 2;
-            background: rgba(255, 90, 90, 0.12);
-            border-color: rgba(255, 90, 90, 0.3);
+            background: rgba(255, 90, 90, 0.14);
+            border-color: rgba(255, 90, 90, 0.35);
         }
 
         .result {
             display: none;
             background: rgba(155, 123, 255, 0.08);
             border: 1px solid rgba(155, 123, 255, 0.25);
-            border-radius: 14px;
-            padding: 20px 16px;
+            border-radius: 16px;
+            padding: 22px 18px;
             color: #d8d0f0;
-            font-size: 14px;
-            line-height: 1.6;
-            min-height: 110px;
+            font-size: 15px;
+            line-height: 1.7;
+            min-height: 120px;
             animation: pop 0.4s ease;
+            font-weight: 500;
         }
 
         .actions {
             display: none;
             flex-direction: column;
-            gap: 8px;
-            margin-top: 14px;
+            gap: 10px;
+            margin-top: 16px;
         }
 
         .btn-small {
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(255, 255, 255, 0.07);
-            border-radius: 10px;
-            padding: 11px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            padding: 13px;
             color: #d8d0f0;
-            font-size: 13px;
+            font-size: 14px;
+            font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
         }
 
-        .admin-gear {
+        .bottom-btns {
             position: fixed;
-            bottom: 12px;
-            left: 12px;
-            font-size: 16px;
-            opacity: 0.25;
-            cursor: pointer;
-            transition: opacity 0.3s ease;
-            background: none;
-            border: none;
+            bottom: 20px;
+            left: 20px;
+            display: flex;
+            gap: 10px;
+            z-index: 30;
+        }
+
+        .icon-btn {
+            width: 42px;
+            height: 42px;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             color: #ffffff;
-            z-index: 10;
-        }
-
-        .admin-gear:hover {
-            opacity: 0.6;
-        }
-
-        .info-btn {
-            position: fixed;
-            bottom: 12px;
-            left: 50px;
-            font-size: 16px;
-            opacity: 0.25;
+            font-size: 18px;
             cursor: pointer;
-            transition: opacity 0.3s ease;
-            background: none;
-            border: none;
-            color: #ffffff;
-            z-index: 10;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(10px);
         }
 
-        .info-btn:hover {
-            opacity: 0.6;
+        .icon-btn:hover {
+            background: rgba(155, 123, 255, 0.15);
+            border-color: rgba(155, 123, 255, 0.35);
         }
 
-        .admin-panel {
+        .fullscreen {
             display: none;
             position: fixed;
-            bottom: 45px;
-            left: 12px;
-            background: rgba(15, 10, 25, 0.95);
-            border: 1px solid rgba(155, 123, 255, 0.3);
-            border-radius: 14px;
-            padding: 16px;
-            width: 260px;
-            z-index: 20;
+            inset: 0;
+            background: rgba(10, 8, 18, 0.97);
+            z-index: 50;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
         }
 
-        .info-box {
-            display: none;
-            position: fixed;
-            bottom: 45px;
-            left: 50px;
-            background: rgba(15, 10, 25, 0.95);
-            border: 1px solid rgba(155, 123, 255, 0.3);
-            border-radius: 14px;
-            padding: 16px;
-            width: 240px;
-            z-index: 20;
+        .fullscreen.active {
+            display: flex;
         }
 
-        .info-box p {
-            color: #d8d0f0;
-            font-size: 13px;
-            line-height: 1.6;
-            margin-bottom: 8px;
+        .admin-box {
+            background: rgba(20, 15, 35, 0.95);
+            border: 1px solid rgba(155, 123, 255, 0.3);
+            border-radius: 20px;
+            padding: 25px;
+            width: 100%;
+            max-width: 360px;
+            max-height: 80vh;
+            overflow-y: auto;
+            animation: pop 0.3s ease;
+        }
+
+        .admin-title {
+            color: #f0ecff;
+            font-size: 20px;
+            font-weight: 800;
+            margin-bottom: 16px;
         }
 
         .admin-input {
             width: 100%;
-            padding: 10px;
-            border-radius: 8px;
+            padding: 12px;
+            border-radius: 10px;
             border: 1px solid rgba(255, 255, 255, 0.1);
             background: rgba(255, 255, 255, 0.05);
             color: #ffffff;
-            font-size: 14px;
+            font-size: 15px;
             text-align: center;
             outline: none;
-            margin-bottom: 8px;
+            margin-bottom: 10px;
+            font-family: 'Manrope', sans-serif;
         }
 
         textarea.admin-input {
@@ -249,20 +273,45 @@
 
         .admin-btn {
             width: 100%;
-            margin-top: 6px;
-            padding: 10px;
-            border-radius: 8px;
+            margin-top: 8px;
+            padding: 12px;
+            border-radius: 10px;
             border: none;
             background: rgba(155, 123, 255, 0.2);
             color: #d8d0f0;
-            font-size: 13px;
+            font-size: 14px;
+            font-weight: 600;
             cursor: pointer;
+            font-family: 'Manrope', sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        .admin-btn:hover {
+            background: rgba(155, 123, 255, 0.3);
+        }
+
+        .info-box {
+            background: rgba(20, 15, 35, 0.95);
+            border: 1px solid rgba(155, 123, 255, 0.3);
+            border-radius: 20px;
+            padding: 25px;
+            width: 100%;
+            max-width: 360px;
+            animation: pop 0.3s ease;
+        }
+
+        .info-box p {
+            color: #d8d0f0;
+            font-size: 14px;
+            line-height: 1.7;
+            margin-bottom: 12px;
+            font-weight: 500;
         }
 
         @keyframes pop {
             from {
                 opacity: 0;
-                transform: scale(0.9);
+                transform: scale(0.92);
             }
             to {
                 opacity: 1;
@@ -272,6 +321,9 @@
     </style>
 </head>
 <body>
+    <div class="extra-glow-1"></div>
+    <div class="extra-glow-2"></div>
+
     <div class="app">
         <div class="badge">🕵️ ТАЙНЫЙ БЛАГОВЕЩЕНСК</div>
 
@@ -296,23 +348,42 @@
         </div>
     </div>
 
-    <button class="admin-gear" onclick="openAdmin()">⚙️</button>
-    <button class="info-btn" onclick="toggleInfo()">📌</button>
+    <div class="bottom-btns">
+        <button class="icon-btn" onclick="openInfo()">📌</button>
+        <button class="icon-btn" onclick="openAdmin()">⚙️</button>
+    </div>
 
-    <div class="admin-panel" id="adminPanel">
-        <div id="loginBlock">
+    <!-- ИНФО -->
+    <div class="fullscreen" id="infoScreen">
+        <div class="info-box">
+            <div class="admin-title">📌 Инфа</div>
+            <p>Пр тут короче будет информация о новых добавлениях и тд</p>
+            <p>Так же если че можете вкидывать свои идеи авторам, они будут рассматриваться.</p>
+            <p>Авторы: @Pand_f и @cruifixs</p>
+            <p>Рад что пользуетесь тайным благом</p>
+            <button class="admin-btn" onclick="closeInfo()">← Назад</button>
+        </div>
+    </div>
+
+    <!-- АДМИНКА -->
+    <div class="fullscreen" id="adminScreen">
+        <div class="admin-box" id="loginBlock">
+            <div class="admin-title">🔒 Вход</div>
             <input class="admin-input" id="pinInput" type="password" placeholder="Пин-код" maxlength="4">
             <button class="admin-btn" onclick="checkPin()">Войти</button>
+            <button class="admin-btn" onclick="closeAdmin()">← Назад</button>
         </div>
 
-        <div id="adminContent" style="display:none;">
+        <div class="admin-box" id="adminContent" style="display:none;">
+            <div class="admin-title">⚙️ Админка</div>
             <button class="admin-btn" onclick="showAddForm()">➕ Добавить идею</button>
             <button class="admin-btn" onclick="showAllIdeas()">📋 Все идеи</button>
             <button class="admin-btn" onclick="showStats()">📊 Статистика</button>
             <button class="admin-btn" onclick="closeAdmin()">← Назад</button>
         </div>
 
-        <div id="addForm" style="display:none;">
+        <div class="admin-box" id="addForm" style="display:none;">
+            <div class="admin-title">➕ Новая идея</div>
             <select id="categorySelect" class="admin-input">
                 <option value="kuda">🚶 Куда сходить</option>
                 <option value="eat">🍽 Поесть</option>
@@ -325,22 +396,17 @@
             <button class="admin-btn" onclick="backToAdmin()">← Назад</button>
         </div>
 
-        <div id="listBlock" style="display:none;">
-            <div id="ideasList" style="max-height: 220px; overflow-y: auto; margin-top: 8px;"></div>
+        <div class="admin-box" id="listBlock" style="display:none;">
+            <div class="admin-title">📋 Все идеи</div>
+            <div id="ideasList" style="max-height: 300px; overflow-y: auto; margin-top: 8px;"></div>
             <button class="admin-btn" onclick="backToAdmin()">← Назад</button>
         </div>
 
-        <div id="statsBlock" style="display:none;">
-            <div id="statsText" style="color: #d8d0f0; font-size: 13px; margin: 8px 0; line-height: 1.5;"></div>
+        <div class="admin-box" id="statsBlock" style="display:none;">
+            <div class="admin-title">📊 Статистика</div>
+            <div id="statsText" style="color: #d8d0f0; font-size: 14px; margin: 8px 0; line-height: 1.6; font-weight: 500;"></div>
             <button class="admin-btn" onclick="backToAdmin()">← Назад</button>
         </div>
-    </div>
-
-    <div class="info-box" id="infoBox">
-        <p>Пр тут короче будет информация о новых добавлениях и тд</p>
-        <p>Так же если че можете вкидывать свои идеи авторам, они будут рассматриваться.</p>
-        <p>Авторы: @Pand_f и @cruifixs</p>
-        <p>Рад что пользуетесь тайным благом</p>
     </div>
 
     <script>
@@ -418,13 +484,24 @@
         let currentCategory = null;
 
         function openAdmin() {
-            const panel = document.getElementById('adminPanel');
-            panel.style.display = panel.style.display === 'block' ? 'none' : 'block';
+            document.getElementById('adminScreen').classList.add('active');
         }
 
-        function toggleInfo() {
-            const box = document.getElementById('infoBox');
-            box.style.display = box.style.display === 'block' ? 'none' : 'block';
+        function closeAdmin() {
+            document.getElementById('adminScreen').classList.remove('active');
+            document.getElementById('loginBlock').style.display = 'block';
+            document.getElementById('adminContent').style.display = 'none';
+            document.getElementById('addForm').style.display = 'none';
+            document.getElementById('listBlock').style.display = 'none';
+            document.getElementById('statsBlock').style.display = 'none';
+        }
+
+        function openInfo() {
+            document.getElementById('infoScreen').classList.add('active');
+        }
+
+        function closeInfo() {
+            document.getElementById('infoScreen').classList.remove('active');
         }
 
         function checkPin() {
@@ -436,15 +513,6 @@
             } else {
                 alert('❌ Неверный код');
             }
-        }
-
-        function closeAdmin() {
-            document.getElementById('adminPanel').style.display = 'none';
-            document.getElementById('loginBlock').style.display = 'block';
-            document.getElementById('adminContent').style.display = 'none';
-            document.getElementById('addForm').style.display = 'none';
-            document.getElementById('listBlock').style.display = 'none';
-            document.getElementById('statsBlock').style.display = 'none';
         }
 
         function showAddForm() {
@@ -482,7 +550,7 @@
                 ideas[cat].forEach((idea, i) => {
                     html += `
                         <div style="display:flex; justify-content:space-between; align-items:center; gap:6px; margin-top:4px;">
-                            <p style="color:#d8d0f0; font-size:12px; flex:1;">${i + 1}. ${idea}</p>
+                            <p style="color:#d8d0f0; font-size:13px; flex:1;">${i + 1}. ${idea}</p>
                             <button onclick="deleteIdea('${cat}', ${i})" style="background:none; border:none; cursor:pointer; font-size:14px;">🗑</button>
                         </div>
                     `;
