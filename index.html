@@ -54,7 +54,6 @@
             50% { transform: translate(30px,20px); }
         }
 
-        /* ЗАСТАВКА */
         .splash {
             position: fixed; inset: 0;
             background: radial-gradient(circle at 50% 40%, #1a1230 0%, #0a0812 70%);
@@ -72,7 +71,7 @@
             animation: blink 1.2s ease-in-out infinite;
         }
 
-        .splash-decor:nth-child(1) { top: 20%; left: 15%; animation-delay: 0s; }
+        .splash-decor:nth-child(1) { top: 20%; left: 15%; }
         .splash-decor:nth-child(2) { top: 30%; right: 20%; animation-delay: 0.3s; }
         .splash-decor:nth-child(3) { bottom: 25%; left: 25%; animation-delay: 0.6s; }
         .splash-decor:nth-child(4) { bottom: 20%; right: 15%; animation-delay: 0.9s; }
@@ -96,7 +95,7 @@
             animation: pulse 2s ease-in-out infinite;
         }
 
-        .splash-ring:nth-child(8) { top: 50%; left: 50%; transform: translate(-50%,-50%); animation-delay: 0s; }
+        .splash-ring:nth-child(8) { top: 50%; left: 50%; transform: translate(-50%,-50%); }
         .splash-ring:nth-child(9) { top: 50%; left: 50%; transform: translate(-50%,-50%); animation-delay: 0.5s; }
 
         .splash-text {
@@ -131,7 +130,6 @@
             to { opacity: 0; visibility: hidden; }
         }
 
-        /* ТЕМА: НЕОН */
         body.theme-neon {
             background: linear-gradient(135deg, #000 0%, #1a0033 30%, #003366 60%, #000 100%);
         }
@@ -143,7 +141,6 @@
         body.theme-neon .badge { color: #f0f !important; border-color: rgba(255,0,255,0.6) !important; text-shadow: 0 0 12px #f0f; }
         body.theme-neon #header h1 { color: #fff; text-shadow: 0 0 20px #0ff; }
 
-        /* ТЕМА: ДОЖДЬ */
         body.theme-rain { background: linear-gradient(180deg, #0a0a0f 0%, #111118 40%, #1a1a22 100%); }
         .rain-container { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
         .drop {
@@ -157,7 +154,6 @@
             to { transform: translateY(110vh); }
         }
 
-        /* ТЕМА: КОСМОС */
         body.theme-space { background: linear-gradient(160deg, #000 0%, #0a0a2e 30%, #1a0a3e 60%, #000 100%); }
         .space-container { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
         .star {
@@ -354,7 +350,6 @@
     </style>
 </head>
 <body>
-    <!-- ЗАСТАВКА -->
     <div class="splash" id="splash">
         <div class="splash-decor"></div>
         <div class="splash-decor"></div>
@@ -415,6 +410,7 @@
                 <input class="chat-input" id="chatInput" placeholder="Напиши..." onkeydown="if(event.key==='Enter') sendChat()">
                 <button class="chat-send" onclick="sendChat()">Отправить</button>
             </div>
+            <button class="btn-small" onclick="closeChat()" style="margin-top:10px;">← Назад</button>
         </div>
     </div>
 
@@ -498,7 +494,6 @@
         const themes = ['', 'theme-neon', 'theme-rain', 'theme-space'];
         let greetCount = 0;
 
-        // ЗАСТАВКА
         const splashText = document.getElementById('splashText');
         const splashSub = document.getElementById('splashSub');
         const splash = document.getElementById('splash');
@@ -722,16 +717,15 @@
 
         function getChatReply(text) {
             const t = text.toLowerCase();
-            greetCount = greetCount || {};
 
             if (t.includes('привет') || t.includes('здоров') || t.includes('хай') || t.includes('здравств')) {
-                greetCount.hello = (greetCount.hello || 0) + 1;
-                if (greetCount.hello === 1) return 'Здорова. Чё хотел?';
-                if (greetCount.hello === 2) return 'Мы уже здоровались. Говори по делу.';
+                greetCount++;
+                if (greetCount === 1) return 'Здорова. Чё хотел?';
+                if (greetCount === 2) return 'Мы уже здоровались. Говори по делу.';
                 return 'Ты чё тупой? Я же написал здарова. Давай по существу.';
             }
 
-            if (t.includes('как дела') || t.includes('как ты')) return 'У меня тут база города. Какие дела? Пойди погуляй.';
+            if (t.includes('как дела') || t.includes('как ты')) return 'У меня тут база города. Какие дела? Пойди гуляй.';
             if (t.includes('время') || t.includes('час') || t.includes('сколько время')) return 'Тебя это дерьмо волнует? Наслаждайся временем, а не интересуйся.';
             if (t.includes('погода')) return 'Выгляни в окно, гений. Или тебе лень?';
             if (t.includes('поесть') || t.includes('пожрать') || t.includes('еда') || t.includes('кушать') || t.includes('голод')) return '«Милк» на Седова, 113. Или шашлычная на 100А, если ночью. Не благодари.';
