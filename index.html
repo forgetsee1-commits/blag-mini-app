@@ -21,6 +21,80 @@
             background: linear-gradient(135deg, #0b0812 0%, #150f24 30%, #1b1030 60%, #0f0a1a 100%);
             overflow: hidden;
             position: relative;
+            transition: background 0.6s ease;
+        }
+
+        /* ТЕМА: НЕОН */
+        body.theme-neon {
+            background: linear-gradient(135deg, #000000 0%, #1a0033 30%, #003366 60%, #000000 100%);
+            font-family: 'Manrope', sans-serif;
+        }
+
+        body.theme-neon .btn,
+        body.theme-neon .btn-small,
+        body.theme-neon .admin-btn,
+        body.theme-neon .icon-btn {
+            border-color: rgba(0, 255, 255, 0.5) !important;
+            color: #00ffff !important;
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.8);
+        }
+
+        body.theme-neon .badge {
+            border-color: rgba(255, 0, 255, 0.6) !important;
+            color: #ff00ff !important;
+            text-shadow: 0 0 12px rgba(255, 0, 255, 0.9);
+        }
+
+        body.theme-neon #header h1 {
+            color: #ffffff;
+            text-shadow: 0 0 20px rgba(0, 255, 255, 0.8);
+        }
+
+        /* ТЕМА: ДОЖДЬ */
+        body.theme-rain {
+            background: linear-gradient(180deg, #0a0a0f 0%, #111118 40%, #1a1a22 100%);
+        }
+
+        body.theme-rain::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: repeating-linear-gradient(
+                100deg,
+                transparent 0px,
+                transparent 6px,
+                rgba(100, 120, 160, 0.15) 6px,
+                rgba(100, 120, 160, 0.15) 7px
+            );
+            animation: rain 0.4s linear infinite;
+        }
+
+        @keyframes rain {
+            from { transform: translateY(-20px); }
+            to { transform: translateY(20px); }
+        }
+
+        /* ТЕМА: КОСМОС */
+        body.theme-space {
+            background: linear-gradient(160deg, #000000 0%, #0a0a2e 30%, #1a0a3e 60%, #000000 100%);
+        }
+
+        body.theme-space::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image:
+                radial-gradient(1px 1px at 20% 30%, #ffffff 50%, transparent 50%),
+                radial-gradient(1px 1px at 70% 60%, #ffffff 50%, transparent 50%),
+                radial-gradient(2px 2px at 40% 80%, #ffffff 50%, transparent 50%),
+                radial-gradient(1px 1px at 90% 20%, #ffffff 50%, transparent 50%),
+                radial-gradient(2px 2px at 10% 70%, #ffffff 50%, transparent 50%);
+            animation: twinkle 3s ease-in-out infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.4; }
+            50% { opacity: 0.9; }
         }
 
         body::before {
@@ -33,18 +107,6 @@
             top: -180px;
             left: -180px;
             animation: float 7s ease-in-out infinite;
-        }
-
-        body::after {
-            content: '';
-            position: absolute;
-            width: 450px;
-            height: 450px;
-            background: radial-gradient(circle, rgba(255, 110, 180, 0.25) 0%, transparent 70%);
-            filter: blur(80px);
-            bottom: -150px;
-            right: -150px;
-            animation: float 9s ease-in-out infinite reverse;
         }
 
         .extra-glow-1 {
@@ -76,7 +138,7 @@
 
         .app {
             position: relative;
-            z-index: 1;
+            z-index: 5;
             text-align: center;
             padding: 20px 15px;
             width: 100%;
@@ -155,6 +217,15 @@
             border-color: rgba(255, 90, 90, 0.35);
         }
 
+        .btn:nth-child(6) {
+            grid-column: span 2;
+            background: rgba(255, 160, 50, 0.2);
+            border-color: rgba(255, 160, 50, 0.5);
+            font-size: 16px;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+
         .result {
             display: none;
             background: rgba(155, 123, 255, 0.08);
@@ -192,6 +263,15 @@
             position: fixed;
             bottom: 20px;
             left: 20px;
+            display: flex;
+            gap: 10px;
+            z-index: 30;
+        }
+
+        .top-btns {
+            position: fixed;
+            top: 20px;
+            right: 20px;
             display: flex;
             gap: 10px;
             z-index: 30;
@@ -308,6 +388,85 @@
             font-weight: 500;
         }
 
+        /* СЛОТ-МАШИНА */
+        .slot-screen {
+            background: rgba(20, 15, 35, 0.95);
+            border: 1px solid rgba(255, 160, 50, 0.4);
+            border-radius: 20px;
+            padding: 25px;
+            width: 100%;
+            max-width: 360px;
+            animation: pop 0.3s ease;
+        }
+
+        .slot-title {
+            color: #ffa032;
+            font-size: 22px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            text-align: center;
+            text-shadow: 0 0 20px rgba(255, 160, 50, 0.6);
+        }
+
+        .slot-reels {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            margin-bottom: 25px;
+        }
+
+        .slot-reel {
+            width: 90px;
+            height: 90px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(255, 160, 50, 0.5);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            animation: none;
+        }
+
+        .slot-reel.spinning {
+            animation: shake 0.1s linear infinite;
+        }
+
+        @keyframes shake {
+            0% { transform: translateY(-5px); }
+            50% { transform: translateY(5px); }
+            100% { transform: translateY(-5px); }
+        }
+
+        .slot-btn {
+            width: 100%;
+            padding: 15px;
+            border-radius: 14px;
+            border: none;
+            background: rgba(255, 160, 50, 0.25);
+            color: #ffa032;
+            font-size: 18px;
+            font-weight: 800;
+            cursor: pointer;
+            font-family: 'Manrope', sans-serif;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+        }
+
+        .slot-btn:hover {
+            background: rgba(255, 160, 50, 0.4);
+        }
+
+        .slot-result {
+            margin-top: 18px;
+            color: #d8d0f0;
+            font-size: 14px;
+            line-height: 1.6;
+            text-align: center;
+            font-weight: 500;
+        }
+
         @keyframes pop {
             from {
                 opacity: 0;
@@ -338,6 +497,7 @@
             <button class="btn" onclick="show('sit')">😌 Посидеть</button>
             <button class="btn" onclick="show('nature')">🌿 Природа</button>
             <button class="btn" onclick="show('gossip')">🤫 Слухи</button>
+            <button class="btn" onclick="openSlot()">🎰 Слот-машина</button>
         </div>
 
         <div class="result" id="result"></div>
@@ -353,6 +513,10 @@
         <button class="icon-btn" onclick="openAdmin()">⚙️</button>
     </div>
 
+    <div class="top-btns">
+        <button class="icon-btn" onclick="changeTheme()">🎨</button>
+    </div>
+
     <!-- ИНФО -->
     <div class="fullscreen" id="infoScreen">
         <div class="info-box">
@@ -362,6 +526,21 @@
             <p>Авторы: @Pand_f и @cruifixs</p>
             <p>Рад что пользуетесь тайным благом</p>
             <button class="admin-btn" onclick="closeInfo()">← Назад</button>
+        </div>
+    </div>
+
+    <!-- СЛОТ-МАШИНА -->
+    <div class="fullscreen" id="slotScreen">
+        <div class="slot-screen">
+            <div class="slot-title">🎰 СЛОТ-МАШИНА</div>
+            <div class="slot-reels">
+                <div class="slot-reel" id="reel1">🎰</div>
+                <div class="slot-reel" id="reel2">🎰</div>
+                <div class="slot-reel" id="reel3">🎰</div>
+            </div>
+            <button class="slot-btn" onclick="spin()">Крутить</button>
+            <div class="slot-result" id="slotResult"></div>
+            <button class="admin-btn" onclick="closeSlot()">← Назад</button>
         </div>
     </div>
 
@@ -412,6 +591,8 @@
     <script>
         const PIN = "8357";
         let clicks = {};
+        let currentTheme = 0;
+        const themes = ['', 'theme-neon', 'theme-rain', 'theme-space'];
 
         const ideas = {
             kuda: [
@@ -480,8 +661,63 @@
             ]
         };
 
+        const slotIcons = ['🚶', '🍽', '😌', '🌿', '🤫', '🔥', '💡', '🌙'];
+
         const queues = {};
         let currentCategory = null;
+
+        function changeTheme() {
+            currentTheme = (currentTheme + 1) % themes.length;
+            document.body.className = themes[currentTheme];
+        }
+
+        function openSlot() {
+            document.getElementById('slotScreen').classList.add('active');
+            document.getElementById('slotResult').textContent = '';
+        }
+
+        function closeSlot() {
+            document.getElementById('slotScreen').classList.remove('active');
+        }
+
+        function spin() {
+            const reels = ['reel1', 'reel2', 'reel3'];
+            reels.forEach(id => {
+                document.getElementById(id).classList.add('spinning');
+            });
+
+            setTimeout(() => {
+                const results = [];
+                reels.forEach(id => {
+                    const icon = slotIcons[Math.floor(Math.random() * slotIcons.length)];
+                    document.getElementById(id).textContent = icon;
+                    document.getElementById(id).classList.remove('spinning');
+                    results.push(icon);
+                });
+
+                const idea = generateFromSlot(results);
+                document.getElementById('slotResult').textContent = idea;
+            }, 1500);
+        }
+
+        function generateFromSlot(icons) {
+            const map = {
+                '🚶': 'куда-нибудь сходить',
+                '🍽': 'поесть',
+                '😌': 'посидеть',
+                '🌿': 'на природу',
+                '🤫': 'узнать слух',
+                '🔥': 'сделать что-то горячее',
+                '💡': 'придумать своё',
+                '🌙': 'выйти ночью'
+            };
+
+            const a = map[icons[0]] || 'что-то';
+            const b = map[icons[1]] || 'что-то';
+            const c = map[icons[2]] || 'что-то';
+
+            return `Тебе выпало: ${icons[0]} ${a}, ${icons[1]} ${b} и ${icons[2]} ${c}.\n\nСобери это в один движ и погнали.`;
+        }
 
         function openAdmin() {
             document.getElementById('adminScreen').classList.add('active');
@@ -610,51 +846,4 @@
                 const clicksCat = clicks[cat] || 0;
                 const percent = clicksTotal > 0 ? ((clicksCat / clicksTotal) * 100).toFixed(1) : 0;
                 html += `${cat}: идей ${ideas[cat].length}, нажатий ${clicksCat} (${percent}%)<br>`;
-            }
-
-            html += `<br><b>🔥 ТОП</b><br>`;
-            html += `Самая популярная: ${popular}<br>`;
-            html += `Самая пустая: ${empty}<br>`;
-
-            document.getElementById('statsText').innerHTML = html;
-        }
-
-        function getQueue(category) {
-            if (!queues[category] || queues[category].length === 0) {
-                queues[category] = [...ideas[category]].sort(() => Math.random() - 0.5);
-            }
-            return queues[category];
-        }
-
-        function show(category) {
-            clicks[category] = (clicks[category] || 0) + 1;
-            currentCategory = category;
-            const queue = getQueue(category);
-            const idea = queue.shift();
-
-            document.getElementById('header').style.display = 'none';
-            document.getElementById('menu').style.display = 'none';
-
-            const result = document.getElementById('result');
-            result.style.display = 'block';
-            result.textContent = idea;
-
-            document.getElementById('actions').style.display = 'flex';
-        }
-
-        function more() {
-            if (!currentCategory) return;
-            const queue = getQueue(currentCategory);
-            const idea = queue.shift();
-            document.getElementById('result').textContent = idea;
-        }
-
-        function back() {
-            document.getElementById('header').style.display = 'block';
-            document.getElementById('menu').style.display = 'grid';
-            document.getElementById('result').style.display = 'none';
-            document.getElementById('actions').style.display = 'none';
-        }
-    </script>
-</body>
-</html>
+           
