@@ -222,6 +222,7 @@
         .btn:nth-child(5) { grid-column: span 2; background: rgba(255,90,90,0.14); border-color: rgba(255,90,90,0.35); }
         .btn:nth-child(6) { grid-column: span 2; background: rgba(255,160,50,0.2); border-color: rgba(255,160,50,0.5); font-weight: 800; letter-spacing: 1px; }
         .btn:nth-child(7) { grid-column: span 2; background: rgba(0,255,150,0.15); border-color: rgba(0,255,150,0.4); font-weight: 800; letter-spacing: 1px; }
+        .btn:nth-child(8) { grid-column: span 2; background: rgba(110,180,255,0.15); border-color: rgba(110,180,255,0.4); font-weight: 800; letter-spacing: 1px; }
 
         .result {
             display: none;
@@ -381,8 +382,9 @@
             <button class="btn" onclick="show('sit')">😌 Посидеть</button>
             <button class="btn" onclick="show('nature')">🌿 Природа</button>
             <button class="btn" onclick="show('gossip')">🤫 Слухи</button>
-            <button class="btn" onclick="openSlot()">🎰 Слот-машина</button>
+            <button class="btn" onclick="openCasino()">🎰 Казино идей</button>
             <button class="btn" onclick="openChat()">💬 Чат</button>
+            <button class="btn" onclick="openMap()">🗺 Карта</button>
         </div>
         <div class="result" id="result"></div>
         <div class="actions" id="actions">
@@ -414,6 +416,69 @@
         </div>
     </div>
 
+    <!-- КАЗИНО -->
+    <div class="fullscreen" id="casinoScreen">
+        <div class="chat-screen" style="border-color: rgba(255,160,50,0.5);">
+            <div class="chat-title" style="color:#ffa032;">🎰 КАЗИНО ИДЕЙ</div>
+            <div style="display:flex; gap:12px; justify-content:center; margin:20px 0;">
+                <div style="width:90px; height:90px; background:rgba(255,255,255,0.05); border:2px solid rgba(255,160,50,0.5); border-radius:16px; display:flex; align-items:center; justify-content:center; font-size:40px; overflow:hidden;"><div id="reel1" style="transition: transform 1.5s cubic-bezier(0.25,0.1,0.25,1);"></div></div>
+                <div style="width:90px; height:90px; background:rgba(255,255,255,0.05); border:2px solid rgba(255,160,50,0.5); border-radius:16px; display:flex; align-items:center; justify-content:center; font-size:40px; overflow:hidden;"><div id="reel2" style="transition: transform 1.5s cubic-bezier(0.25,0.1,0.25,1);"></div></div>
+                <div style="width:90px; height:90px; background:rgba(255,255,255,0.05); border:2px solid rgba(255,160,50,0.5); border-radius:16px; display:flex; align-items:center; justify-content:center; font-size:40px; overflow:hidden;"><div id="reel3" style="transition: transform 1.5s cubic-bezier(0.25,0.1,0.25,1);"></div></div>
+            </div>
+            <button class="chat-send" style="width:100%; padding:14px; font-size:16px;" onclick="spinCasino()">КРУТИТЬ</button>
+            <div id="casinoResult" style="margin-top:15px; color:#d8d0f0; font-size:14px; line-height:1.6; text-align:center;"></div>
+            <button class="btn-small" onclick="closeCasino()" style="margin-top:15px;">← Назад</button>
+        </div>
+    </div>
+
+    <!-- КАРТА -->
+    <div class="fullscreen" id="mapScreen">
+        <div class="chat-screen" style="border-color: rgba(110,180,255,0.4);">
+            <div class="chat-title" style="color:#6eb4ff;">🗺 Карта Благовещенска</div>
+            <div style="flex:1; display:flex; align-items:center; justify-content:center; overflow:hidden; border-radius:14px;">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="100%" height="100%" style="max-width:100%; max-height:100%;">
+                    <rect width="800" height="600" fill="#0d0d15"/>
+                    <path d="M 50,520 Q 200,560 350,480 Q 450,420 550,400 Q 650,380 780,420" fill="none" stroke="#2a5a8a" stroke-width="22" stroke-linecap="round" opacity="0.8"/>
+                    <text x="380" y="455" font-size="14" fill="#6eb4ff" font-family="'Manrope', Arial" transform="rotate(-15,380,455)">р. Белая</text>
+                    <g stroke="#2a2a3a" stroke-width="3" fill="none">
+                        <line x1="80" y1="180" x2="720" y2="180"/>
+                        <line x1="60" y1="260" x2="740" y2="260"/>
+                        <line x1="40" y1="340" x2="760" y2="340"/>
+                        <line x1="60" y1="420" x2="740" y2="420"/>
+                        <line x1="120" y1="120" x2="120" y2="520"/>
+                        <line x1="220" y1="100" x2="220" y2="540"/>
+                        <line x1="340" y1="80" x2="340" y2="520"/>
+                        <line x1="460" y1="100" x2="460" y2="500"/>
+                        <line x1="580" y1="120" x2="580" y2="480"/>
+                        <line x1="680" y1="140" x2="680" y2="440"/>
+                    </g>
+                    <g stroke="#1e1e2e" stroke-width="2" fill="none" opacity="0.8">
+                        <line x1="120" y1="180" x2="460" y2="420"/>
+                        <line x1="220" y1="260" x2="580" y2="400"/>
+                        <line x1="340" y1="180" x2="680" y2="340"/>
+                    </g>
+                    <path d="M 460,100 L 580,120 L 580,260 L 460,260 Z" fill="#3a1520" opacity="0.9"/>
+                    <text x="520" y="180" font-size="18" fill="#ff6b8a" font-family="'Manrope', Arial" font-weight="bold" text-anchor="middle">Инза</text>
+                    <path d="M 340,180 L 460,180 L 460,260 L 340,260 Z" fill="#3a2a10" opacity="0.9"/>
+                    <text x="400" y="220" font-size="18" fill="#ffc46b" font-family="'Manrope', Arial" font-weight="bold" text-anchor="middle">ГАИ</text>
+                    <path d="M 460,260 L 580,260 L 580,400 L 460,420 Z" fill="#103520" opacity="0.9"/>
+                    <text x="520" y="335" font-size="18" fill="#6bff9e" font-family="'Manrope', Arial" font-weight="bold" text-anchor="middle">Низа</text>
+                    <path d="M 120,120 L 220,100 L 220,260 L 120,260 Z" fill="#152a3a" opacity="0.9"/>
+                    <text x="170" y="185" font-size="18" fill="#6bc4ff" font-family="'Manrope', Arial" font-weight="bold" text-anchor="middle">Котловка</text>
+                    <path d="M 220,340 L 340,340 L 340,420 L 220,420 Z" fill="#3a1a10" opacity="0.9"/>
+                    <text x="280" y="375" font-size="18" fill="#ff9e6b" font-family="'Manrope', Arial" font-weight="bold" text-anchor="middle">Надежда</text>
+                    <path d="M 220,100 L 340,80 L 340,180 L 220,180 Z" fill="#2a2a10" opacity="0.9"/>
+                    <text x="280" y="135" font-size="18" fill="#e8ff6b" font-family="'Manrope', Arial" font-weight="bold" text-anchor="middle">Северный</text>
+                    <circle cx="400" cy="220" r="10" fill="#2a4a6a" stroke="#6eb4ff" stroke-width="2"/>
+                    <circle cx="280" cy="380" r="8" fill="#2a4a6a" stroke="#6eb4ff" stroke-width="2"/>
+                    <circle cx="520" cy="300" r="12" fill="#2a4a6a" stroke="#6eb4ff" stroke-width="2"/>
+                    <rect x="10" y="10" width="780" height="580" fill="none" stroke="#3a3a4a" stroke-width="2"/>
+                </svg>
+            </div>
+            <button class="btn-small" onclick="closeMap()" style="margin-top:10px;">← Назад</button>
+        </div>
+    </div>
+
     <!-- ИНФО -->
     <div class="fullscreen" id="infoScreen">
         <div class="chat-screen" style="border-color: rgba(155,123,255,0.4);">
@@ -425,21 +490,6 @@
                 <p style="color:#d8d0f0; font-size:14px; line-height:1.7;">Рад что пользуетесь тайным благом</p>
             </div>
             <button class="btn-small" onclick="closeInfo()">← Назад</button>
-        </div>
-    </div>
-
-    <!-- СЛОТ -->
-    <div class="fullscreen" id="slotScreen">
-        <div class="chat-screen" style="border-color: rgba(255,160,50,0.5);">
-            <div class="chat-title" style="color:#ffa032;">🎰 СЛОТ-МАШИНА</div>
-            <div style="display:flex; gap:12px; justify-content:center; margin:20px 0;">
-                <div style="width:90px; height:90px; background:rgba(255,255,255,0.05); border:2px solid rgba(255,160,50,0.5); border-radius:16px; display:flex; align-items:center; justify-content:center; font-size:40px; overflow:hidden;"><div id="reel1" style="transition: transform 1.5s cubic-bezier(0.25,0.1,0.25,1);"></div></div>
-                <div style="width:90px; height:90px; background:rgba(255,255,255,0.05); border:2px solid rgba(255,160,50,0.5); border-radius:16px; display:flex; align-items:center; justify-content:center; font-size:40px; overflow:hidden;"><div id="reel2" style="transition: transform 1.5s cubic-bezier(0.25,0.1,0.25,1);"></div></div>
-                <div style="width:90px; height:90px; background:rgba(255,255,255,0.05); border:2px solid rgba(255,160,50,0.5); border-radius:16px; display:flex; align-items:center; justify-content:center; font-size:40px; overflow:hidden;"><div id="reel3" style="transition: transform 1.5s cubic-bezier(0.25,0.1,0.25,1);"></div></div>
-            </div>
-            <button class="chat-send" style="width:100%; padding:14px; font-size:16px;" onclick="spin()">КРУТИТЬ</button>
-            <div id="slotResult" style="margin-top:15px; color:#d8d0f0; font-size:14px; line-height:1.6; text-align:center;"></div>
-            <button class="btn-small" onclick="closeSlot()" style="margin-top:15px;">← Назад</button>
         </div>
     </div>
 
@@ -582,8 +632,8 @@
             ]
         };
 
-        const slotIcons = ['🚶','🍽','😌','🌿','🤫','🔥','💡','🌙'];
-        const slotPhrases = {
+        const casinoIcons = ['🚶','🍽','😌','🌿','🤫','🔥','💡','🌙'];
+        const casinoPhrases = {
             '🚶': ['выйди на улицу и пройдись', 'сходи в парк', 'прогуляйся до пруда'],
             '🍽': ['загляни в «Милк»', 'возьми шашлык', 'попробуй роллы'],
             '😌': ['сядь на лавочку у педколледжа', 'найди тихий двор', 'посиди у воды'],
@@ -646,12 +696,12 @@
             }
         }
 
-        function openSlot() {
-            document.getElementById('slotScreen').classList.add('active');
-            document.getElementById('slotResult').textContent = '';
+        function openCasino() {
+            document.getElementById('casinoScreen').classList.add('active');
+            document.getElementById('casinoResult').textContent = '';
             initReels();
         }
-        function closeSlot() { document.getElementById('slotScreen').classList.remove('active'); }
+        function closeCasino() { document.getElementById('casinoScreen').classList.remove('active'); }
 
         function initReels() {
             ['reel1','reel2','reel3'].forEach(id => {
@@ -660,13 +710,13 @@
                 for (let i = 0; i < 12; i++) {
                     const div = document.createElement('div');
                     div.style.cssText = 'height:90px; display:flex; align-items:center; justify-content:center; font-size:40px;';
-                    div.textContent = slotIcons[Math.floor(Math.random() * slotIcons.length)];
+                    div.textContent = casinoIcons[Math.floor(Math.random() * casinoIcons.length)];
                     reel.appendChild(div);
                 }
             });
         }
 
-        function spin() {
+        function spinCasino() {
             const reels = ['reel1','reel2','reel3'];
             const results = [];
             reels.forEach(id => {
@@ -683,17 +733,20 @@
                     reel.style.transition = 'none';
                     reel.style.transform = 'translateY(0)';
                 });
-                document.getElementById('slotResult').textContent = generateSlotIdea(results);
+                document.getElementById('casinoResult').textContent = generateCasinoIdea(results);
             }, 1600);
         }
 
-        function generateSlotIdea(icons) {
+        function generateCasinoIdea(icons) {
             const parts = icons.map(icon => {
-                const phrases = slotPhrases[icon] || ['сделай что-нибудь'];
+                const phrases = casinoPhrases[icon] || ['сделай что-нибудь'];
                 return phrases[Math.floor(Math.random() * phrases.length)];
             });
-            return `🎰 Выпало:\n\n${parts[0]},\n${parts[1]}\nи ${parts[2]}.\n\nСделай это — и день станет другим.`;
+            return `🎰 Выпало, блять:\n\n${parts[0]},\n${parts[1]}\nи ${parts[2]}.\n\nСделай это, нахуй, и день станет другим.`;
         }
+
+        function openMap() { document.getElementById('mapScreen').classList.add('active'); }
+        function closeMap() { document.getElementById('mapScreen').classList.remove('active'); }
 
         function openChat() { document.getElementById('chatScreen').classList.add('active'); }
         function closeChat() { document.getElementById('chatScreen').classList.remove('active'); }
@@ -722,7 +775,7 @@
                 greetCount++;
                 if (greetCount === 1) return 'Здорова. Чё хотел?';
                 if (greetCount === 2) return 'Мы уже здоровались. Говори по делу.';
-                return 'Ты чё тупой? Я же написал здарова. Давай по существу.';
+                return 'Ты чё тупой, блять? Я же написал здарова. Давай по существу.';
             }
 
             if (t.includes('как дела') || t.includes('как ты')) return 'У меня тут база города. Какие дела? Пойди гуляй.';
@@ -732,7 +785,7 @@
             if (t.includes('пить') || t.includes('выпить') || t.includes('бух')) return 'КБ, Магнит, Тройка. Выбирай и не ной.';
             if (t.includes('гулять') || t.includes('сходить') || t.includes('куда') || t.includes('прогул')) return 'Парк Киселёва, смотровая вышка, аллея у белого голубя. Иди куда-нибудь уже.';
             if (t.includes('посидеть') || t.includes('посидет') || t.includes('сидеть') || t.includes('лавочк')) return 'Три стула в парке Машиностроителей. Или скамейки у педколледжа. Выбери и выдохни.';
-            if (t.includes('скучно')) return 'Скучно? Открой слот-машину и не выноси мне мозг.';
+            if (t.includes('скучно')) return 'Скучно? Открой казино идей и не выноси мне мозг.';
             if (t.includes('спать') || t.includes('сон')) return 'Иди спать. Город подождёт.';
             if (t.includes('любовь') || t.includes('люблю') || t.includes('признаться') || t.includes('нравится') || t.includes('девочк') || t.includes('девушк')) return 'Иди и скажи. Город видел истории и пострашнее. Если боишься — начни с малого. Например, с прогулки у белого голубя.';
             if (t.includes('смысл') || t.includes('зачем жить') || t.includes('зачем')) return 'Смысл — найти своё место в этом городе. Или хотя бы поесть в «Венеции».';
@@ -743,7 +796,7 @@
             if (t.includes('гаи')) return 'ГАИ — лучший район. Кто говорит иначе — пусть идёт лесом.';
             if (t.includes('котловка')) return 'Котловка — тихий райончик. Иногда тишина — лучшее.';
             if (t.includes('кто ты') || t.includes('ты кто')) return 'Я — голос этого города. Или просто бот. Как повезёт.';
-            if (t.includes('дурак') || t.includes('тупой') || t.includes('дебил')) return 'Сам такой. Не груби.';
+            if (t.includes('дурак') || t.includes('тупой') || t.includes('дебил')) return 'Сам такой, нахуй. Не груби.';
             if (t.includes('спасибо') || t.includes('благодар')) return 'Обращайся. Или не обращайся. Мне пофиг.';
             if (t.includes('пока') || t.includes('до свидания')) return 'Давай. Город ждёт.';
 
