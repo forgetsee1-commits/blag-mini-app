@@ -222,7 +222,7 @@
         .btn:nth-child(5) { grid-column: span 2; background: rgba(255,90,90,0.14); border-color: rgba(255,90,90,0.35); }
         .btn:nth-child(6) { grid-column: span 2; background: rgba(255,160,50,0.2); border-color: rgba(255,160,50,0.5); font-weight: 800; letter-spacing: 1px; }
         .btn:nth-child(7) { grid-column: span 2; background: rgba(0,255,150,0.15); border-color: rgba(0,255,150,0.4); font-weight: 800; letter-spacing: 1px; }
-        .btn:nth-child(8) { grid-column: span 2; background: rgba(110,180,255,0.15); border-color: rgba(110,180,255,0.4); font-weight: 800; letter-spacing: 1px; }
+        .btn:nth-child(8) { grid-column: span 2; background: rgba(255,215,0,0.2); border-color: rgba(255,215,0,0.5); font-weight: 800; letter-spacing: 1px; }
 
         .result {
             display: none;
@@ -237,12 +237,7 @@
             font-weight: 500;
         }
 
-        .actions {
-            display: none;
-            flex-direction: column;
-            gap: 10px;
-            margin-top: 16px;
-        }
+        .actions { display: none; flex-direction: column; gap: 10px; margin-top: 16px; }
 
         .btn-small {
             background: rgba(255,255,255,0.05);
@@ -295,53 +290,237 @@
             animation: pop 0.3s ease;
         }
 
-        .chat-title {
-            color: #00ff96;
-            font-size: 20px; font-weight: 800;
-            margin-bottom: 15px;
+        .chat-title { color: #00ff96; font-size: 20px; font-weight: 800; margin-bottom: 15px; text-align: center; }
+        .chat-messages { flex: 1; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; margin-bottom: 15px; padding-right: 5px; }
+        .chat-msg { max-width: 85%; padding: 12px 14px; border-radius: 14px; font-size: 14px; line-height: 1.6; animation: pop 0.2s ease; }
+        .chat-user { align-self: flex-end; background: rgba(110,180,255,0.2); color: #d8d0f0; }
+        .chat-bot { align-self: flex-start; background: rgba(0,255,150,0.12); color: #e0f0e8; }
+        .chat-input-row { display: flex; gap: 8px; }
+        .chat-input { flex: 1; padding: 12px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.05); color: #fff; font-size: 14px; outline: none; font-family: 'Manrope', sans-serif; }
+        .chat-send { padding: 12px 16px; border-radius: 10px; border: none; background: rgba(0,255,150,0.25); color: #00ff96; font-size: 14px; font-weight: 700; cursor: pointer; font-family: 'Manrope', sans-serif; }
+
+        /* ТАПАЛКА */
+        .tap-screen {
+            background: rgba(20,15,35,0.95);
+            border: 1px solid rgba(255,215,0,0.4);
+            border-radius: 20px;
+            padding: 20px;
+            width: 100%; max-width: 380px;
+            height: 85vh;
+            display: flex; flex-direction: column;
+            animation: pop 0.3s ease;
+            position: relative;
+            overflow-y: auto;
+        }
+
+        .tap-balance {
+            font-size: 28px; font-weight: 800; color: #ffd700;
+            text-align: center; margin-bottom: 4px;
+            text-shadow: 0 0 20px rgba(255,215,0,0.5);
+        }
+
+        .tap-balance-label {
+            font-size: 11px; color: #8a7a30; text-align: center; margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+
+        .tap-rate {
+            font-size: 13px; color: #9b8fc0; text-align: center; margin-bottom: 15px;
+        }
+
+        .tap-character {
+            width: 140px; height: 140px;
+            margin: 0 auto 15px;
+            cursor: pointer;
+            position: relative;
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .tap-character:active {
+            transform: scale(0.92);
+        }
+
+        .tap-cat {
+            width: 100%; height: 100%;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .tap-cat-body {
+            width: 100px; height: 100px;
+            background: linear-gradient(145deg, #b39bff, #7b5fd0);
+            border-radius: 50%;
+            position: absolute;
+            top: 20px; left: 20px;
+            box-shadow: 0 0 40px rgba(155,123,255,0.5);
+            transition: all 0.5s ease;
+        }
+
+        .tap-cat-ear-left {
+            width: 0; height: 0;
+            border-left: 18px solid transparent;
+            border-right: 18px solid transparent;
+            border-bottom: 30px solid #7b5fd0;
+            position: absolute;
+            top: 5px; left: 15px;
+            transform: rotate(-25deg);
+            transition: all 0.5s ease;
+        }
+
+        .tap-cat-ear-right {
+            width: 0; height: 0;
+            border-left: 18px solid transparent;
+            border-right: 18px solid transparent;
+            border-bottom: 30px solid #7b5fd0;
+            position: absolute;
+            top: 5px; right: 15px;
+            transform: rotate(25deg);
+            transition: all 0.5s ease;
+        }
+
+        .tap-cat-eyes {
+            position: absolute;
+            top: 55px; left: 50%;
+            transform: translateX(-50%);
+            display: flex; gap: 20px;
+        }
+
+        .tap-cat-eye {
+            width: 12px; height: 12px;
+            background: #fff;
+            border-radius: 50%;
+            box-shadow: 0 0 10px #fff;
+        }
+
+        .tap-cat-hood {
+            position: absolute;
+            top: -10px; left: 50%;
+            transform: translateX(-50%);
+            width: 70px; height: 50px;
+            background: #2a1a4a;
+            border-radius: 50% 50% 0 0;
+            border: 2px solid #3a2a5a;
+        }
+
+        .tap-level {
+            position: absolute;
+            bottom: -20px; left: 50%;
+            transform: translateX(-50%);
+            background: rgba(255,215,0,0.2);
+            border: 1px solid rgba(255,215,0,0.4);
+            border-radius: 100px;
+            padding: 3px 12px;
+            font-size: 11px; color: #ffd700;
+            font-weight: 700;
+        }
+
+        .tap-particle {
+            position: fixed;
+            font-size: 18px;
+            pointer-events: none;
+            animation: particleUp 0.8s ease forwards;
+            z-index: 100;
+        }
+
+        @keyframes particleUp {
+            from { opacity: 1; transform: translateY(0); }
+            to { opacity: 0; transform: translateY(-80px); }
+        }
+
+        .tap-upgrades {
+            display: flex; flex-direction: column; gap: 8px;
+            margin-top: 15px;
+        }
+
+        .upgrade-btn {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 12px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .upgrade-btn:hover {
+            background: rgba(255,215,0,0.1);
+            border-color: rgba(255,215,0,0.3);
+        }
+
+        .upgrade-name { color: #d8d0f0; font-size: 13px; font-weight: 600; }
+        .upgrade-info { color: #8a7a30; font-size: 11px; }
+        .upgrade-price { color: #ffd700; font-size: 13px; font-weight: 700; }
+
+        .tap-tabs {
+            display: flex; gap: 8px; margin-top: 15px;
+        }
+
+        .tap-tab {
+            flex: 1;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid rgba(255,255,255,0.1);
+            background: rgba(255,255,255,0.05);
+            color: #9b8fc0;
+            font-size: 12px; font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
             text-align: center;
         }
 
-        .chat-messages {
-            flex: 1;
+        .tap-tab.active {
+            background: rgba(255,215,0,0.15);
+            border-color: rgba(255,215,0,0.4);
+            color: #ffd700;
+        }
+
+        /* РУЛЕТКА */
+        .roulette-screen {
+            background: rgba(20,15,35,0.95);
+            border: 1px solid rgba(255,215,0,0.4);
+            border-radius: 20px;
+            padding: 20px;
+            width: 100%; max-width: 380px;
+            height: 85vh;
+            display: flex; flex-direction: column;
+            animation: pop 0.3s ease;
             overflow-y: auto;
-            display: flex; flex-direction: column; gap: 10px;
-            margin-bottom: 15px;
-            padding-right: 5px;
         }
 
-        .chat-msg {
-            max-width: 85%;
-            padding: 12px 14px;
-            border-radius: 14px;
-            font-size: 14px; line-height: 1.6;
-            animation: pop 0.2s ease;
+        .roulette-wheel {
+            width: 200px; height: 200px;
+            margin: 20px auto;
+            border-radius: 50%;
+            position: relative;
+            border: 4px solid #ffd700;
+            box-shadow: 0 0 40px rgba(255,215,0,0.3);
+            transition: transform 3s cubic-bezier(0.25, 0.1, 0.25, 1);
+            background: conic-gradient(
+                #ffd700 0deg 90deg,
+                #1a1a2a 90deg 180deg,
+                #ffd700 180deg 270deg,
+                #1a1a2a 270deg 360deg
+            );
         }
 
-        .chat-user { align-self: flex-end; background: rgba(110,180,255,0.2); color: #d8d0f0; }
-        .chat-bot { align-self: flex-start; background: rgba(0,255,150,0.12); color: #e0f0e8; }
-
-        .chat-input-row { display: flex; gap: 8px; }
-        .chat-input {
-            flex: 1;
-            padding: 12px;
-            border-radius: 10px;
-            border: 1px solid rgba(255,255,255,0.1);
-            background: rgba(255,255,255,0.05);
-            color: #fff;
-            font-size: 14px;
-            outline: none;
-            font-family: 'Manrope', sans-serif;
+        .roulette-center {
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%,-50%);
+            width: 30px; height: 30px;
+            background: #0a0812;
+            border: 2px solid #ffd700;
+            border-radius: 50%;
+            z-index: 2;
         }
-        .chat-send {
-            padding: 12px 16px;
-            border-radius: 10px;
-            border: none;
-            background: rgba(0,255,150,0.25);
-            color: #00ff96;
-            font-size: 14px; font-weight: 700;
-            cursor: pointer;
-            font-family: 'Manrope', sans-serif;
+
+        .roulette-arrow {
+            position: absolute;
+            top: -15px; left: 50%;
+            transform: translateX(-50%);
+            font-size: 30px;
+            z-index: 3;
         }
 
         @keyframes pop {
@@ -384,7 +563,7 @@
             <button class="btn" onclick="show('gossip')">🤫 Слухи</button>
             <button class="btn" onclick="openCasino()">🎰 Казино идей</button>
             <button class="btn" onclick="openChat()">💬 Чат</button>
-            <button class="btn" onclick="openMap()">🗺 Карта</button>
+            <button class="btn" onclick="openTap()">🏙 Город-тапалка</button>
         </div>
         <div class="result" id="result"></div>
         <div class="actions" id="actions">
@@ -406,7 +585,7 @@
         <div class="chat-screen">
             <div class="chat-title">💬 Чат с городом</div>
             <div class="chat-messages" id="chatMessages">
-                <div class="chat-msg chat-bot">Здорова. Спрашивай чё хотел. Если тупой вопрос — получишь тупой ответ.</div>
+                <div class="chat-msg chat-bot">Здорова. Спрашивай чё хотел.</div>
             </div>
             <div class="chat-input-row">
                 <input class="chat-input" id="chatInput" placeholder="Напиши..." onkeydown="if(event.key==='Enter') sendChat()">
@@ -420,10 +599,10 @@
     <div class="fullscreen" id="casinoScreen">
         <div class="chat-screen" style="border-color: rgba(255,160,50,0.5);">
             <div class="chat-title" style="color:#ffa032;">🎰 КАЗИНО ИДЕЙ</div>
-            <div style="display:flex; gap:12px; justify-content:center; margin:20px 0;">
-                <div style="width:90px; height:90px; background:rgba(255,255,255,0.05); border:2px solid rgba(255,160,50,0.5); border-radius:16px; display:flex; align-items:center; justify-content:center; font-size:40px; overflow:hidden;"><div id="reel1" style="transition: transform 1.5s cubic-bezier(0.25,0.1,0.25,1);"></div></div>
-                <div style="width:90px; height:90px; background:rgba(255,255,255,0.05); border:2px solid rgba(255,160,50,0.5); border-radius:16px; display:flex; align-items:center; justify-content:center; font-size:40px; overflow:hidden;"><div id="reel2" style="transition: transform 1.5s cubic-bezier(0.25,0.1,0.25,1);"></div></div>
-                <div style="width:90px; height:90px; background:rgba(255,255,255,0.05); border:2px solid rgba(255,160,50,0.5); border-radius:16px; display:flex; align-items:center; justify-content:center; font-size:40px; overflow:hidden;"><div id="reel3" style="transition: transform 1.5s cubic-bezier(0.25,0.1,0.25,1);"></div></div>
+            <div style="display:flex; gap:10px; justify-content:center; margin:20px 0;">
+                <div id="casinoReel1" style="width:80px; height:80px; background:rgba(255,255,255,0.05); border:2px solid rgba(255,160,50,0.5); border-radius:14px; display:flex; align-items:center; justify-content:center; font-size:36px;"></div>
+                <div id="casinoReel2" style="width:80px; height:80px; background:rgba(255,255,255,0.05); border:2px solid rgba(255,160,50,0.5); border-radius:14px; display:flex; align-items:center; justify-content:center; font-size:36px;"></div>
+                <div id="casinoReel3" style="width:80px; height:80px; background:rgba(255,255,255,0.05); border:2px solid rgba(255,160,50,0.5); border-radius:14px; display:flex; align-items:center; justify-content:center; font-size:36px;"></div>
             </div>
             <button class="chat-send" style="width:100%; padding:14px; font-size:16px;" onclick="spinCasino()">КРУТИТЬ</button>
             <div id="casinoResult" style="margin-top:15px; color:#d8d0f0; font-size:14px; line-height:1.6; text-align:center;"></div>
@@ -431,51 +610,55 @@
         </div>
     </div>
 
-    <!-- КАРТА -->
-    <div class="fullscreen" id="mapScreen">
-        <div class="chat-screen" style="border-color: rgba(110,180,255,0.4);">
-            <div class="chat-title" style="color:#6eb4ff;">🗺 Карта Благовещенска</div>
-            <div style="flex:1; display:flex; align-items:center; justify-content:center; overflow:hidden; border-radius:14px;">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="100%" height="100%" style="max-width:100%; max-height:100%;">
-                    <rect width="800" height="600" fill="#0d0d15"/>
-                    <path d="M 50,520 Q 200,560 350,480 Q 450,420 550,400 Q 650,380 780,420" fill="none" stroke="#2a5a8a" stroke-width="22" stroke-linecap="round" opacity="0.8"/>
-                    <text x="380" y="455" font-size="14" fill="#6eb4ff" font-family="'Manrope', Arial" transform="rotate(-15,380,455)">р. Белая</text>
-                    <g stroke="#2a2a3a" stroke-width="3" fill="none">
-                        <line x1="80" y1="180" x2="720" y2="180"/>
-                        <line x1="60" y1="260" x2="740" y2="260"/>
-                        <line x1="40" y1="340" x2="760" y2="340"/>
-                        <line x1="60" y1="420" x2="740" y2="420"/>
-                        <line x1="120" y1="120" x2="120" y2="520"/>
-                        <line x1="220" y1="100" x2="220" y2="540"/>
-                        <line x1="340" y1="80" x2="340" y2="520"/>
-                        <line x1="460" y1="100" x2="460" y2="500"/>
-                        <line x1="580" y1="120" x2="580" y2="480"/>
-                        <line x1="680" y1="140" x2="680" y2="440"/>
-                    </g>
-                    <g stroke="#1e1e2e" stroke-width="2" fill="none" opacity="0.8">
-                        <line x1="120" y1="180" x2="460" y2="420"/>
-                        <line x1="220" y1="260" x2="580" y2="400"/>
-                        <line x1="340" y1="180" x2="680" y2="340"/>
-                    </g>
-                    <path d="M 460,100 L 580,120 L 580,260 L 460,260 Z" fill="#3a1520" opacity="0.9"/>
-                    <text x="520" y="180" font-size="18" fill="#ff6b8a" font-family="'Manrope', Arial" font-weight="bold" text-anchor="middle">Инза</text>
-                    <path d="M 340,180 L 460,180 L 460,260 L 340,260 Z" fill="#3a2a10" opacity="0.9"/>
-                    <text x="400" y="220" font-size="18" fill="#ffc46b" font-family="'Manrope', Arial" font-weight="bold" text-anchor="middle">ГАИ</text>
-                    <path d="M 460,260 L 580,260 L 580,400 L 460,420 Z" fill="#103520" opacity="0.9"/>
-                    <text x="520" y="335" font-size="18" fill="#6bff9e" font-family="'Manrope', Arial" font-weight="bold" text-anchor="middle">Низа</text>
-                    <path d="M 120,120 L 220,100 L 220,260 L 120,260 Z" fill="#152a3a" opacity="0.9"/>
-                    <text x="170" y="185" font-size="18" fill="#6bc4ff" font-family="'Manrope', Arial" font-weight="bold" text-anchor="middle">Котловка</text>
-                    <path d="M 220,340 L 340,340 L 340,420 L 220,420 Z" fill="#3a1a10" opacity="0.9"/>
-                    <text x="280" y="375" font-size="18" fill="#ff9e6b" font-family="'Manrope', Arial" font-weight="bold" text-anchor="middle">Надежда</text>
-                    <path d="M 220,100 L 340,80 L 340,180 L 220,180 Z" fill="#2a2a10" opacity="0.9"/>
-                    <text x="280" y="135" font-size="18" fill="#e8ff6b" font-family="'Manrope', Arial" font-weight="bold" text-anchor="middle">Северный</text>
-                    <circle cx="400" cy="220" r="10" fill="#2a4a6a" stroke="#6eb4ff" stroke-width="2"/>
-                    <circle cx="280" cy="380" r="8" fill="#2a4a6a" stroke="#6eb4ff" stroke-width="2"/>
-                    <circle cx="520" cy="300" r="12" fill="#2a4a6a" stroke="#6eb4ff" stroke-width="2"/>
-                    <rect x="10" y="10" width="780" height="580" fill="none" stroke="#3a3a4a" stroke-width="2"/>
-                </svg>
+    <!-- ТАПАЛКА -->
+    <div class="fullscreen" id="tapScreen">
+        <div class="tap-screen">
+            <div class="chat-title" style="color:#ffd700;">🏙 ГОРОД-ТАПАЛКА</div>
+            <div class="tap-balance" id="tapBalance">0</div>
+            <div class="tap-balance-label">💎 БЛАГОВ</div>
+            <div class="tap-rate" id="tapRate">За клик: +1 | В секунду: 0</div>
+
+            <div class="tap-character" id="tapCharacter" onclick="tapBlag(event)">
+                <div class="tap-cat">
+                    <div class="tap-cat-body" id="catBody"></div>
+                    <div class="tap-cat-ear-left"></div>
+                    <div class="tap-cat-ear-right"></div>
+                    <div class="tap-cat-eyes">
+                        <div class="tap-cat-eye"></div>
+                        <div class="tap-cat-eye"></div>
+                    </div>
+                    <div class="tap-cat-hood"></div>
+                    <div class="tap-level" id="catLevel">Уровень 1</div>
+                </div>
             </div>
-            <button class="btn-small" onclick="closeMap()" style="margin-top:10px;">← Назад</button>
+
+            <div class="tap-tabs">
+                <div class="tap-tab active" onclick="switchTapTab('upgrades', this)">🛠 Улучшения</div>
+                <div class="tap-tab" onclick="switchTapTab('boosts', this)">⚡ Бусты</div>
+                <div class="tap-tab" onclick="switchTapTab('roulette', this)">🎡 Рулетка</div>
+            </div>
+
+            <div id="tapUpgrades" class="tap-upgrades"></div>
+            <div id="tapBoosts" class="tap-upgrades" style="display:none;"></div>
+            <div id="tapRoulette" class="tap-upgrades" style="display:none;">
+                <div style="margin-top:15px;">
+                    <label style="color:#9b8fc0; font-size:13px;">Ставка (благи)</label>
+                    <input id="rouletteBet" class="chat-input" type="number" value="100" style="margin-top:8px;">
+                    <label style="color:#9b8fc0; font-size:13px; display:block; margin-top:10px;">Множитель</label>
+                    <select id="rouletteMultiplier" class="chat-input" style="margin-top:8px;">
+                        <option value="1.5">x1.5 — шанс 65%</option>
+                        <option value="2">x2 — шанс 50%</option>
+                        <option value="3">x3 — шанс 33%</option>
+                        <option value="5">x5 — шанс 20%</option>
+                        <option value="7">x7 — шанс 14%</option>
+                        <option value="10">x10 — шанс 10%</option>
+                    </select>
+                    <button class="chat-send" style="width:100%; margin-top:15px; padding:14px;" onclick="playRoulette()">КРУТИТЬ РУЛЕТКУ</button>
+                    <div id="rouletteResult" style="margin-top:15px; color:#d8d0f0; font-size:14px; text-align:center;"></div>
+                </div>
+            </div>
+
+            <button class="btn-small" onclick="closeTap()" style="margin-top:15px;">← Назад</button>
         </div>
     </div>
 
@@ -538,12 +721,14 @@
     </div>
 
     <script>
+        // БАЗОВЫЕ КОНСТАНТЫ
         const PIN = "8357";
         let clicks = {};
         let currentTheme = 0;
         const themes = ['', 'theme-neon', 'theme-rain', 'theme-space'];
         let greetCount = 0;
 
+        // ЗАСТАВКА
         const splashText = document.getElementById('splashText');
         const splashSub = document.getElementById('splashSub');
         const splash = document.getElementById('splash');
@@ -565,88 +750,391 @@
         }
         typeSplash();
 
+        // ИДЕИ
         const ideas = {
-            kuda: [
-                "парк Киселёва — дойди, там ебать круто",
-                "пруд в Инзе — вода, тишина, кайф",
-                "стадион в Низах — место, где у всех что-то было в первый раз",
-                "смотровая вышка — вид на парк и пруд, залипнешь",
-                "аллея у белого голубя — свежо и красиво",
-                "тропа здоровья — турники и воздух",
-                "Инь-Янь — маленький прудик и скамейки. Прийти и зависнуть",
-                "Заряд — качалка, бассейн и скалолазание. Попробуй залезть на стенку",
-                "Импульс — качалка и бассейн. Сходи поплавать",
-                "Кванториум — 800 квадратов технологий. Лазеры, 3D, роботы. Если тебе до 18 — загляни",
-                "ГАИ — район, который зря называют опасным. Там лучшие люди и куча магазинчиков",
-                "Котловка — тихий райончик, где особо ничего не происходит. Иногда это лучшее",
-                "Щорсы — маленький микрорайон. Старые хрущёвки и новые дома",
-                "остров в Низах — качели и большие мероприятия",
-                "скейт-парк в Низах — приходи кататься",
-                "кинотеатр «Салют» — старое, но живое",
-                "«Факел» на ГАИ — бокс, карате, рисование. Может, твоё"
-            ],
-            eat: [
-                "«Милк» на Седова, 113 — бургеры и пицца",
-                "шашлычная на Седова, 100А — круглосуточно, для голодных ночью",
-                "«Тройка» в Низах — круглосуточно",
-                "«Фор-Фор» — пицца и роллы",
-                "«Венеция» — вкусно и недорого",
-                "Food House в Низах",
-                "«Икмек» на ГАИ — лёгкая выпечка",
-                "«Магнит» на ГАИ — выпечка, бургеры, хот-доги",
-                "«Чиполлино» на остановке Алексей — вкусно",
-                "кафешка «Парковка» рядом с Квадратом",
-                "«Гурман» в Низах — круглосуточно",
-                "«Монетка» — магазин, если надо быстро"
-            ],
-            sit: [
-                "три стула в парке Машиностроителей — сядь, выдохни",
-                "скамейки у педколледжа",
-                "качели перед озером",
-                "набережная — вода и тишина",
-                "тихие дворы за Седова",
-                "Инь-Янь — маленький прудик, скамейки. Можно зависнуть",
-                "Квадрат — высотки по кругу, внутри площадка. Посидеть и посмотреть",
-                "площадка за педколледжем — тихо и спокойно",
-                "остановка Алексей — просто сядь и смотри, кто приходит"
-            ],
-            nature: [
-                "сосновая роща — сосны с 1892 года, ебать как круто",
-                "берег реки — вода и закат",
-                "родник — набери воды",
-                "озеро в парке Машиностроителей",
-                "река Белая — просто смотри, как течёт",
-                "бассейн в «Заряде» — поплавать",
-                "бассейн в «Импульсе» — вода и отдых",
-                "затон — вода, тишина, природа"
-            ],
-            gossip: [
-                "на Инзе все знают...\nчто?\nнапиши автору, если знаешь",
-                "в Низах выпускники делали после выпускного...\nтолько тссс",
-                "на ГАИ за проблемами лучше не идти",
-                "в благе есть чат «В благе любят» — если ты там, ты свой",
-                "ГАИ — лучшее кино в окне: суета, драма, полиция вяжет ровных пацанчиков и частые спарринги людей. Чисто спортивный интерес",
-                "многие считают ГАИ опасным — это стереотип. ГАИ — лучший район",
-                "утром в 9 автобус на БМПК — это испытание. Студентов развелось как муравьёв",
-                "после 4-й пары студенты ломают себя, чтобы влезть в автобус и уехать домой"
-            ]
-        };
-
-        const casinoIcons = ['🚶','🍽','😌','🌿','🤫','🔥','💡','🌙'];
-        const casinoPhrases = {
-            '🚶': ['выйди на улицу и пройдись', 'сходи в парк', 'прогуляйся до пруда'],
-            '🍽': ['загляни в «Милк»', 'возьми шашлык', 'попробуй роллы'],
-            '😌': ['сядь на лавочку у педколледжа', 'найди тихий двор', 'посиди у воды'],
-            '🌿': ['иди в сосновую рощу', 'сходи к роднику', 'подыши у реки'],
-            '🤫': ['узнай свежий слух', 'спроси у своих', 'послушай, о чём молчат'],
-            '🔥': ['сделай то, на что не решался', 'устрой себе движ', 'выйди из зоны комфорта'],
-            '💡': ['придумай идею для поста', 'сгенерируй мысль', 'запиши, что в голове'],
-            '🌙': ['выйди ночью', 'пройдись по тёмному городу', 'посмотри на огни']
+            kuda: ["парк Киселёва — дойди, там ебать круто","пруд в Инзе — вода, тишина, кайф","стадион в Низах — место силы","смотровая вышка — вид на парк и пруд","аллея у белого голубя","тропа здоровья — турники и воздух","Инь-Янь — прудик и скамейки","Заряд — качалка, бассейн, скалолазание","Импульс — качалка и бассейн","Кванториум — технологии","ГАИ — лучший район","Котловка — тихий райончик","Щорсы — старые и новые дома","остров в Низах — качели","скейт-парк — кататься","кинотеатр «Салют»","«Факел» — бокс, карате"],
+            eat: ["«Милк» на Седова, 113","шашлычная на 100А — круглосуточно","«Тройка» — круглосуточно","«Фор-Фор» — пицца и роллы","«Венеция» — вкусно","Food House","«Икмек» — выпечка","«Магнит» — бургеры","«Чиполлино» на Алексее","«Парковка» у Квадрата","«Гурман» — круглосуточно","«Монетка» — магазин"],
+            sit: ["три стула в парке","скамейки у педколледжа","качели перед озером","набережная — вода","тихие дворы за Седова","Инь-Янь — скамейки","Квадрат — площадка внутри","площадка за педколледжем","остановка Алексей"],
+            nature: ["сосновая роща","берег реки","родник","озеро в парке","река Белая","бассейн в «Заряде»","бассейн в «Импульсе»","затон"],
+            gossip: ["на Инзе все знают...","в Низах выпускники...","на ГАИ за проблемами не идти","чат «В благе любят»","ГАИ — лучшее кино в окне","ГАИ — не опасный, а лучший","автобус на БМПК в 9 утра — битком","после 4-й пары студенты ломают себя"]
         };
 
         const queues = {};
         let currentCategory = null;
 
+        function getQueue(category) {
+            if (!queues[category] || queues[category].length === 0) {
+                queues[category] = [...ideas[category]].sort(() => Math.random() - 0.5);
+            }
+            return queues[category];
+        }
+
+        function show(category) {
+            clicks[category] = (clicks[category] || 0) + 1;
+            currentCategory = category;
+            const queue = getQueue(category);
+            const idea = queue.shift();
+            document.getElementById('header').style.display = 'none';
+            document.getElementById('menu').style.display = 'none';
+            const result = document.getElementById('result');
+            result.style.display = 'block';
+            result.textContent = idea;
+            document.getElementById('actions').style.display = 'flex';
+        }
+
+        function more() {
+            if (!currentCategory) return;
+            const queue = getQueue(currentCategory);
+            document.getElementById('result').textContent = queue.shift();
+        }
+
+        function back() {
+            document.getElementById('header').style.display = 'block';
+            document.getElementById('menu').style.display = 'grid';
+            document.getElementById('result').style.display = 'none';
+            document.getElementById('actions').style.display = 'none';
+        }
+
+        // КАЗИНО
+        let casinoSpinning = false;
+        const casinoIcons = ['🚶','🍽','😌','🌿','🤫','🔥','💡','🌙'];
+        const casinoIdeas = {
+            '🚶': ["выйди на улицу и пройдись","сходи в парк Киселёва","прогуляйся до пруда"],
+            '🍽': ["загляни в «Милк»","возьми шашлык на 100А","роллы из «Фор-Фор»"],
+            '😌': ["сядь на лавочку у педколледжа","найди тихий двор","посиди у воды"],
+            '🌿': ["иди в сосновую рощу","сходи к роднику","подыши у реки"],
+            '🤫': ["узнай свежий слух","спроси у своих","послушай район"],
+            '🔥': ["сделай то, на что не решался","устрой движ","выйди из зоны комфорта"],
+            '💡': ["придумай идею для поста","запиши мысль","сгенерируй идею"],
+            '🌙': ["выйди ночью","пройдись по тёмному городу","посмотри на огни"]
+        };
+
+        function openCasino() {
+            document.getElementById('casinoScreen').classList.add('active');
+            document.getElementById('casinoResult').textContent = '';
+            casinoSpinning = false;
+        }
+        function closeCasino() {
+            if (casinoSpinning) return;
+            document.getElementById('casinoScreen').classList.remove('active');
+        }
+
+        function spinCasino() {
+            if (casinoSpinning) return;
+            casinoSpinning = true;
+            const reels = ['casinoReel1','casinoReel2','casinoReel3'];
+            const results = [];
+            const interval = setInterval(() => {
+                reels.forEach(id => {
+                    document.getElementById(id).textContent = casinoIcons[Math.floor(Math.random() * casinoIcons.length)];
+                });
+            }, 80);
+
+            setTimeout(() => {
+                clearInterval(interval);
+                reels.forEach(id => {
+                    results.push(document.getElementById(id).textContent);
+                });
+                document.getElementById('casinoResult').textContent = generateCasinoIdea(results);
+                casinoSpinning = false;
+            }, 2000);
+        }
+
+        function generateCasinoIdea(icons) {
+            const parts = icons.map(icon => {
+                const phrases = casinoIdeas[icon] || ['сделай что-нибудь'];
+                return phrases[Math.floor(Math.random() * phrases.length)];
+            });
+            return `🎰 Выпало, блять:\n\n${parts[0]},\n${parts[1]}\nи ${parts[2]}.\n\nСделай это, нахуй.`;
+        }
+
+        // ЧАТ
+        function openChat() { document.getElementById('chatScreen').classList.add('active'); }
+        function closeChat() { document.getElementById('chatScreen').classList.remove('active'); }
+
+        function sendChat() {
+            const input = document.getElementById('chatInput');
+            const msg = input.value.trim();
+            if (!msg) return;
+            const messages = document.getElementById('chatMessages');
+            const userMsg = document.createElement('div');
+            userMsg.className = 'chat-msg chat-user';
+            userMsg.textContent = msg;
+            messages.appendChild(userMsg);
+            const botMsg = document.createElement('div');
+            botMsg.className = 'chat-msg chat-bot';
+            botMsg.textContent = getChatReply(msg);
+            messages.appendChild(botMsg);
+            input.value = '';
+            messages.scrollTop = messages.scrollHeight;
+        }
+
+        function getChatReply(text) {
+            const t = text.toLowerCase();
+            if (t.includes('привет') || t.includes('здоров') || t.includes('хай')) {
+                greetCount++;
+                if (greetCount === 1) return 'Здорова. Чё хотел?';
+                if (greetCount === 2) return 'Мы уже здоровались. Говори по делу.';
+                return 'Ты чё тупой? Я же написал здарова.';
+            }
+            if (t.includes('как дела')) return 'У меня база города. Пойди гуляй.';
+            if (t.includes('время')) return 'Тебя это дерьмо волнует? Наслаждайся временем.';
+            if (t.includes('погода')) return 'Выгляни в окно, гений.';
+            if (t.includes('поесть') || t.includes('пожрать') || t.includes('голод')) return '«Милк» на Седова, 113. Или шашлычная на 100А.';
+            if (t.includes('пить') || t.includes('бух')) return 'КБ, Магнит, Тройка. Выбирай.';
+            if (t.includes('гулять') || t.includes('куда')) return 'Парк Киселёва, вышка, аллея у голубя.';
+            if (t.includes('посидеть')) return 'Три стула в парке. Или скамейки у педколледжа.';
+            if (t.includes('скучно')) return 'Открой тапалку и не ной.';
+            if (t.includes('любовь') || t.includes('признаться') || t.includes('девочк') || t.includes('девушк')) return 'Иди и скажи. Город видел истории и пострашнее.';
+            if (t.includes('смысл')) return 'Смысл — найти своё место в городе.';
+            if (t.includes('инза')) return 'Инза — движ, еда, люди.';
+            if (t.includes('низа') || t.includes('низах')) return 'Низа — парк, река, закаты.';
+            if (t.includes('гаи')) return 'ГАИ — лучший район.';
+            if (t.includes('кто ты')) return 'Я — голос города. Или бот. Как повезёт.';
+            if (t.includes('дурак') || t.includes('тупой') || t.includes('дебил')) return 'Сам такой.';
+            if (t.includes('спасибо')) return 'Обращайся. Или не обращайся.';
+            if (t.includes('пока')) return 'Давай. Город ждёт.';
+            const replies = ['Я бот, а не гадалка.','В моей базе нет ответа на эту херню.','Ты уверен, что это вопрос?','Спроси у «Шальных».','Не знаю, погугли.'];
+            return replies[Math.floor(Math.random() * replies.length)];
+        }
+
+        // ТАПАЛКА
+        let tapBalance = 0;
+        let tapClickPower = 1;
+        let tapAutoPerSec = 0;
+        let tapLevel = 1;
+        let tapInterval = null;
+
+        const tapUpgradesList = [
+            { name: "Лавочка", desc: "+1 за клик", cost: 50, type: "click", value: 1 },
+            { name: "Фонарь", desc: "+2 за клик", cost: 250, type: "click", value: 2 },
+            { name: "Парк", desc: "+1 в секунду", cost: 400, type: "auto", value: 1 },
+            { name: "Река", desc: "+5 в секунду", cost: 1000, type: "auto", value: 5 },
+            { name: "Инза", desc: "+5 за клик", cost: 2000, type: "click", value: 5 },
+            { name: "Низа", desc: "+10 в секунду", cost: 5000, type: "auto", value: 10 },
+            { name: "Вышка", desc: "+25 в секунду", cost: 10000, type: "auto", value: 25 },
+            { name: "Голубь", desc: "+50 в секунду", cost: 25000, type: "auto", value: 50 },
+            { name: "Кванториум", desc: "+100 в секунду", cost: 50000, type: "auto", value: 100 },
+            { name: "Дух города", desc: "+10 за клик", cost: 100000, type: "click", value: 10 }
+        ];
+
+        const tapBoostsList = [
+            { name: "x2 клик", desc: "30 секунд", cost: 100, type: "click", value: 2, duration: 30 },
+            { name: "x5 клик", desc: "30 секунд", cost: 300, type: "click", value: 5, duration: 30 },
+            { name: "x10 клик", desc: "30 секунд", cost: 700, type: "click", value: 10, duration: 30 },
+            { name: "Авто x2", desc: "1 минута", cost: 500, type: "auto", value: 2, duration: 60 }
+        ];
+
+        function openTap() {
+            document.getElementById('tapScreen').classList.add('active');
+            loadTapData();
+            renderTap();
+            startTapInterval();
+        }
+
+        function closeTap() {
+            document.getElementById('tapScreen').classList.remove('active');
+            stopTapInterval();
+            saveTapData();
+        }
+
+        function tapBlag(event) {
+            tapBalance += tapClickPower;
+            renderTap();
+            createParticle(event);
+        }
+
+        function createParticle(event) {
+            const particle = document.createElement('div');
+            particle.className = 'tap-particle';
+            particle.textContent = `+${tapClickPower}💎`;
+            particle.style.left = event.clientX + 'px';
+            particle.style.top = event.clientY + 'px';
+            document.body.appendChild(particle);
+            setTimeout(() => particle.remove(), 800);
+        }
+
+        function renderTap() {
+            document.getElementById('tapBalance').textContent = Math.floor(tapBalance);
+            document.getElementById('tapRate').textContent = `За клик: +${tapClickPower} | В секунду: ${tapAutoPerSec}`;
+            document.getElementById('catLevel').textContent = `Уровень ${tapLevel}`;
+            updateCatVisual();
+            renderUpgrades();
+            renderBoosts();
+            saveTapData();
+        }
+
+        function updateCatVisual() {
+            const body = document.getElementById('catBody');
+            const hue = 250 + (tapLevel * 2) % 50;
+            body.style.background = `linear-gradient(145deg, hsl(${hue}, 70%, 70%), hsl(${hue - 30}, 70%, 45%))`;
+            body.style.boxShadow = `0 0 40px hsl(${hue}, 70%, 50%, 0.5)`;
+            if (tapLevel >= 5) {
+                body.style.width = '110px';
+                body.style.height = '110px';
+            }
+            if (tapLevel >= 10) {
+                body.style.width = '120px';
+                body.style.height = '120px';
+            }
+        }
+
+        function renderUpgrades() {
+            const container = document.getElementById('tapUpgrades');
+            container.innerHTML = '';
+            tapUpgradesList.forEach((upg, index) => {
+                const div = document.createElement('div');
+                div.className = 'upgrade-btn';
+                div.innerHTML = `
+                    <div>
+                        <div class="upgrade-name">${upg.name}</div>
+                        <div class="upgrade-info">${upg.desc}</div>
+                    </div>
+                    <div class="upgrade-price">💎${upg.cost}</div>
+                `;
+                div.onclick = () => buyUpgrade(index);
+                container.appendChild(div);
+            });
+        }
+
+        function renderBoosts() {
+            const container = document.getElementById('tapBoosts');
+            container.innerHTML = '';
+            tapBoostsList.forEach((boost, index) => {
+                const div = document.createElement('div');
+                div.className = 'upgrade-btn';
+                div.innerHTML = `
+                    <div>
+                        <div class="upgrade-name">⚡ ${boost.name}</div>
+                        <div class="upgrade-info">${boost.desc}</div>
+                    </div>
+                    <div class="upgrade-price">💎${boost.cost}</div>
+                `;
+                div.onclick = () => buyBoost(index);
+                container.appendChild(div);
+            });
+        }
+
+        function buyUpgrade(index) {
+            const upg = tapUpgradesList[index];
+            if (tapBalance < upg.cost) {
+                alert('Не хватает благов, брат');
+                return;
+            }
+            tapBalance -= upg.cost;
+            if (upg.type === 'click') {
+                tapClickPower += upg.value;
+            } else {
+                tapAutoPerSec += upg.value;
+            }
+            tapLevel++;
+            renderTap();
+        }
+
+        function buyBoost(index) {
+            const boost = tapBoostsList[index];
+            if (tapBalance < boost.cost) {
+                alert('Не хватает благов');
+                return;
+            }
+            tapBalance -= boost.cost;
+            renderTap();
+            activateBoost(boost);
+        }
+
+        function activateBoost(boost) {
+            if (boost.type === 'click') {
+                const oldPower = tapClickPower;
+                tapClickPower *= boost.value;
+                setTimeout(() => {
+                    tapClickPower = oldPower;
+                    renderTap();
+                }, boost.duration * 1000);
+            } else {
+                const oldAuto = tapAutoPerSec;
+                tapAutoPerSec *= boost.value;
+                setTimeout(() => {
+                    tapAutoPerSec = oldAuto;
+                    renderTap();
+                }, boost.duration * 1000);
+            }
+            renderTap();
+        }
+
+        function switchTapTab(tab, element) {
+            document.querySelectorAll('.tap-tab').forEach(t => t.classList.remove('active'));
+            element.classList.add('active');
+            document.getElementById('tapUpgrades').style.display = tab === 'upgrades' ? 'flex' : 'none';
+            document.getElementById('tapBoosts').style.display = tab === 'boosts' ? 'flex' : 'none';
+            document.getElementById('tapRoulette').style.display = tab === 'roulette' ? 'flex' : 'none';
+        }
+
+        function startTapInterval() {
+            if (tapInterval) clearInterval(tapInterval);
+            tapInterval = setInterval(() => {
+                tapBalance += tapAutoPerSec;
+                renderTap();
+            }, 1000);
+        }
+
+        function stopTapInterval() {
+            if (tapInterval) {
+                clearInterval(tapInterval);
+                tapInterval = null;
+            }
+        }
+
+        function saveTapData() {
+            const data = {
+                balance: tapBalance,
+                clickPower: tapClickPower,
+                autoPerSec: tapAutoPerSec,
+                level: tapLevel
+            };
+            localStorage.setItem('tapData', JSON.stringify(data));
+        }
+
+        function loadTapData() {
+            const data = localStorage.getItem('tapData');
+            if (data) {
+                const parsed = JSON.parse(data);
+                tapBalance = parsed.balance || 0;
+                tapClickPower = parsed.clickPower || 1;
+                tapAutoPerSec = parsed.autoPerSec || 0;
+                tapLevel = parsed.level || 1;
+            }
+        }
+
+        // РУЛЕТКА
+        function playRoulette() {
+            const bet = parseInt(document.getElementById('rouletteBet').value) || 0;
+            const multiplier = parseFloat(document.getElementById('rouletteMultiplier').value);
+
+            if (bet <= 0 || bet > tapBalance) {
+                alert('Неправильная ставка');
+                return;
+            }
+
+            const chances = {1.5: 65, 2: 50, 3: 33, 5: 20, 7: 14, 10: 10};
+            const chance = chances[multiplier] || 50;
+
+            tapBalance -= bet;
+            renderTap();
+
+            const won = Math.random() * 100 < chance;
+            const result = document.getElementById('rouletteResult');
+
+            if (won) {
+                const winAmount = Math.floor(bet * multiplier);
+                tapBalance += winAmount;
+                result.textContent = `🎉 ВЫИГРЫШ!\nСтавка: ${bet}💎\nМножитель: x${multiplier}\nВыигрыш: ${winAmount}💎`;
+            } else {
+                result.textContent = `💀 Проигрыш.\nСтавка: ${bet}💎\nПовезёт в следующий раз.`;
+            }
+            renderTap();
+        }
+
+        // ТЕМЫ
         function changeTheme() {
             currentTheme = (currentTheme + 1) % themes.length;
             document.body.className = themes[currentTheme];
@@ -696,120 +1184,7 @@
             }
         }
 
-        function openCasino() {
-            document.getElementById('casinoScreen').classList.add('active');
-            document.getElementById('casinoResult').textContent = '';
-            initReels();
-        }
-        function closeCasino() { document.getElementById('casinoScreen').classList.remove('active'); }
-
-        function initReels() {
-            ['reel1','reel2','reel3'].forEach(id => {
-                const reel = document.getElementById(id);
-                reel.innerHTML = '';
-                for (let i = 0; i < 12; i++) {
-                    const div = document.createElement('div');
-                    div.style.cssText = 'height:90px; display:flex; align-items:center; justify-content:center; font-size:40px;';
-                    div.textContent = casinoIcons[Math.floor(Math.random() * casinoIcons.length)];
-                    reel.appendChild(div);
-                }
-            });
-        }
-
-        function spinCasino() {
-            const reels = ['reel1','reel2','reel3'];
-            const results = [];
-            reels.forEach(id => {
-                const reel = document.getElementById(id);
-                const distance = Math.floor(Math.random() * 400 + 300);
-                reel.style.transform = `translateY(-${distance}px)`;
-            });
-            setTimeout(() => {
-                reels.forEach((id) => {
-                    const reel = document.getElementById(id);
-                    const icons = reel.querySelectorAll('div');
-                    const middle = Math.floor(icons.length / 2);
-                    results.push(icons[middle].textContent);
-                    reel.style.transition = 'none';
-                    reel.style.transform = 'translateY(0)';
-                });
-                document.getElementById('casinoResult').textContent = generateCasinoIdea(results);
-            }, 1600);
-        }
-
-        function generateCasinoIdea(icons) {
-            const parts = icons.map(icon => {
-                const phrases = casinoPhrases[icon] || ['сделай что-нибудь'];
-                return phrases[Math.floor(Math.random() * phrases.length)];
-            });
-            return `🎰 Выпало, блять:\n\n${parts[0]},\n${parts[1]}\nи ${parts[2]}.\n\nСделай это, нахуй, и день станет другим.`;
-        }
-
-        function openMap() { document.getElementById('mapScreen').classList.add('active'); }
-        function closeMap() { document.getElementById('mapScreen').classList.remove('active'); }
-
-        function openChat() { document.getElementById('chatScreen').classList.add('active'); }
-        function closeChat() { document.getElementById('chatScreen').classList.remove('active'); }
-
-        function sendChat() {
-            const input = document.getElementById('chatInput');
-            const msg = input.value.trim();
-            if (!msg) return;
-            const messages = document.getElementById('chatMessages');
-            const userMsg = document.createElement('div');
-            userMsg.className = 'chat-msg chat-user';
-            userMsg.textContent = msg;
-            messages.appendChild(userMsg);
-            const botMsg = document.createElement('div');
-            botMsg.className = 'chat-msg chat-bot';
-            botMsg.textContent = getChatReply(msg);
-            messages.appendChild(botMsg);
-            input.value = '';
-            messages.scrollTop = messages.scrollHeight;
-        }
-
-        function getChatReply(text) {
-            const t = text.toLowerCase();
-
-            if (t.includes('привет') || t.includes('здоров') || t.includes('хай') || t.includes('здравств')) {
-                greetCount++;
-                if (greetCount === 1) return 'Здорова. Чё хотел?';
-                if (greetCount === 2) return 'Мы уже здоровались. Говори по делу.';
-                return 'Ты чё тупой, блять? Я же написал здарова. Давай по существу.';
-            }
-
-            if (t.includes('как дела') || t.includes('как ты')) return 'У меня тут база города. Какие дела? Пойди гуляй.';
-            if (t.includes('время') || t.includes('час') || t.includes('сколько время')) return 'Тебя это дерьмо волнует? Наслаждайся временем, а не интересуйся.';
-            if (t.includes('погода')) return 'Выгляни в окно, гений. Или тебе лень?';
-            if (t.includes('поесть') || t.includes('пожрать') || t.includes('еда') || t.includes('кушать') || t.includes('голод')) return '«Милк» на Седова, 113. Или шашлычная на 100А, если ночью. Не благодари.';
-            if (t.includes('пить') || t.includes('выпить') || t.includes('бух')) return 'КБ, Магнит, Тройка. Выбирай и не ной.';
-            if (t.includes('гулять') || t.includes('сходить') || t.includes('куда') || t.includes('прогул')) return 'Парк Киселёва, смотровая вышка, аллея у белого голубя. Иди куда-нибудь уже.';
-            if (t.includes('посидеть') || t.includes('посидет') || t.includes('сидеть') || t.includes('лавочк')) return 'Три стула в парке Машиностроителей. Или скамейки у педколледжа. Выбери и выдохни.';
-            if (t.includes('скучно')) return 'Скучно? Открой казино идей и не выноси мне мозг.';
-            if (t.includes('спать') || t.includes('сон')) return 'Иди спать. Город подождёт.';
-            if (t.includes('любовь') || t.includes('люблю') || t.includes('признаться') || t.includes('нравится') || t.includes('девочк') || t.includes('девушк')) return 'Иди и скажи. Город видел истории и пострашнее. Если боишься — начни с малого. Например, с прогулки у белого голубя.';
-            if (t.includes('смысл') || t.includes('зачем жить') || t.includes('зачем')) return 'Смысл — найти своё место в этом городе. Или хотя бы поесть в «Венеции».';
-            if (t.includes('анекдот') || t.includes('шутка') || t.includes('рассмеши')) return 'Иди на остановку Алексей. Там жизнь как анекдот.';
-            if (t.includes('бмпк')) return 'БМПК — место, где к 9 утра автобусы ломятся. Учись, студент.';
-            if (t.includes('инза')) return 'Инза — движ, еда, люди. Не тупи, что ещё надо.';
-            if (t.includes('низа') || t.includes('низах')) return 'Низа — парк, река, закаты. Или ты и так это знал?';
-            if (t.includes('гаи')) return 'ГАИ — лучший район. Кто говорит иначе — пусть идёт лесом.';
-            if (t.includes('котловка')) return 'Котловка — тихий райончик. Иногда тишина — лучшее.';
-            if (t.includes('кто ты') || t.includes('ты кто')) return 'Я — голос этого города. Или просто бот. Как повезёт.';
-            if (t.includes('дурак') || t.includes('тупой') || t.includes('дебил')) return 'Сам такой, нахуй. Не груби.';
-            if (t.includes('спасибо') || t.includes('благодар')) return 'Обращайся. Или не обращайся. Мне пофиг.';
-            if (t.includes('пока') || t.includes('до свидания')) return 'Давай. Город ждёт.';
-
-            const randomReplies = [
-                'Я бот, а не гадалка. Спроси про город.',
-                'В моей базе нет ответа на эту херню.',
-                'Ты уверен, что это вопрос? Звучит как бред.',
-                'Спроси у «Шальных». Или у авторов. Мне лень думать.',
-                'Не знаю, но звучит как то, что можно нагуглить.'
-            ];
-            return randomReplies[Math.floor(Math.random() * randomReplies.length)];
-        }
-
+        // ИНФО / АДМИНКА
         function openAdmin() { document.getElementById('adminScreen').classList.add('active'); }
         function closeAdmin() {
             document.getElementById('adminScreen').classList.remove('active');
@@ -884,7 +1259,7 @@
             for (const cat in clicks) { if (clicks[cat] > maxClicks) { maxClicks = clicks[cat]; popular = cat; } }
             const catCount = Object.keys(ideas).length;
             const avgIdeas = (totalIdeas / catCount).toFixed(1);
-            let html = `<b>📊 ОБЩЕЕ</b><br>Идей всего: ${totalIdeas}<br>Категорий: ${catCount}<br>Среднее идей: ${avgIdeas}<br>Нажатий: ${clicksTotal}<br><br><b>📁 ПО КАТЕГОРИЯМ</b><br>`;
+            let html = `<b>📊 ОБЩЕЕ</b><br>Идей: ${totalIdeas}<br>Категорий: ${catCount}<br>Среднее: ${avgIdeas}<br>Нажатий: ${clicksTotal}<br><br><b>📁 ПО КАТЕГОРИЯМ</b><br>`;
             for (const cat in ideas) {
                 const c = clicks[cat] || 0;
                 const p = clicksTotal > 0 ? ((c / clicksTotal) * 100).toFixed(1) : 0;
@@ -892,39 +1267,6 @@
             }
             html += `<br><b>🔥 ТОП</b><br>Популярная: ${popular}<br>Пустая: ${empty}`;
             document.getElementById('statsText').innerHTML = html;
-        }
-
-        function getQueue(category) {
-            if (!queues[category] || queues[category].length === 0) {
-                queues[category] = [...ideas[category]].sort(() => Math.random() - 0.5);
-            }
-            return queues[category];
-        }
-
-        function show(category) {
-            clicks[category] = (clicks[category] || 0) + 1;
-            currentCategory = category;
-            const queue = getQueue(category);
-            const idea = queue.shift();
-            document.getElementById('header').style.display = 'none';
-            document.getElementById('menu').style.display = 'none';
-            const result = document.getElementById('result');
-            result.style.display = 'block';
-            result.textContent = idea;
-            document.getElementById('actions').style.display = 'flex';
-        }
-
-        function more() {
-            if (!currentCategory) return;
-            const queue = getQueue(currentCategory);
-            document.getElementById('result').textContent = queue.shift();
-        }
-
-        function back() {
-            document.getElementById('header').style.display = 'block';
-            document.getElementById('menu').style.display = 'grid';
-            document.getElementById('result').style.display = 'none';
-            document.getElementById('actions').style.display = 'none';
         }
     </script>
 </body>
