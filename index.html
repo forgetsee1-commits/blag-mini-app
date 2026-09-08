@@ -23,156 +23,34 @@
         body::before {
             content: '';
             position: absolute;
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, rgba(155,123,255,0.3) 0%, transparent 70%);
-            filter: blur(70px);
-            top: -180px; left: -180px;
+            width: 600px; height: 600px;
+            background: radial-gradient(circle, rgba(155,123,255,0.35) 0%, transparent 70%);
+            filter: blur(80px);
+            top: -200px; left: -200px;
             animation: float 7s ease-in-out infinite;
         }
 
         .extra-glow-1 {
             position: absolute;
-            width: 350px; height: 350px;
-            background: radial-gradient(circle, rgba(110,180,255,0.25) 0%, transparent 70%);
-            filter: blur(70px);
-            top: 40%; left: -120px;
+            width: 400px; height: 400px;
+            background: radial-gradient(circle, rgba(110,180,255,0.3) 0%, transparent 70%);
+            filter: blur(80px);
+            top: 40%; left: -150px;
             animation: float 10s ease-in-out infinite;
         }
 
         .extra-glow-2 {
             position: absolute;
-            width: 300px; height: 300px;
-            background: radial-gradient(circle, rgba(255,220,110,0.2) 0%, transparent 70%);
-            filter: blur(60px);
-            bottom: 10%; right: -100px;
+            width: 350px; height: 350px;
+            background: radial-gradient(circle, rgba(255,220,110,0.25) 0%, transparent 70%);
+            filter: blur(70px);
+            bottom: 10%; right: -120px;
             animation: float 8s ease-in-out infinite reverse;
         }
 
         @keyframes float {
             0%,100% { transform: translate(0,0); }
-            50% { transform: translate(30px,20px); }
-        }
-
-        .splash {
-            position: fixed; inset: 0;
-            background: radial-gradient(circle at 50% 40%, #1a1230 0%, #0a0812 70%);
-            z-index: 100;
-            display: flex; align-items: center; justify-content: center; flex-direction: column;
-            animation: splashOut 0.8s ease 4s forwards;
-        }
-
-        .splash-decor {
-            position: absolute;
-            width: 8px; height: 8px;
-            border-radius: 50%;
-            background: #b39bff;
-            box-shadow: 0 0 15px #b39bff;
-            animation: blink 1.2s ease-in-out infinite;
-        }
-
-        .splash-decor:nth-child(1) { top: 20%; left: 15%; }
-        .splash-decor:nth-child(2) { top: 30%; right: 20%; animation-delay: 0.3s; }
-        .splash-decor:nth-child(3) { bottom: 25%; left: 25%; animation-delay: 0.6s; }
-        .splash-decor:nth-child(4) { bottom: 20%; right: 15%; animation-delay: 0.9s; }
-
-        .splash-line {
-            position: absolute;
-            width: 2px; height: 60px;
-            background: linear-gradient(180deg, transparent, #b39bff, transparent);
-            opacity: 0.3;
-        }
-
-        .splash-line:nth-child(5) { top: 15%; left: 30%; }
-        .splash-line:nth-child(6) { top: 20%; right: 25%; }
-        .splash-line:nth-child(7) { bottom: 15%; left: 40%; }
-
-        .splash-ring {
-            position: absolute;
-            width: 140px; height: 140px;
-            border: 1px solid rgba(155,123,255,0.2);
-            border-radius: 50%;
-            animation: pulse 2s ease-in-out infinite;
-        }
-
-        .splash-ring:nth-child(8) { top: 50%; left: 50%; transform: translate(-50%,-50%); }
-        .splash-ring:nth-child(9) { top: 50%; left: 50%; transform: translate(-50%,-50%); animation-delay: 0.5s; }
-
-        .splash-text {
-            font-size: 26px; font-weight: 800;
-            color: #f0ecff;
-            letter-spacing: 3px;
-            min-height: 40px;
-            z-index: 1;
-            text-shadow: 0 0 30px rgba(155,123,255,0.6);
-        }
-
-        .splash-sub {
-            margin-top: 12px;
-            font-size: 13px;
-            color: #6b5f8a;
-            z-index: 1;
-            opacity: 0;
-            transition: opacity 0.8s;
-        }
-
-        @keyframes blink {
-            0%,100% { opacity: 0.3; }
-            50% { opacity: 1; }
-        }
-
-        @keyframes pulse {
-            0%,100% { transform: translate(-50%,-50%) scale(1); opacity: 0.3; }
-            50% { transform: translate(-50%,-50%) scale(1.2); opacity: 0.1; }
-        }
-
-        @keyframes splashOut {
-            to { opacity: 0; visibility: hidden; }
-        }
-
-        body.theme-neon {
-            background: linear-gradient(135deg, #000 0%, #1a0033 30%, #003366 60%, #000 100%);
-        }
-        body.theme-neon .btn, body.theme-neon .btn-small, body.theme-neon .icon-btn {
-            border-color: rgba(0,255,255,0.5) !important;
-            color: #0ff !important;
-            text-shadow: 0 0 10px rgba(0,255,255,0.8);
-        }
-        body.theme-neon .badge { color: #f0f !important; border-color: rgba(255,0,255,0.6) !important; text-shadow: 0 0 12px #f0f; }
-        body.theme-neon #header h1 { color: #fff; text-shadow: 0 0 20px #0ff; }
-
-        body.theme-rain { background: linear-gradient(180deg, #0a0a0f 0%, #111118 40%, #1a1a22 100%); }
-        .rain-container { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
-        .drop {
-            position: absolute;
-            width: 2px; height: 20px;
-            background: linear-gradient(180deg, transparent, rgba(120,150,200,0.5));
-            animation: fall linear infinite;
-        }
-        @keyframes fall {
-            from { transform: translateY(-30px); }
-            to { transform: translateY(110vh); }
-        }
-
-        body.theme-space { background: linear-gradient(160deg, #000 0%, #0a0a2e 30%, #1a0a3e 60%, #000 100%); }
-        .space-container { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
-        .star {
-            position: absolute;
-            background: #fff;
-            border-radius: 50%;
-            animation: twinkle ease-in-out infinite;
-        }
-        .nebula {
-            position: absolute;
-            width: 400px; height: 400px;
-            border-radius: 50%;
-            filter: blur(80px);
-            opacity: 0.25;
-            animation: float 10s ease-in-out infinite;
-        }
-        @keyframes twinkle {
-            0%,100% { opacity: 0.2; }
-            50% { opacity: 0.9; }
+            50% { transform: translate(40px,25px); }
         }
 
         .app {
@@ -186,15 +64,29 @@
             display: inline-block;
             padding: 6px 16px;
             border-radius: 100px;
-            border: 1px solid rgba(155,123,255,0.3);
-            background: rgba(155,123,255,0.08);
-            color: #b39bff;
-            font-size: 11px; letter-spacing: 1px;
+            border: 1px solid rgba(155,123,255,0.4);
+            background: rgba(155,123,255,0.1);
+            color: #c4b5ff;
+            font-size: 11px; letter-spacing: 2px;
             margin-bottom: 12px;
+            text-transform: uppercase;
+            backdrop-filter: blur(10px);
         }
 
-        #header h1 { color: #f0ecff; font-size: 28px; margin-bottom: 6px; font-weight: 800; }
-        #header .sub { color: #9b8fc0; font-size: 14px; margin-bottom: 20px; font-weight: 500; }
+        #header h1 {
+            color: #f0ecff;
+            font-size: 30px;
+            margin-bottom: 6px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+
+        #header .sub {
+            color: #9b8fc0;
+            font-size: 14px;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
 
         .menu {
             display: grid;
@@ -204,34 +96,47 @@
 
         .btn {
             background: rgba(255,255,255,0.04);
-            border: 1px solid rgba(255,255,255,0.07);
+            border: 1px solid rgba(255,255,255,0.08);
             border-radius: 16px;
             padding: 16px 8px;
-            color: #fff;
+            color: #e8e4f5;
             font-size: 14px; font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
             backdrop-filter: blur(10px);
             text-align: center;
+            letter-spacing: 0.3px;
         }
 
-        .btn:nth-child(1) { background: rgba(155,123,255,0.14); border-color: rgba(155,123,255,0.35); }
-        .btn:nth-child(2) { background: rgba(255,110,180,0.14); border-color: rgba(255,110,180,0.35); }
-        .btn:nth-child(3) { background: rgba(110,180,255,0.14); border-color: rgba(110,180,255,0.35); }
-        .btn:nth-child(4) { background: rgba(255,220,110,0.14); border-color: rgba(255,220,110,0.35); }
-        .btn:nth-child(5) { grid-column: span 2; background: rgba(255,90,90,0.14); border-color: rgba(255,90,90,0.35); }
-        .btn:nth-child(6) { grid-column: span 2; background: rgba(255,160,50,0.2); border-color: rgba(255,160,50,0.5); font-weight: 800; letter-spacing: 1px; }
-        .btn:nth-child(7) { grid-column: span 2; background: rgba(0,255,150,0.15); border-color: rgba(0,255,150,0.4); font-weight: 800; letter-spacing: 1px; }
-        .btn:nth-child(8) { grid-column: span 2; background: rgba(255,215,0,0.2); border-color: rgba(255,215,0,0.5); font-weight: 800; letter-spacing: 1px; }
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .btn:nth-child(1) { background: rgba(155,123,255,0.15); border-color: rgba(155,123,255,0.4); }
+        .btn:nth-child(1):hover { box-shadow: 0 8px 30px rgba(155,123,255,0.3); }
+        .btn:nth-child(2) { background: rgba(255,110,180,0.15); border-color: rgba(255,110,180,0.4); }
+        .btn:nth-child(2):hover { box-shadow: 0 8px 30px rgba(255,110,180,0.3); }
+        .btn:nth-child(3) { background: rgba(110,180,255,0.15); border-color: rgba(110,180,255,0.4); }
+        .btn:nth-child(3):hover { box-shadow: 0 8px 30px rgba(110,180,255,0.3); }
+        .btn:nth-child(4) { background: rgba(255,220,110,0.15); border-color: rgba(255,220,110,0.4); }
+        .btn:nth-child(4):hover { box-shadow: 0 8px 30px rgba(255,220,110,0.3); }
+        .btn:nth-child(5) { grid-column: span 2; background: rgba(255,90,90,0.15); border-color: rgba(255,90,90,0.4); }
+        .btn:nth-child(5):hover { box-shadow: 0 8px 30px rgba(255,90,90,0.3); }
+        .btn:nth-child(6) { grid-column: span 2; background: rgba(255,160,50,0.2); border-color: rgba(255,160,50,0.5); font-weight: 800; letter-spacing: 2px; font-size: 15px; }
+        .btn:nth-child(6):hover { box-shadow: 0 8px 30px rgba(255,160,50,0.4); }
+        .btn:nth-child(7) { grid-column: span 2; background: rgba(0,255,150,0.15); border-color: rgba(0,255,150,0.4); font-weight: 800; letter-spacing: 2px; font-size: 15px; }
+        .btn:nth-child(7):hover { box-shadow: 0 8px 30px rgba(0,255,150,0.3); }
+        .btn:nth-child(8) { grid-column: span 2; background: rgba(255,215,0,0.2); border-color: rgba(255,215,0,0.5); font-weight: 800; letter-spacing: 2px; font-size: 15px; }
+        .btn:nth-child(8):hover { box-shadow: 0 8px 30px rgba(255,215,0,0.4); }
 
         .result {
             display: none;
-            background: rgba(155,123,255,0.08);
-            border: 1px solid rgba(155,123,255,0.25);
-            border-radius: 16px;
-            padding: 22px 18px;
+            background: rgba(155,123,255,0.1);
+            border: 1px solid rgba(155,123,255,0.3);
+            border-radius: 18px;
+            padding: 25px 20px;
             color: #d8d0f0;
-            font-size: 15px; line-height: 1.7;
+            font-size: 15px; line-height: 1.8;
             min-height: 120px;
             animation: pop 0.4s ease;
             font-weight: 500;
@@ -240,8 +145,8 @@
         .actions { display: none; flex-direction: column; gap: 10px; margin-top: 16px; }
 
         .btn-small {
-            background: rgba(255,255,255,0.05);
-            border: 1px solid rgba(255,255,255,0.08);
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.1);
             border-radius: 12px;
             padding: 13px;
             color: #d8d0f0;
@@ -254,274 +159,57 @@
         .top-btns { position: fixed; top: 20px; right: 20px; display: flex; gap: 10px; z-index: 30; }
 
         .icon-btn {
-            width: 42px; height: 42px;
-            border-radius: 12px;
-            background: rgba(255,255,255,0.06);
-            border: 1px solid rgba(255,255,255,0.1);
+            width: 44px; height: 44px;
+            border-radius: 14px;
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.12);
             color: #fff;
-            font-size: 18px;
+            font-size: 19px;
             cursor: pointer;
             transition: all 0.3s ease;
             display: flex; align-items: center; justify-content: center;
             backdrop-filter: blur(10px);
         }
 
-        .icon-btn:hover { background: rgba(155,123,255,0.15); border-color: rgba(155,123,255,0.35); }
+        .icon-btn:hover { background: rgba(155,123,255,0.2); border-color: rgba(155,123,255,0.4); }
 
         .fullscreen {
             display: none;
             position: fixed; inset: 0;
-            background: rgba(10,8,18,0.97);
+            background: rgba(8,6,16,0.98);
             z-index: 50;
             align-items: center; justify-content: center;
-            padding: 20px;
+            padding: 15px;
         }
 
         .fullscreen.active { display: flex; }
 
-        .chat-screen {
-            background: rgba(20,15,35,0.95);
-            border: 1px solid rgba(0,255,150,0.4);
-            border-radius: 20px;
-            padding: 20px;
-            width: 100%; max-width: 380px;
-            height: 80vh;
-            display: flex; flex-direction: column;
-            animation: pop 0.3s ease;
-        }
-
-        .chat-title { color: #00ff96; font-size: 20px; font-weight: 800; margin-bottom: 15px; text-align: center; }
-        .chat-messages { flex: 1; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; margin-bottom: 15px; padding-right: 5px; }
-        .chat-msg { max-width: 85%; padding: 12px 14px; border-radius: 14px; font-size: 14px; line-height: 1.6; animation: pop 0.2s ease; }
-        .chat-user { align-self: flex-end; background: rgba(110,180,255,0.2); color: #d8d0f0; }
-        .chat-bot { align-self: flex-start; background: rgba(0,255,150,0.12); color: #e0f0e8; }
-        .chat-input-row { display: flex; gap: 8px; }
-        .chat-input { flex: 1; padding: 12px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.05); color: #fff; font-size: 14px; outline: none; font-family: 'Manrope', sans-serif; }
-        .chat-send { padding: 12px 16px; border-radius: 10px; border: none; background: rgba(0,255,150,0.25); color: #00ff96; font-size: 14px; font-weight: 700; cursor: pointer; font-family: 'Manrope', sans-serif; }
-
-        /* ТАПАЛКА */
-        .tap-screen {
-            background: rgba(20,15,35,0.95);
-            border: 1px solid rgba(255,215,0,0.4);
-            border-radius: 20px;
+        .panel {
+            background: rgba(22,17,38,0.98);
+            border: 1px solid rgba(155,123,255,0.25);
+            border-radius: 24px;
             padding: 20px;
             width: 100%; max-width: 380px;
             height: 85vh;
             display: flex; flex-direction: column;
             animation: pop 0.3s ease;
             position: relative;
-            overflow-y: auto;
         }
 
-        .tap-balance {
-            font-size: 28px; font-weight: 800; color: #ffd700;
-            text-align: center; margin-bottom: 4px;
-            text-shadow: 0 0 20px rgba(255,215,0,0.5);
-        }
-
-        .tap-balance-label {
-            font-size: 11px; color: #8a7a30; text-align: center; margin-bottom: 10px;
+        .panel-title {
+            font-size: 18px; font-weight: 800;
+            margin-bottom: 15px;
+            text-align: center;
             letter-spacing: 1px;
         }
 
-        .tap-rate {
-            font-size: 13px; color: #9b8fc0; text-align: center; margin-bottom: 15px;
-        }
-
-        .tap-character {
-            width: 140px; height: 140px;
-            margin: 0 auto 15px;
-            cursor: pointer;
-            position: relative;
-            user-select: none;
-            -webkit-tap-highlight-color: transparent;
-        }
-
-        .tap-character:active {
-            transform: scale(0.92);
-        }
-
-        .tap-cat {
-            width: 100%; height: 100%;
-            position: relative;
-            transition: all 0.3s ease;
-        }
-
-        .tap-cat-body {
-            width: 100px; height: 100px;
-            background: linear-gradient(145deg, #b39bff, #7b5fd0);
-            border-radius: 50%;
-            position: absolute;
-            top: 20px; left: 20px;
-            box-shadow: 0 0 40px rgba(155,123,255,0.5);
-            transition: all 0.5s ease;
-        }
-
-        .tap-cat-ear-left {
-            width: 0; height: 0;
-            border-left: 18px solid transparent;
-            border-right: 18px solid transparent;
-            border-bottom: 30px solid #7b5fd0;
-            position: absolute;
-            top: 5px; left: 15px;
-            transform: rotate(-25deg);
-            transition: all 0.5s ease;
-        }
-
-        .tap-cat-ear-right {
-            width: 0; height: 0;
-            border-left: 18px solid transparent;
-            border-right: 18px solid transparent;
-            border-bottom: 30px solid #7b5fd0;
-            position: absolute;
-            top: 5px; right: 15px;
-            transform: rotate(25deg);
-            transition: all 0.5s ease;
-        }
-
-        .tap-cat-eyes {
-            position: absolute;
-            top: 55px; left: 50%;
-            transform: translateX(-50%);
-            display: flex; gap: 20px;
-        }
-
-        .tap-cat-eye {
-            width: 12px; height: 12px;
-            background: #fff;
-            border-radius: 50%;
-            box-shadow: 0 0 10px #fff;
-        }
-
-        .tap-cat-hood {
-            position: absolute;
-            top: -10px; left: 50%;
-            transform: translateX(-50%);
-            width: 70px; height: 50px;
-            background: #2a1a4a;
-            border-radius: 50% 50% 0 0;
-            border: 2px solid #3a2a5a;
-        }
-
-        .tap-level {
-            position: absolute;
-            bottom: -20px; left: 50%;
-            transform: translateX(-50%);
-            background: rgba(255,215,0,0.2);
-            border: 1px solid rgba(255,215,0,0.4);
-            border-radius: 100px;
-            padding: 3px 12px;
-            font-size: 11px; color: #ffd700;
-            font-weight: 700;
-        }
-
-        .tap-particle {
-            position: fixed;
-            font-size: 18px;
-            pointer-events: none;
-            animation: particleUp 0.8s ease forwards;
-            z-index: 100;
-        }
-
-        @keyframes particleUp {
-            from { opacity: 1; transform: translateY(0); }
-            to { opacity: 0; transform: translateY(-80px); }
-        }
-
-        .tap-upgrades {
-            display: flex; flex-direction: column; gap: 8px;
-            margin-top: 15px;
-        }
-
-        .upgrade-btn {
-            display: flex; justify-content: space-between; align-items: center;
-            padding: 12px;
-            background: rgba(255,255,255,0.05);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 10px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .upgrade-btn:hover {
-            background: rgba(255,215,0,0.1);
-            border-color: rgba(255,215,0,0.3);
-        }
-
-        .upgrade-name { color: #d8d0f0; font-size: 13px; font-weight: 600; }
-        .upgrade-info { color: #8a7a30; font-size: 11px; }
-        .upgrade-price { color: #ffd700; font-size: 13px; font-weight: 700; }
-
-        .tap-tabs {
-            display: flex; gap: 8px; margin-top: 15px;
-        }
-
-        .tap-tab {
-            flex: 1;
-            padding: 10px;
-            border-radius: 8px;
-            border: 1px solid rgba(255,255,255,0.1);
-            background: rgba(255,255,255,0.05);
-            color: #9b8fc0;
-            font-size: 12px; font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-align: center;
-        }
-
-        .tap-tab.active {
-            background: rgba(255,215,0,0.15);
-            border-color: rgba(255,215,0,0.4);
-            color: #ffd700;
-        }
-
-        /* РУЛЕТКА */
-        .roulette-screen {
-            background: rgba(20,15,35,0.95);
-            border: 1px solid rgba(255,215,0,0.4);
-            border-radius: 20px;
-            padding: 20px;
-            width: 100%; max-width: 380px;
-            height: 85vh;
-            display: flex; flex-direction: column;
-            animation: pop 0.3s ease;
-            overflow-y: auto;
-        }
-
-        .roulette-wheel {
-            width: 200px; height: 200px;
-            margin: 20px auto;
-            border-radius: 50%;
-            position: relative;
-            border: 4px solid #ffd700;
-            box-shadow: 0 0 40px rgba(255,215,0,0.3);
-            transition: transform 3s cubic-bezier(0.25, 0.1, 0.25, 1);
-            background: conic-gradient(
-                #ffd700 0deg 90deg,
-                #1a1a2a 90deg 180deg,
-                #ffd700 180deg 270deg,
-                #1a1a2a 270deg 360deg
-            );
-        }
-
-        .roulette-center {
-            position: absolute;
-            top: 50%; left: 50%;
-            transform: translate(-50%,-50%);
-            width: 30px; height: 30px;
-            background: #0a0812;
-            border: 2px solid #ffd700;
-            border-radius: 50%;
-            z-index: 2;
-        }
-
-        .roulette-arrow {
-            position: absolute;
-            top: -15px; left: 50%;
-            transform: translateX(-50%);
-            font-size: 30px;
-            z-index: 3;
-        }
+        .chat-messages { flex: 1; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; margin-bottom: 15px; padding-right: 5px; }
+        .chat-msg { max-width: 85%; padding: 12px 14px; border-radius: 14px; font-size: 14px; line-height: 1.6; animation: pop 0.2s ease; }
+        .chat-user { align-self: flex-end; background: rgba(110,180,255,0.25); color: #d8d0f0; }
+        .chat-bot { align-self: flex-start; background: rgba(0,255,150,0.15); color: #e0f0e8; }
+        .chat-input-row { display: flex; gap: 8px; }
+        .chat-input { flex: 1; padding: 12px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.12); background: rgba(255,255,255,0.06); color: #fff; font-size: 14px; outline: none; font-family: 'Manrope', sans-serif; }
+        .chat-send { padding: 12px 18px; border-radius: 12px; border: none; background: rgba(0,255,150,0.3); color: #00ff96; font-size: 14px; font-weight: 700; cursor: pointer; font-family: 'Manrope', sans-serif; }
 
         @keyframes pop {
             from { opacity: 0; transform: scale(0.92); }
@@ -530,24 +218,8 @@
     </style>
 </head>
 <body>
-    <div class="splash" id="splash">
-        <div class="splash-decor"></div>
-        <div class="splash-decor"></div>
-        <div class="splash-decor"></div>
-        <div class="splash-decor"></div>
-        <div class="splash-line"></div>
-        <div class="splash-line"></div>
-        <div class="splash-line"></div>
-        <div class="splash-ring"></div>
-        <div class="splash-ring"></div>
-        <div class="splash-text" id="splashText"></div>
-        <div class="splash-sub" id="splashSub">город знает тебя</div>
-    </div>
-
     <div class="extra-glow-1"></div>
     <div class="extra-glow-2"></div>
-    <div class="rain-container" id="rainContainer"></div>
-    <div class="space-container" id="spaceContainer"></div>
 
     <div class="app">
         <div class="badge">🕵️ ТАЙНЫЙ БЛАГОВЕЩЕНСК</div>
@@ -561,9 +233,9 @@
             <button class="btn" onclick="show('sit')">😌 Посидеть</button>
             <button class="btn" onclick="show('nature')">🌿 Природа</button>
             <button class="btn" onclick="show('gossip')">🤫 Слухи</button>
-            <button class="btn" onclick="openCasino()">🎰 Казино идей</button>
+            <button class="btn" onclick="openCasino()">🎰 Казино</button>
             <button class="btn" onclick="openChat()">💬 Чат</button>
-            <button class="btn" onclick="openTap()">🏙 Город-тапалка</button>
+            <button class="btn" onclick="openTap()">🏙 Тапалка</button>
         </div>
         <div class="result" id="result"></div>
         <div class="actions" id="actions">
@@ -582,14 +254,14 @@
 
     <!-- ЧАТ -->
     <div class="fullscreen" id="chatScreen">
-        <div class="chat-screen">
-            <div class="chat-title">💬 Чат с городом</div>
+        <div class="panel" style="border-color: rgba(0,255,150,0.4);">
+            <div class="panel-title" style="color:#00ff96;">💬 ЧАТ</div>
             <div class="chat-messages" id="chatMessages">
-                <div class="chat-msg chat-bot">Здорова. Спрашивай чё хотел.</div>
+                <div class="chat-msg chat-bot">Здорова. Спрашивай.</div>
             </div>
             <div class="chat-input-row">
                 <input class="chat-input" id="chatInput" placeholder="Напиши..." onkeydown="if(event.key==='Enter') sendChat()">
-                <button class="chat-send" onclick="sendChat()">Отправить</button>
+                <button class="chat-send" onclick="sendChat()">→</button>
             </div>
             <button class="btn-small" onclick="closeChat()" style="margin-top:10px;">← Назад</button>
         </div>
@@ -597,14 +269,14 @@
 
     <!-- КАЗИНО -->
     <div class="fullscreen" id="casinoScreen">
-        <div class="chat-screen" style="border-color: rgba(255,160,50,0.5);">
-            <div class="chat-title" style="color:#ffa032;">🎰 КАЗИНО ИДЕЙ</div>
+        <div class="panel" style="border-color: rgba(255,160,50,0.4);">
+            <div class="panel-title" style="color:#ffa032;">🎰 КАЗИНО</div>
             <div style="display:flex; gap:10px; justify-content:center; margin:20px 0;">
-                <div id="casinoReel1" style="width:80px; height:80px; background:rgba(255,255,255,0.05); border:2px solid rgba(255,160,50,0.5); border-radius:14px; display:flex; align-items:center; justify-content:center; font-size:36px;"></div>
-                <div id="casinoReel2" style="width:80px; height:80px; background:rgba(255,255,255,0.05); border:2px solid rgba(255,160,50,0.5); border-radius:14px; display:flex; align-items:center; justify-content:center; font-size:36px;"></div>
-                <div id="casinoReel3" style="width:80px; height:80px; background:rgba(255,255,255,0.05); border:2px solid rgba(255,160,50,0.5); border-radius:14px; display:flex; align-items:center; justify-content:center; font-size:36px;"></div>
+                <div id="casinoReel1" class="casino-reel">🎰</div>
+                <div id="casinoReel2" class="casino-reel">🎰</div>
+                <div id="casinoReel3" class="casino-reel">🎰</div>
             </div>
-            <button class="chat-send" style="width:100%; padding:14px; font-size:16px;" onclick="spinCasino()">КРУТИТЬ</button>
+            <button class="chat-send" style="width:100%; padding:14px; font-size:16px; background:rgba(255,160,50,0.3); color:#ffa032;" onclick="spinCasino()">КРУТИТЬ</button>
             <div id="casinoResult" style="margin-top:15px; color:#d8d0f0; font-size:14px; line-height:1.6; text-align:center;"></div>
             <button class="btn-small" onclick="closeCasino()" style="margin-top:15px;">← Назад</button>
         </div>
@@ -612,65 +284,54 @@
 
     <!-- ТАПАЛКА -->
     <div class="fullscreen" id="tapScreen">
-        <div class="tap-screen">
-            <div class="chat-title" style="color:#ffd700;">🏙 ГОРОД-ТАПАЛКА</div>
-            <div class="tap-balance" id="tapBalance">0</div>
-            <div class="tap-balance-label">💎 БЛАГОВ</div>
-            <div class="tap-rate" id="tapRate">За клик: +1 | В секунду: 0</div>
-
-            <div class="tap-character" id="tapCharacter" onclick="tapBlag(event)">
-                <div class="tap-cat">
-                    <div class="tap-cat-body" id="catBody"></div>
-                    <div class="tap-cat-ear-left"></div>
-                    <div class="tap-cat-ear-right"></div>
-                    <div class="tap-cat-eyes">
-                        <div class="tap-cat-eye"></div>
-                        <div class="tap-cat-eye"></div>
-                    </div>
-                    <div class="tap-cat-hood"></div>
-                    <div class="tap-level" id="catLevel">Уровень 1</div>
-                </div>
+        <div class="panel" style="border-color: rgba(255,215,0,0.4);">
+            <div class="panel-title" style="color:#ffd700;">🏙 ТАПАЛКА</div>
+            <div style="font-size:32px; font-weight:800; color:#ffd700; text-align:center; text-shadow:0 0 25px rgba(255,215,0,0.6);" id="tapBalance">0</div>
+            <div style="font-size:11px; color:#8a7a30; text-align:center; letter-spacing:2px; margin-bottom:8px;">💎 БЛАГОВ</div>
+            <div style="font-size:13px; color:#9b8fc0; text-align:center; margin-bottom:12px;" id="tapRate">За клик: +1 | В секунду: 0</div>
+            
+            <div id="tapCharacter" onclick="tapBlag(event)" style="margin:0 auto 15px; cursor:pointer; user-select:none; -webkit-tap-highlight-color:transparent;">
+                <div style="font-size:100px; text-align:center; transition: transform 0.1s;" id="tapEmoji">🐱</div>
+                <div id="catLevel" style="text-align:center; font-size:12px; color:#ffd700; font-weight:700;">Уровень 1</div>
             </div>
 
-            <div class="tap-tabs">
-                <div class="tap-tab active" onclick="switchTapTab('upgrades', this)">🛠 Улучшения</div>
-                <div class="tap-tab" onclick="switchTapTab('boosts', this)">⚡ Бусты</div>
-                <div class="tap-tab" onclick="switchTapTab('roulette', this)">🎡 Рулетка</div>
+            <div style="display:flex; gap:6px; margin-bottom:12px;">
+                <button class="btn-small" style="flex:1; padding:10px; font-size:12px; background:rgba(255,215,0,0.15); border-color:rgba(255,215,0,0.4); color:#ffd700;" onclick="switchTapTab('upgrades', this)" id="tabUpgrades">🛠</button>
+                <button class="btn-small" style="flex:1; padding:10px; font-size:12px;" onclick="switchTapTab('boosts', this)" id="tabBoosts">⚡</button>
+                <button class="btn-small" style="flex:1; padding:10px; font-size:12px;" onclick="switchTapTab('roulette', this)" id="tabRoulette">🎡</button>
             </div>
 
-            <div id="tapUpgrades" class="tap-upgrades"></div>
-            <div id="tapBoosts" class="tap-upgrades" style="display:none;"></div>
-            <div id="tapRoulette" class="tap-upgrades" style="display:none;">
-                <div style="margin-top:15px;">
-                    <label style="color:#9b8fc0; font-size:13px;">Ставка (благи)</label>
-                    <input id="rouletteBet" class="chat-input" type="number" value="100" style="margin-top:8px;">
-                    <label style="color:#9b8fc0; font-size:13px; display:block; margin-top:10px;">Множитель</label>
-                    <select id="rouletteMultiplier" class="chat-input" style="margin-top:8px;">
-                        <option value="1.5">x1.5 — шанс 65%</option>
-                        <option value="2">x2 — шанс 50%</option>
-                        <option value="3">x3 — шанс 33%</option>
-                        <option value="5">x5 — шанс 20%</option>
-                        <option value="7">x7 — шанс 14%</option>
-                        <option value="10">x10 — шанс 10%</option>
-                    </select>
-                    <button class="chat-send" style="width:100%; margin-top:15px; padding:14px;" onclick="playRoulette()">КРУТИТЬ РУЛЕТКУ</button>
-                    <div id="rouletteResult" style="margin-top:15px; color:#d8d0f0; font-size:14px; text-align:center;"></div>
-                </div>
+            <div id="tapUpgrades" style="overflow-y:auto; flex:1; display:flex; flex-direction:column; gap:6px;"></div>
+            <div id="tapBoosts" style="display:none; overflow-y:auto; flex:1; flex-direction:column; gap:6px;"></div>
+            <div id="tapRoulette" style="display:none; overflow-y:auto; flex:1;">
+                <label style="color:#9b8fc0; font-size:13px;">Ставка</label>
+                <input id="rouletteBet" class="chat-input" type="number" value="100" style="margin-top:6px;">
+                <label style="color:#9b8fc0; font-size:13px; display:block; margin-top:10px;">Множитель</label>
+                <select id="rouletteMultiplier" class="chat-input" style="margin-top:6px;">
+                    <option value="1.5">x1.5 — 65%</option>
+                    <option value="2">x2 — 50%</option>
+                    <option value="3">x3 — 33%</option>
+                    <option value="5">x5 — 20%</option>
+                    <option value="7">x7 — 14%</option>
+                    <option value="10">x10 — 10%</option>
+                </select>
+                <button class="chat-send" style="width:100%; margin-top:12px; padding:14px; background:rgba(255,215,0,0.3); color:#ffd700;" onclick="playRoulette()">КРУТИТЬ</button>
+                <div id="rouletteResult" style="margin-top:12px; color:#d8d0f0; font-size:14px; text-align:center;"></div>
             </div>
 
-            <button class="btn-small" onclick="closeTap()" style="margin-top:15px;">← Назад</button>
+            <button class="btn-small" onclick="closeTap()" style="margin-top:10px;">← Назад</button>
         </div>
     </div>
 
     <!-- ИНФО -->
     <div class="fullscreen" id="infoScreen">
-        <div class="chat-screen" style="border-color: rgba(155,123,255,0.4);">
-            <div class="chat-title" style="color:#b39bff;">📌 Инфа</div>
+        <div class="panel" style="border-color: rgba(155,123,255,0.4);">
+            <div class="panel-title" style="color:#b39bff;">📌 ИНФА</div>
             <div style="flex:1; overflow-y:auto;">
-                <p style="color:#d8d0f0; font-size:14px; line-height:1.7; margin-bottom:12px;">Пр тут короче будет информация о новых добавлениях и тд</p>
-                <p style="color:#d8d0f0; font-size:14px; line-height:1.7; margin-bottom:12px;">Так же если че можете вкидывать свои идеи авторам, они будут рассматриваться.</p>
+                <p style="color:#d8d0f0; font-size:14px; line-height:1.7; margin-bottom:12px;">Пр тут будет инфа о новых добавлениях.</p>
+                <p style="color:#d8d0f0; font-size:14px; line-height:1.7; margin-bottom:12px;">Идеи кидайте авторам.</p>
                 <p style="color:#d8d0f0; font-size:14px; line-height:1.7; margin-bottom:12px;">Авторы: @Pand_f и @cruifixs</p>
-                <p style="color:#d8d0f0; font-size:14px; line-height:1.7;">Рад что пользуетесь тайным благом</p>
+                <p style="color:#d8d0f0; font-size:14px; line-height:1.7;">Рад что пользуетесь.</p>
             </div>
             <button class="btn-small" onclick="closeInfo()">← Назад</button>
         </div>
@@ -678,114 +339,88 @@
 
     <!-- АДМИНКА -->
     <div class="fullscreen" id="adminScreen">
-        <div class="chat-screen" style="border-color: rgba(155,123,255,0.4);" id="loginBlock">
-            <div class="chat-title" style="color:#b39bff;">🔒 Вход</div>
+        <div class="panel" style="border-color: rgba(155,123,255,0.4);" id="loginBlock">
+            <div class="panel-title" style="color:#b39bff;">🔒 ВХОД</div>
             <input class="chat-input" id="pinInput" type="password" placeholder="Пин-код" maxlength="4" style="margin-bottom:10px; text-align:center;">
             <button class="chat-send" onclick="checkPin()" style="width:100%; padding:12px;">Войти</button>
             <button class="btn-small" onclick="closeAdmin()" style="margin-top:10px;">← Назад</button>
         </div>
 
-        <div class="chat-screen" style="border-color: rgba(155,123,255,0.4); display:none;" id="adminContent">
-            <div class="chat-title" style="color:#b39bff;">⚙️ Админка</div>
-            <button class="chat-send" onclick="showAddForm()" style="width:100%; padding:12px; margin-bottom:8px;">➕ Добавить идею</button>
-            <button class="chat-send" onclick="showAllIdeas()" style="width:100%; padding:12px; margin-bottom:8px;">📋 Все идеи</button>
-            <button class="chat-send" onclick="showStats()" style="width:100%; padding:12px; margin-bottom:8px;">📊 Статистика</button>
+        <div class="panel" style="border-color: rgba(155,123,255,0.4); display:none;" id="adminContent">
+            <div class="panel-title" style="color:#b39bff;">⚙️ АДМИНКА</div>
+            <button class="chat-send" onclick="showAddForm()" style="width:100%; padding:12px; margin-bottom:8px;">➕ Идея</button>
+            <button class="chat-send" onclick="showAllIdeas()" style="width:100%; padding:12px; margin-bottom:8px;">📋 Все</button>
+            <button class="chat-send" onclick="showStats()" style="width:100%; padding:12px; margin-bottom:8px;">📊 Стата</button>
             <button class="btn-small" onclick="closeAdmin()">← Назад</button>
         </div>
 
-        <div class="chat-screen" style="border-color: rgba(155,123,255,0.4); display:none;" id="addForm">
-            <div class="chat-title" style="color:#b39bff;">➕ Новая идея</div>
+        <div class="panel" style="border-color: rgba(155,123,255,0.4); display:none;" id="addForm">
+            <div class="panel-title" style="color:#b39bff;">➕ ИДЕЯ</div>
             <select id="categorySelect" class="chat-input" style="margin-bottom:10px;">
-                <option value="kuda">🚶 Куда сходить</option>
-                <option value="eat">🍽 Поесть</option>
-                <option value="sit">😌 Посидеть</option>
+                <option value="kuda">🚶 Куда</option>
+                <option value="eat">🍽 Еда</option>
+                <option value="sit">😌 Сидеть</option>
                 <option value="nature">🌿 Природа</option>
                 <option value="gossip">🤫 Слухи</option>
             </select>
-            <textarea id="ideaText" class="chat-input" rows="3" placeholder="Текст идеи" style="margin-bottom:10px; resize:vertical;"></textarea>
-            <button class="chat-send" onclick="addIdea()" style="width:100%; padding:12px;">Сохранить</button>
+            <textarea id="ideaText" class="chat-input" rows="3" placeholder="Текст" style="margin-bottom:10px;"></textarea>
+            <button class="chat-send" onclick="addIdea()" style="width:100%;">Сохранить</button>
             <button class="btn-small" onclick="backToAdmin()" style="margin-top:10px;">← Назад</button>
         </div>
 
-        <div class="chat-screen" style="border-color: rgba(155,123,255,0.4); display:none;" id="listBlock">
-            <div class="chat-title" style="color:#b39bff;">📋 Все идеи</div>
+        <div class="panel" style="border-color: rgba(155,123,255,0.4); display:none;" id="listBlock">
+            <div class="panel-title" style="color:#b39bff;">📋 ВСЕ</div>
             <div id="ideasList" style="flex:1; overflow-y:auto; margin-bottom:10px;"></div>
             <button class="btn-small" onclick="backToAdmin()">← Назад</button>
         </div>
 
-        <div class="chat-screen" style="border-color: rgba(155,123,255,0.4); display:none;" id="statsBlock">
-            <div class="chat-title" style="color:#b39bff;">📊 Статистика</div>
-            <div id="statsText" style="color:#d8d0f0; font-size:14px; line-height:1.6; flex:1; overflow-y:auto;"></div>
+        <div class="panel" style="border-color: rgba(155,123,255,0.4); display:none;" id="statsBlock">
+            <div class="panel-title" style="color:#b39bff;">📊 СТАТА</div>
+            <div id="statsText" style="color:#d8d0f0; font-size:14px; flex:1; overflow-y:auto;"></div>
             <button class="btn-small" onclick="backToAdmin()">← Назад</button>
         </div>
     </div>
 
     <script>
-        // БАЗОВЫЕ КОНСТАНТЫ
         const PIN = "8357";
         let clicks = {};
         let currentTheme = 0;
         const themes = ['', 'theme-neon', 'theme-rain', 'theme-space'];
         let greetCount = 0;
 
-        // ЗАСТАВКА
-        const splashText = document.getElementById('splashText');
-        const splashSub = document.getElementById('splashSub');
-        const splash = document.getElementById('splash');
-        const textToShow = 'ТАЙНЫЙ БЛАГОВЕЩЕНСК';
-        let charIndex = 0;
-
-        function typeSplash() {
-            if (charIndex < textToShow.length) {
-                splashText.textContent += textToShow[charIndex];
-                charIndex++;
-                setTimeout(typeSplash, 200);
-            } else {
-                splashSub.style.opacity = '1';
-                setTimeout(() => {
-                    splash.style.opacity = '0';
-                    setTimeout(() => splash.remove(), 800);
-                }, 1200);
-            }
-        }
-        typeSplash();
-
-        // ИДЕИ
         const ideas = {
-            kuda: ["парк Киселёва — дойди, там ебать круто","пруд в Инзе — вода, тишина, кайф","стадион в Низах — место силы","смотровая вышка — вид на парк и пруд","аллея у белого голубя","тропа здоровья — турники и воздух","Инь-Янь — прудик и скамейки","Заряд — качалка, бассейн, скалолазание","Импульс — качалка и бассейн","Кванториум — технологии","ГАИ — лучший район","Котловка — тихий райончик","Щорсы — старые и новые дома","остров в Низах — качели","скейт-парк — кататься","кинотеатр «Салют»","«Факел» — бокс, карате"],
-            eat: ["«Милк» на Седова, 113","шашлычная на 100А — круглосуточно","«Тройка» — круглосуточно","«Фор-Фор» — пицца и роллы","«Венеция» — вкусно","Food House","«Икмек» — выпечка","«Магнит» — бургеры","«Чиполлино» на Алексее","«Парковка» у Квадрата","«Гурман» — круглосуточно","«Монетка» — магазин"],
-            sit: ["три стула в парке","скамейки у педколледжа","качели перед озером","набережная — вода","тихие дворы за Седова","Инь-Янь — скамейки","Квадрат — площадка внутри","площадка за педколледжем","остановка Алексей"],
+            kuda: ["парк Киселёва — дойди, ебать круто","пруд в Инзе — вода и тишина","стадион в Низах — место силы","смотровая вышка — вид на парк","аллея у белого голубя","тропа здоровья","Инь-Янь — прудик и скамейки","Заряд — качалка, бассейн","Импульс — качалка","Кванториум — технологии","ГАИ — лучший район","Котловка — тихо","Щорсы — новый и старый","остров в Низах","скейт-парк","кинотеатр «Салют»","«Факел» — бокс"],
+            eat: ["«Милк» на Седова","шашлычная на 100А — круглосуточно","«Тройка» — круглосуточно","«Фор-Фор» — пицца и роллы","«Венеция»","Food House","«Икмек» — выпечка","«Магнит» — бургеры","«Чиполлино» на Алексее","«Парковка» у Квадрата","«Гурман» — круглосуточно","«Монетка»"],
+            sit: ["три стула в парке","скамейки у педколледжа","качели перед озером","набережная","тихие дворы за Седова","Инь-Янь","Квадрат","площадка за педколледжем","остановка Алексей"],
             nature: ["сосновая роща","берег реки","родник","озеро в парке","река Белая","бассейн в «Заряде»","бассейн в «Импульсе»","затон"],
-            gossip: ["на Инзе все знают...","в Низах выпускники...","на ГАИ за проблемами не идти","чат «В благе любят»","ГАИ — лучшее кино в окне","ГАИ — не опасный, а лучший","автобус на БМПК в 9 утра — битком","после 4-й пары студенты ломают себя"]
+            gossip: ["на Инзе все знают...","в Низах выпускники...","на ГАИ за проблемами не идти","чат «В благе любят»","ГАИ — кино в окне","ГАИ — лучший район","автобус на БМПК битком","после пар студенты ломают себя"]
         };
 
         const queues = {};
         let currentCategory = null;
 
-        function getQueue(category) {
-            if (!queues[category] || queues[category].length === 0) {
-                queues[category] = [...ideas[category]].sort(() => Math.random() - 0.5);
+        function getQueue(cat) {
+            if (!queues[cat] || queues[cat].length === 0) {
+                queues[cat] = [...ideas[cat]].sort(() => Math.random() - 0.5);
             }
-            return queues[category];
+            return queues[cat];
         }
 
-        function show(category) {
-            clicks[category] = (clicks[category] || 0) + 1;
-            currentCategory = category;
-            const queue = getQueue(category);
-            const idea = queue.shift();
+        function show(cat) {
+            clicks[cat] = (clicks[cat] || 0) + 1;
+            currentCategory = cat;
+            const q = getQueue(cat);
             document.getElementById('header').style.display = 'none';
             document.getElementById('menu').style.display = 'none';
-            const result = document.getElementById('result');
-            result.style.display = 'block';
-            result.textContent = idea;
+            const r = document.getElementById('result');
+            r.style.display = 'block';
+            r.textContent = q.shift();
             document.getElementById('actions').style.display = 'flex';
         }
 
         function more() {
             if (!currentCategory) return;
-            const queue = getQueue(currentCategory);
-            document.getElementById('result').textContent = queue.shift();
+            document.getElementById('result').textContent = getQueue(currentCategory).shift();
         }
 
         function back() {
@@ -799,14 +434,14 @@
         let casinoSpinning = false;
         const casinoIcons = ['🚶','🍽','😌','🌿','🤫','🔥','💡','🌙'];
         const casinoIdeas = {
-            '🚶': ["выйди на улицу и пройдись","сходи в парк Киселёва","прогуляйся до пруда"],
-            '🍽': ["загляни в «Милк»","возьми шашлык на 100А","роллы из «Фор-Фор»"],
-            '😌': ["сядь на лавочку у педколледжа","найди тихий двор","посиди у воды"],
-            '🌿': ["иди в сосновую рощу","сходи к роднику","подыши у реки"],
-            '🤫': ["узнай свежий слух","спроси у своих","послушай район"],
+            '🚶': ["выйди и пройдись","сходи в парк","прогуляйся до пруда"],
+            '🍽': ["«Милк»","шашлык на 100А","роллы"],
+            '😌': ["лавочка у педколледжа","тихий двор","посиди у воды"],
+            '🌿': ["сосновая роща","родник","подыши у реки"],
+            '🤫': ["узнай слух","спроси у своих","послушай район"],
             '🔥': ["сделай то, на что не решался","устрой движ","выйди из зоны комфорта"],
-            '💡': ["придумай идею для поста","запиши мысль","сгенерируй идею"],
-            '🌙': ["выйди ночью","пройдись по тёмному городу","посмотри на огни"]
+            '💡': ["придумай идею","запиши мысль","сгенерируй"],
+            '🌙': ["выйди ночью","тёмный город","посмотри на огни"]
         };
 
         function openCasino() {
@@ -814,10 +449,7 @@
             document.getElementById('casinoResult').textContent = '';
             casinoSpinning = false;
         }
-        function closeCasino() {
-            if (casinoSpinning) return;
-            document.getElementById('casinoScreen').classList.remove('active');
-        }
+        function closeCasino() { if (!casinoSpinning) document.getElementById('casinoScreen').classList.remove('active'); }
 
         function spinCasino() {
             if (casinoSpinning) return;
@@ -829,12 +461,9 @@
                     document.getElementById(id).textContent = casinoIcons[Math.floor(Math.random() * casinoIcons.length)];
                 });
             }, 80);
-
             setTimeout(() => {
                 clearInterval(interval);
-                reels.forEach(id => {
-                    results.push(document.getElementById(id).textContent);
-                });
+                reels.forEach(id => results.push(document.getElementById(id).textContent));
                 document.getElementById('casinoResult').textContent = generateCasinoIdea(results);
                 casinoSpinning = false;
             }, 2000);
@@ -842,60 +471,56 @@
 
         function generateCasinoIdea(icons) {
             const parts = icons.map(icon => {
-                const phrases = casinoIdeas[icon] || ['сделай что-нибудь'];
-                return phrases[Math.floor(Math.random() * phrases.length)];
+                const p = casinoIdeas[icon] || ['сделай что-нибудь'];
+                return p[Math.floor(Math.random() * p.length)];
             });
-            return `🎰 Выпало, блять:\n\n${parts[0]},\n${parts[1]}\nи ${parts[2]}.\n\nСделай это, нахуй.`;
+            return `🎰 Выпало:\n\n${parts[0]},\n${parts[1]}\nи ${parts[2]}.\n\nПогнали.`;
         }
 
         // ЧАТ
         function openChat() { document.getElementById('chatScreen').classList.add('active'); }
         function closeChat() { document.getElementById('chatScreen').classList.remove('active'); }
-
         function sendChat() {
             const input = document.getElementById('chatInput');
             const msg = input.value.trim();
             if (!msg) return;
-            const messages = document.getElementById('chatMessages');
-            const userMsg = document.createElement('div');
-            userMsg.className = 'chat-msg chat-user';
-            userMsg.textContent = msg;
-            messages.appendChild(userMsg);
-            const botMsg = document.createElement('div');
-            botMsg.className = 'chat-msg chat-bot';
-            botMsg.textContent = getChatReply(msg);
-            messages.appendChild(botMsg);
+            const msgs = document.getElementById('chatMessages');
+            const u = document.createElement('div');
+            u.className = 'chat-msg chat-user';
+            u.textContent = msg;
+            msgs.appendChild(u);
+            const b = document.createElement('div');
+            b.className = 'chat-msg chat-bot';
+            b.textContent = getChatReply(msg);
+            msgs.appendChild(b);
             input.value = '';
-            messages.scrollTop = messages.scrollHeight;
+            msgs.scrollTop = msgs.scrollHeight;
         }
-
         function getChatReply(text) {
             const t = text.toLowerCase();
-            if (t.includes('привет') || t.includes('здоров') || t.includes('хай')) {
+            if (t.includes('привет') || t.includes('здоров')) {
                 greetCount++;
-                if (greetCount === 1) return 'Здорова. Чё хотел?';
-                if (greetCount === 2) return 'Мы уже здоровались. Говори по делу.';
-                return 'Ты чё тупой? Я же написал здарова.';
+                return greetCount === 1 ? 'Здорова. Чё хотел?' : greetCount === 2 ? 'Мы уже здоровались.' : 'Ты чё тупой? Я написал здарова.';
             }
-            if (t.includes('как дела')) return 'У меня база города. Пойди гуляй.';
-            if (t.includes('время')) return 'Тебя это дерьмо волнует? Наслаждайся временем.';
-            if (t.includes('погода')) return 'Выгляни в окно, гений.';
+            if (t.includes('как дела')) return 'Пойди гуляй.';
+            if (t.includes('время')) return 'Наслаждайся временем.';
+            if (t.includes('погода')) return 'Выгляни в окно.';
             if (t.includes('поесть') || t.includes('пожрать') || t.includes('голод')) return '«Милк» на Седова, 113. Или шашлычная на 100А.';
-            if (t.includes('пить') || t.includes('бух')) return 'КБ, Магнит, Тройка. Выбирай.';
+            if (t.includes('пить') || t.includes('бух')) return 'КБ, Магнит, Тройка.';
             if (t.includes('гулять') || t.includes('куда')) return 'Парк Киселёва, вышка, аллея у голубя.';
             if (t.includes('посидеть')) return 'Три стула в парке. Или скамейки у педколледжа.';
-            if (t.includes('скучно')) return 'Открой тапалку и не ной.';
+            if (t.includes('скучно')) return 'Открой тапалку.';
             if (t.includes('любовь') || t.includes('признаться') || t.includes('девочк') || t.includes('девушк')) return 'Иди и скажи. Город видел истории и пострашнее.';
             if (t.includes('смысл')) return 'Смысл — найти своё место в городе.';
             if (t.includes('инза')) return 'Инза — движ, еда, люди.';
             if (t.includes('низа') || t.includes('низах')) return 'Низа — парк, река, закаты.';
             if (t.includes('гаи')) return 'ГАИ — лучший район.';
-            if (t.includes('кто ты')) return 'Я — голос города. Или бот. Как повезёт.';
+            if (t.includes('кто ты')) return 'Я — голос города.';
             if (t.includes('дурак') || t.includes('тупой') || t.includes('дебил')) return 'Сам такой.';
-            if (t.includes('спасибо')) return 'Обращайся. Или не обращайся.';
+            if (t.includes('спасибо')) return 'Обращайся.';
             if (t.includes('пока')) return 'Давай. Город ждёт.';
-            const replies = ['Я бот, а не гадалка.','В моей базе нет ответа на эту херню.','Ты уверен, что это вопрос?','Спроси у «Шальных».','Не знаю, погугли.'];
-            return replies[Math.floor(Math.random() * replies.length)];
+            const r = ['Я бот, а не гадалка.','В моей базе нет ответа.','Ты уверен, что это вопрос?','Спроси у «Шальных».','Погугли.'];
+            return r[Math.floor(Math.random() * r.length)];
         }
 
         // ТАПАЛКА
@@ -908,21 +533,21 @@
         const tapUpgradesList = [
             { name: "Лавочка", desc: "+1 за клик", cost: 50, type: "click", value: 1 },
             { name: "Фонарь", desc: "+2 за клик", cost: 250, type: "click", value: 2 },
-            { name: "Парк", desc: "+1 в секунду", cost: 400, type: "auto", value: 1 },
-            { name: "Река", desc: "+5 в секунду", cost: 1000, type: "auto", value: 5 },
+            { name: "Парк", desc: "+1/сек", cost: 400, type: "auto", value: 1 },
+            { name: "Река", desc: "+5/сек", cost: 1000, type: "auto", value: 5 },
             { name: "Инза", desc: "+5 за клик", cost: 2000, type: "click", value: 5 },
-            { name: "Низа", desc: "+10 в секунду", cost: 5000, type: "auto", value: 10 },
-            { name: "Вышка", desc: "+25 в секунду", cost: 10000, type: "auto", value: 25 },
-            { name: "Голубь", desc: "+50 в секунду", cost: 25000, type: "auto", value: 50 },
-            { name: "Кванториум", desc: "+100 в секунду", cost: 50000, type: "auto", value: 100 },
+            { name: "Низа", desc: "+10/сек", cost: 5000, type: "auto", value: 10 },
+            { name: "Вышка", desc: "+25/сек", cost: 10000, type: "auto", value: 25 },
+            { name: "Голубь", desc: "+50/сек", cost: 25000, type: "auto", value: 50 },
+            { name: "Кванториум", desc: "+100/сек", cost: 50000, type: "auto", value: 100 },
             { name: "Дух города", desc: "+10 за клик", cost: 100000, type: "click", value: 10 }
         ];
 
         const tapBoostsList = [
-            { name: "x2 клик", desc: "30 секунд", cost: 100, type: "click", value: 2, duration: 30 },
-            { name: "x5 клик", desc: "30 секунд", cost: 300, type: "click", value: 5, duration: 30 },
-            { name: "x10 клик", desc: "30 секунд", cost: 700, type: "click", value: 10, duration: 30 },
-            { name: "Авто x2", desc: "1 минута", cost: 500, type: "auto", value: 2, duration: 60 }
+            { name: "x2 клик", desc: "30 сек", cost: 100, type: "click", value: 2, duration: 30 },
+            { name: "x5 клик", desc: "30 сек", cost: 300, type: "click", value: 5, duration: 30 },
+            { name: "x10 клик", desc: "30 сек", cost: 700, type: "click", value: 10, duration: 30 },
+            { name: "Авто x2", desc: "1 мин", cost: 500, type: "auto", value: 2, duration: 60 }
         ];
 
         function openTap() {
@@ -931,29 +556,20 @@
             renderTap();
             startTapInterval();
         }
-
         function closeTap() {
             document.getElementById('tapScreen').classList.remove('active');
             stopTapInterval();
             saveTapData();
         }
-
         function tapBlag(event) {
             tapBalance += tapClickPower;
             renderTap();
-            createParticle(event);
+            const p = document.createElement('div');
+            p.style.cssText = `position:fixed; font-size:18px; pointer-events:none; z-index:100; left:${event.clientX}px; top:${event.clientY}px; animation: particleUp 0.8s ease forwards;`;
+            p.textContent = `+${tapClickPower}💎`;
+            document.body.appendChild(p);
+            setTimeout(() => p.remove(), 800);
         }
-
-        function createParticle(event) {
-            const particle = document.createElement('div');
-            particle.className = 'tap-particle';
-            particle.textContent = `+${tapClickPower}💎`;
-            particle.style.left = event.clientX + 'px';
-            particle.style.top = event.clientY + 'px';
-            document.body.appendChild(particle);
-            setTimeout(() => particle.remove(), 800);
-        }
-
         function renderTap() {
             document.getElementById('tapBalance').textContent = Math.floor(tapBalance);
             document.getElementById('tapRate').textContent = `За клик: +${tapClickPower} | В секунду: ${tapAutoPerSec}`;
@@ -963,112 +579,69 @@
             renderBoosts();
             saveTapData();
         }
-
         function updateCatVisual() {
-            const body = document.getElementById('catBody');
-            const hue = 250 + (tapLevel * 2) % 50;
-            body.style.background = `linear-gradient(145deg, hsl(${hue}, 70%, 70%), hsl(${hue - 30}, 70%, 45%))`;
-            body.style.boxShadow = `0 0 40px hsl(${hue}, 70%, 50%, 0.5)`;
-            if (tapLevel >= 5) {
-                body.style.width = '110px';
-                body.style.height = '110px';
-            }
-            if (tapLevel >= 10) {
-                body.style.width = '120px';
-                body.style.height = '120px';
-            }
+            const emoji = document.getElementById('tapEmoji');
+            if (tapLevel < 5) emoji.textContent = '🐱';
+            else if (tapLevel < 10) emoji.textContent = '😺';
+            else if (tapLevel < 20) emoji.textContent = '🦊';
+            else if (tapLevel < 30) emoji.textContent = '🐉';
+            else if (tapLevel < 50) emoji.textContent = '🌟';
+            else emoji.textContent = '👑';
         }
-
         function renderUpgrades() {
-            const container = document.getElementById('tapUpgrades');
-            container.innerHTML = '';
-            tapUpgradesList.forEach((upg, index) => {
-                const div = document.createElement('div');
-                div.className = 'upgrade-btn';
-                div.innerHTML = `
-                    <div>
-                        <div class="upgrade-name">${upg.name}</div>
-                        <div class="upgrade-info">${upg.desc}</div>
-                    </div>
-                    <div class="upgrade-price">💎${upg.cost}</div>
-                `;
-                div.onclick = () => buyUpgrade(index);
-                container.appendChild(div);
+            const c = document.getElementById('tapUpgrades');
+            c.innerHTML = '';
+            tapUpgradesList.forEach((u, i) => {
+                const d = document.createElement('div');
+                d.style.cssText = 'display:flex; justify-content:space-between; align-items:center; padding:8px 10px; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:8px; cursor:pointer;';
+                d.innerHTML = `<div><div style="color:#d8d0f0; font-size:11px; font-weight:600;">${u.name}</div><div style="color:#8a7a30; font-size:9px;">${u.desc}</div></div><div style="color:#ffd700; font-size:11px; font-weight:700;">💎${u.cost}</div>`;
+                d.onclick = () => buyUpgrade(i);
+                c.appendChild(d);
             });
         }
-
         function renderBoosts() {
-            const container = document.getElementById('tapBoosts');
-            container.innerHTML = '';
-            tapBoostsList.forEach((boost, index) => {
-                const div = document.createElement('div');
-                div.className = 'upgrade-btn';
-                div.innerHTML = `
-                    <div>
-                        <div class="upgrade-name">⚡ ${boost.name}</div>
-                        <div class="upgrade-info">${boost.desc}</div>
-                    </div>
-                    <div class="upgrade-price">💎${boost.cost}</div>
-                `;
-                div.onclick = () => buyBoost(index);
-                container.appendChild(div);
+            const c = document.getElementById('tapBoosts');
+            c.innerHTML = '';
+            tapBoostsList.forEach((b, i) => {
+                const d = document.createElement('div');
+                d.style.cssText = 'display:flex; justify-content:space-between; align-items:center; padding:8px 10px; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:8px; cursor:pointer;';
+                d.innerHTML = `<div><div style="color:#d8d0f0; font-size:11px; font-weight:600;">⚡ ${b.name}</div><div style="color:#8a7a30; font-size:9px;">${b.desc}</div></div><div style="color:#ffd700; font-size:11px; font-weight:700;">💎${b.cost}</div>`;
+                d.onclick = () => buyBoost(i);
+                c.appendChild(d);
             });
         }
-
-        function buyUpgrade(index) {
-            const upg = tapUpgradesList[index];
-            if (tapBalance < upg.cost) {
-                alert('Не хватает благов, брат');
-                return;
-            }
-            tapBalance -= upg.cost;
-            if (upg.type === 'click') {
-                tapClickPower += upg.value;
-            } else {
-                tapAutoPerSec += upg.value;
-            }
+        function buyUpgrade(i) {
+            const u = tapUpgradesList[i];
+            if (tapBalance < u.cost) { alert('Не хватает'); return; }
+            tapBalance -= u.cost;
+            if (u.type === 'click') tapClickPower += u.value;
+            else tapAutoPerSec += u.value;
             tapLevel++;
             renderTap();
         }
-
-        function buyBoost(index) {
-            const boost = tapBoostsList[index];
-            if (tapBalance < boost.cost) {
-                alert('Не хватает благов');
-                return;
-            }
-            tapBalance -= boost.cost;
+        function buyBoost(i) {
+            const b = tapBoostsList[i];
+            if (tapBalance < b.cost) { alert('Не хватает'); return; }
+            tapBalance -= b.cost;
             renderTap();
-            activateBoost(boost);
-        }
-
-        function activateBoost(boost) {
-            if (boost.type === 'click') {
-                const oldPower = tapClickPower;
-                tapClickPower *= boost.value;
-                setTimeout(() => {
-                    tapClickPower = oldPower;
-                    renderTap();
-                }, boost.duration * 1000);
+            if (b.type === 'click') {
+                const old = tapClickPower;
+                tapClickPower *= b.value;
+                setTimeout(() => { tapClickPower = old; renderTap(); }, b.duration * 1000);
             } else {
-                const oldAuto = tapAutoPerSec;
-                tapAutoPerSec *= boost.value;
-                setTimeout(() => {
-                    tapAutoPerSec = oldAuto;
-                    renderTap();
-                }, boost.duration * 1000);
+                const old = tapAutoPerSec;
+                tapAutoPerSec *= b.value;
+                setTimeout(() => { tapAutoPerSec = old; renderTap(); }, b.duration * 1000);
             }
-            renderTap();
         }
-
-        function switchTapTab(tab, element) {
-            document.querySelectorAll('.tap-tab').forEach(t => t.classList.remove('active'));
-            element.classList.add('active');
+        function switchTapTab(tab, el) {
+            document.getElementById('tabUpgrades').style.background = tab === 'upgrades' ? 'rgba(255,215,0,0.15)' : '';
+            document.getElementById('tabBoosts').style.background = tab === 'boosts' ? 'rgba(255,215,0,0.15)' : '';
+            document.getElementById('tabRoulette').style.background = tab === 'roulette' ? 'rgba(255,215,0,0.15)' : '';
             document.getElementById('tapUpgrades').style.display = tab === 'upgrades' ? 'flex' : 'none';
             document.getElementById('tapBoosts').style.display = tab === 'boosts' ? 'flex' : 'none';
-            document.getElementById('tapRoulette').style.display = tab === 'roulette' ? 'flex' : 'none';
+            document.getElementById('tapRoulette').style.display = tab === 'roulette' ? 'block' : 'none';
         }
-
         function startTapInterval() {
             if (tapInterval) clearInterval(tapInterval);
             tapInterval = setInterval(() => {
@@ -1076,60 +649,38 @@
                 renderTap();
             }, 1000);
         }
-
-        function stopTapInterval() {
-            if (tapInterval) {
-                clearInterval(tapInterval);
-                tapInterval = null;
-            }
-        }
-
+        function stopTapInterval() { if (tapInterval) { clearInterval(tapInterval); tapInterval = null; } }
         function saveTapData() {
-            const data = {
-                balance: tapBalance,
-                clickPower: tapClickPower,
-                autoPerSec: tapAutoPerSec,
-                level: tapLevel
-            };
-            localStorage.setItem('tapData', JSON.stringify(data));
+            localStorage.setItem('tapData', JSON.stringify({balance: tapBalance, clickPower: tapClickPower, autoPerSec: tapAutoPerSec, level: tapLevel}));
         }
-
         function loadTapData() {
-            const data = localStorage.getItem('tapData');
-            if (data) {
-                const parsed = JSON.parse(data);
-                tapBalance = parsed.balance || 0;
-                tapClickPower = parsed.clickPower || 1;
-                tapAutoPerSec = parsed.autoPerSec || 0;
-                tapLevel = parsed.level || 1;
+            const d = localStorage.getItem('tapData');
+            if (d) {
+                const p = JSON.parse(d);
+                tapBalance = p.balance || 0;
+                tapClickPower = p.clickPower || 1;
+                tapAutoPerSec = p.autoPerSec || 0;
+                tapLevel = p.level || 1;
             }
         }
 
         // РУЛЕТКА
         function playRoulette() {
             const bet = parseInt(document.getElementById('rouletteBet').value) || 0;
-            const multiplier = parseFloat(document.getElementById('rouletteMultiplier').value);
-
-            if (bet <= 0 || bet > tapBalance) {
-                alert('Неправильная ставка');
-                return;
-            }
-
+            const mult = parseFloat(document.getElementById('rouletteMultiplier').value);
+            if (bet <= 0 || bet > tapBalance) { alert('Неправильная ставка'); return; }
             const chances = {1.5: 65, 2: 50, 3: 33, 5: 20, 7: 14, 10: 10};
-            const chance = chances[multiplier] || 50;
-
+            const chance = chances[mult] || 50;
             tapBalance -= bet;
             renderTap();
-
             const won = Math.random() * 100 < chance;
-            const result = document.getElementById('rouletteResult');
-
+            const r = document.getElementById('rouletteResult');
             if (won) {
-                const winAmount = Math.floor(bet * multiplier);
-                tapBalance += winAmount;
-                result.textContent = `🎉 ВЫИГРЫШ!\nСтавка: ${bet}💎\nМножитель: x${multiplier}\nВыигрыш: ${winAmount}💎`;
+                const win = Math.floor(bet * mult);
+                tapBalance += win;
+                r.textContent = `🎉 ВЫИГРЫШ!\nСтавка: ${bet}💎\nМножитель: x${mult}\nВыигрыш: ${win}💎`;
             } else {
-                result.textContent = `💀 Проигрыш.\nСтавка: ${bet}💎\nПовезёт в следующий раз.`;
+                r.textContent = `💀 Проигрыш.\nСтавка: ${bet}💎\nПовезёт в следующий раз.`;
             }
             renderTap();
         }
@@ -1140,24 +691,20 @@
             document.body.className = themes[currentTheme];
             updateThemeEffects();
         }
-
         function updateThemeEffects() {
             const rain = document.getElementById('rainContainer');
             const space = document.getElementById('spaceContainer');
             rain.innerHTML = '';
             space.innerHTML = '';
-
             if (document.body.classList.contains('theme-rain')) {
                 for (let i = 0; i < 60; i++) {
                     const drop = document.createElement('div');
                     drop.className = 'drop';
                     drop.style.left = Math.random() * 100 + '%';
                     drop.style.animationDuration = (Math.random() * 0.5 + 0.4) + 's';
-                    drop.style.animationDelay = Math.random() * 0.5 + 's';
                     rain.appendChild(drop);
                 }
             }
-
             if (document.body.classList.contains('theme-space')) {
                 for (let i = 0; i < 90; i++) {
                     const star = document.createElement('div');
@@ -1166,25 +713,12 @@
                     star.style.top = Math.random() * 100 + '%';
                     star.style.width = (Math.random() * 2 + 1) + 'px';
                     star.style.height = star.style.width;
-                    star.style.animationDuration = (Math.random() * 2 + 1) + 's';
                     space.appendChild(star);
                 }
-                const nebula1 = document.createElement('div');
-                nebula1.className = 'nebula';
-                nebula1.style.left = '15%';
-                nebula1.style.top = '25%';
-                nebula1.style.background = 'rgba(100,60,200,0.4)';
-                space.appendChild(nebula1);
-                const nebula2 = document.createElement('div');
-                nebula2.className = 'nebula';
-                nebula2.style.right = '5%';
-                nebula2.style.bottom = '15%';
-                nebula2.style.background = 'rgba(200,100,150,0.3)';
-                space.appendChild(nebula2);
             }
         }
 
-        // ИНФО / АДМИНКА
+        // АДМИНКА
         function openAdmin() { document.getElementById('adminScreen').classList.add('active'); }
         function closeAdmin() {
             document.getElementById('adminScreen').classList.remove('active');
@@ -1196,77 +730,43 @@
         }
         function openInfo() { document.getElementById('infoScreen').classList.add('active'); }
         function closeInfo() { document.getElementById('infoScreen').classList.remove('active'); }
-
         function checkPin() {
-            const input = document.getElementById('pinInput').value;
-            if (input === PIN) {
+            if (document.getElementById('pinInput').value === PIN) {
                 document.getElementById('loginBlock').style.display = 'none';
                 document.getElementById('adminContent').style.display = 'flex';
-                document.getElementById('pinInput').value = '';
-            } else {
-                alert('❌ Неверный код');
-            }
+            } else alert('❌ Неверный код');
         }
-
-        function showAddForm() {
-            document.getElementById('adminContent').style.display = 'none';
-            document.getElementById('addForm').style.display = 'flex';
-        }
-
-        function backToAdmin() {
-            document.getElementById('adminContent').style.display = 'flex';
-            document.getElementById('addForm').style.display = 'none';
-            document.getElementById('listBlock').style.display = 'none';
-            document.getElementById('statsBlock').style.display = 'none';
-        }
-
+        function showAddForm() { document.getElementById('adminContent').style.display = 'none'; document.getElementById('addForm').style.display = 'flex'; }
+        function backToAdmin() { document.getElementById('adminContent').style.display = 'flex'; document.getElementById('addForm').style.display = 'none'; document.getElementById('listBlock').style.display = 'none'; document.getElementById('statsBlock').style.display = 'none'; }
         function addIdea() {
-            const category = document.getElementById('categorySelect').value;
+            const cat = document.getElementById('categorySelect').value;
             const text = document.getElementById('ideaText').value.trim();
-            if (!text) { alert('❌ Введи текст идеи'); return; }
-            ideas[category].push(text);
-            alert('✅ Идея добавлена!');
+            if (!text) { alert('❌ Введи текст'); return; }
+            ideas[cat].push(text);
+            alert('✅ Добавлено');
             document.getElementById('ideaText').value = '';
             backToAdmin();
         }
-
         function showAllIdeas() {
             document.getElementById('adminContent').style.display = 'none';
             document.getElementById('listBlock').style.display = 'flex';
             let html = '';
             for (const cat in ideas) {
-                html += `<p style="color:#b39bff; margin-top:10px; font-weight:bold;">${cat}</p>`;
+                html += `<p style="color:#b39bff; font-weight:bold; margin-top:8px;">${cat}</p>`;
                 ideas[cat].forEach((idea, i) => {
-                    html += `<div style="display:flex; justify-content:space-between; align-items:center; gap:6px; margin-top:4px;">
-                        <p style="color:#d8d0f0; font-size:13px; flex:1;">${i + 1}. ${idea}</p>
-                        <button onclick="deleteIdea('${cat}', ${i})" style="background:none; border:none; cursor:pointer; font-size:14px;">🗑</button>
-                    </div>`;
+                    html += `<div style="display:flex; justify-content:space-between; color:#d8d0f0; font-size:12px;">${i+1}. ${idea} <button onclick="deleteIdea('${cat}', ${i})">🗑</button></div>`;
                 });
             }
             document.getElementById('ideasList').innerHTML = html;
         }
-
-        function deleteIdea(category, index) { ideas[category].splice(index, 1); showAllIdeas(); }
-
+        function deleteIdea(cat, i) { ideas[cat].splice(i, 1); showAllIdeas(); }
         function showStats() {
             document.getElementById('adminContent').style.display = 'none';
             document.getElementById('statsBlock').style.display = 'flex';
-            let totalIdeas = 0;
-            for (const cat in ideas) totalIdeas += ideas[cat].length;
-            const clicksTotal = Object.values(clicks).reduce((a, b) => a + b, 0);
-            let popular = '—'; let maxClicks = 0; let empty = '—'; let minIdeas = Infinity;
-            for (const cat in ideas) { if (ideas[cat].length < minIdeas) { minIdeas = ideas[cat].length; empty = cat; } }
-            for (const cat in clicks) { if (clicks[cat] > maxClicks) { maxClicks = clicks[cat]; popular = cat; } }
-            const catCount = Object.keys(ideas).length;
-            const avgIdeas = (totalIdeas / catCount).toFixed(1);
-            let html = `<b>📊 ОБЩЕЕ</b><br>Идей: ${totalIdeas}<br>Категорий: ${catCount}<br>Среднее: ${avgIdeas}<br>Нажатий: ${clicksTotal}<br><br><b>📁 ПО КАТЕГОРИЯМ</b><br>`;
-            for (const cat in ideas) {
-                const c = clicks[cat] || 0;
-                const p = clicksTotal > 0 ? ((c / clicksTotal) * 100).toFixed(1) : 0;
-                html += `${cat}: идей ${ideas[cat].length}, нажатий ${c} (${p}%)<br>`;
-            }
-            html += `<br><b>🔥 ТОП</b><br>Популярная: ${popular}<br>Пустая: ${empty}`;
-            document.getElementById('statsText').innerHTML = html;
+            let total = 0;
+            for (const cat in ideas) total += ideas[cat].length;
+            const clicksTotal = Object.values(clicks).reduce((a,b) => a+b, 0);
+            document.getElementById('statsText').innerHTML = `Идей: ${total}<br>Нажатий: ${clicksTotal}`;
         }
     </script>
 </body>
